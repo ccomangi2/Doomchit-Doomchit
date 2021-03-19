@@ -3,4 +3,43 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <!-- doomchit -->
+    <color name="white">#ffffff</color>
+    <color name="maker">#32eeff</color>
+
+    <!-- 트랙 공통 컬러 -->
+    <color name="off">#090d1c</color>
+
+    <!-- 첫번째 트랙 -->
+    <color name="one_off">#743ad5</color>
+    <color name="one_on">#7a32f2</color>
+
+    <!-- 두번째 트랙 -->
+    <color name="two_off">#090d1c</color>
+    <color name="two_on">#338bf7</color>
+
+    <!-- 세번째 트랙 -->
+    <color name="three_off">#090d1c</color>
+    <color name="three_on">#8ee8ff</color>
+
+    <!-- 네번째 트랙 -->
+    <color name="four_off">#8ee8ff</color>
+    <color name="four_on">#8ee8ff</color>
+
+    <!-- 다섯번째 트랙 -->
+    <color name="five_off">#f44eb7</color>
+    <color name="five_on">#f44eb7</color>
+
+    <!-- 여섯번째 트랙 -->
+    <color name="six_off">#d315c3</color>
+    <color name="six_on">#d315c3</color>
+
+    <!-- 일곱, 여덟번째 트랙 -->
+    <color name="se_off">#7e818b</color>
+    <color name="se_on">#70747c</color>
+    <color name="se_on_back">#dee2f1</color>
+
+    <!-- 런치 패드 볼륨 컬러 -->
+    <color name="volum">#ff2ec9</color>
 </resources>
