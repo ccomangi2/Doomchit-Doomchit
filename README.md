@@ -11,6 +11,7 @@ _이제 나도 힙합DJ! 아름다운 음악을 믹싱하고 비트를 만드세
 ## Screen
 
 > All images used in "Doomchit-Doomchit(둠칫둠칫)" are commercially available.
+>> App
 
 [메인화면]
 ![메인화면](./img/main.png)
@@ -24,12 +25,7 @@ _이제 나도 힙합DJ! 아름다운 음악을 믹싱하고 비트를 만드세
 ![스토리화면](./img/story.png)
 
 ---------------------------------------
-[질문화면]
-![질문화면](./img/question.png)
-
----------------------------------------
-[결과화면]
-![결과화면](./img/result.png)
+>> Web
 
 ## Additional
 
