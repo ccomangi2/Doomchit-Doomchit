@@ -38,7 +38,7 @@ _이제 나도 힙합DJ! 아름다운 음악을 믹싱하고 비트를 만드세
 ## Members
 * **Soo-bin Lee (이수빈)** : PM, Plan, Full Stack Development - [Soo-bin](https://github.com/ccomangi2)
 * **A-ra Kim (김아라)** : Full Stack Development - [A-ra](https://github.com/IknowAra)
-* **Su-yun Maeng (맹수연)** : Plan, Full Stack Development - [Su-yun](https://github.com/msuyeon)
+* **Su-yun Maeng (맹수연)** : Full Stack Development - [Su-yun](https://github.com/msuyeon)
 * **Hyung-yeon Ham (함형연)** : Full Stack Development - [Hyung-yeon](https://github.com/guddus326)
 * **Yu-bin Kwon (권유빈)** : Design - [Yu-bin Kwon]()
 * **Yeon-seo Oh (오연서)** : Design - [Yeon-seo Oh]()
