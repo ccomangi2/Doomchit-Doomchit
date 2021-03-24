@@ -1,8 +1,14 @@
+@font-face {
+  font-family:'vtfont'; /* 폰트 이름은 임의로 설정 */
+  src:url('../font/DungGeunMo.woff') format('woff');
+  font-style:normal;
+  font-weight:normal;
+}
+
 * {padding: 0px; margin: 0px;}
 
 html{
-  font-family: 'Noto Sans KR', sans-serif;
-
+  font-family:'vtfont';
   /* 글꼴 크기 조정을 방지 */
   -webkit-text-size-adjust: 100%; 
   /* 폰트를 부드럽게 */
@@ -21,9 +27,43 @@ body{
   position: absolute;
 }
 
+.guide{
+  color: #ED0082;
+  font-size: 24pt;
+  top: 55%; left:50%; transform:translateX(-50%);
+  position: absolute;
+}
+
+.playbtn{
+  top: 98%; left:50%; transform:translateX(-50%);
+  position: absolute;
+}
+
+.list{
+  color: #ED0082;
+  font-size: 24pt;
+  bottom: -58%; left:50%; transform:translateX(-50%);
+  position: absolute;
+}
+
+.content{
+  color: #ffffff;
+  font-size: 15pt;
+  bottom: -64%; left:50%; transform:translateX(-50%);
+  position: absolute;
+}
+
+hr{
+  width: 7%;
+  color: #ED0082;
+  text-align: center;
+  border: none; border: 1px solid #ED0082;
+  position: absolute; left:50%; transform:translateX(-50%);
+}
+
 /* 브라우저는 렌더링 속도, 정밀도에 대한 가독성을 강조 */
-@media screen and (min-width: 960px) { 
+/* @media screen and (min-width: 960px) { 
   html, body {
       text-rendering: optimizeLegibility;
   }
-}
+} */
