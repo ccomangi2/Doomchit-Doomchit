@@ -1,11 +1,13 @@
 package com.example.doomchit_doomchit;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                              WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         btn_play = findViewById(R.id.btn_play);
@@ -37,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
                 MoveActivity(RecordListActivity.class);
             }
         });
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
     }
 
     // 액티비티 이동 메서드

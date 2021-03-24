@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +31,7 @@ public class RecordListActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                              WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_recordlist);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
@@ -38,14 +41,22 @@ public class RecordListActivity extends AppCompatActivity {
 
         mArrayList = new ArrayList<RecordList>();
 
-        for(int i=0; i<5; i++) {
+        for(int i=0; i<100; i++) {
             mArrayList.add(new RecordList("00:00", "녹음 제목이오", "이수빈"));
         }
 
-        mAdapter = new RecordListAdapter(mArrayList);
-        recyclerView.setAdapter(mAdapter);
+        mAdapter = new RecordListAdapter(getApplicationContext());
+
 
         mAdapter.notifyDataSetChanged();
+
+        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
+        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
+        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
+
+        mAdapter.notifyDataSetChanged();
+
+        recyclerView.setAdapter(mAdapter);
 
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +65,9 @@ public class RecordListActivity extends AppCompatActivity {
                 MoveActivity(MainActivity.class);
             }
         });
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
     }
 
     // 액티비티 이동 메서드

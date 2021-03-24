@@ -1,5 +1,7 @@
 package com.example.doomchit_doomchit;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +16,12 @@ import androidx.recyclerview.widget.SimpleItemAnimator;
 import java.util.ArrayList;
 
 public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.ItemViewHolder> {
-
-    private ArrayList<RecordList> mList;
+    Context context;
+    private ArrayList<RecordList> mList = new ArrayList<RecordList>();
     private int position;
 
-    public RecordListAdapter(ArrayList<RecordList> mList) {
-        this.mList = mList;
+    public RecordListAdapter(Context context) {
+        this.context = context;
     }
 
     @NonNull
@@ -39,14 +41,18 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.It
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("play").setMessage("재생");
+                AlertDialog alertDialog = builder.create();
             }
         });
 
         holder.play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("share").setMessage("공유");
+                AlertDialog alertDialog = builder.create();
             }
         });
 
@@ -60,7 +66,7 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.It
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mList.size();
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
@@ -84,5 +90,13 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.It
             title_textview.setText(recordList.getTitle());
             name_textview.setText(recordList.getName());
         }
+    }
+
+    public void addItem(RecordList recordList) {
+        mList.add(recordList);
+    }
+
+    public RecordList getItem(int position) {
+        return mList.get(position);
     }
 }
