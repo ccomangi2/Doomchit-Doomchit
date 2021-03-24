@@ -11,6 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,10 +54,23 @@ public class RecordListActivity extends AppCompatActivity {
         mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
         mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
         mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
+        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
+        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
+        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
+        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
+        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
 
         mAdapter.notifyDataSetChanged();
 
         recyclerView.setAdapter(mAdapter);
+
+        mAdapter.setOnItemClicklistener(new OnRecordListClickListener() {
+            @Override
+            public void onItemClick(RecordListAdapter.ViewHolder holder, View view, int position) {
+                RecordList item = mAdapter.getItem(position);
+                Toast.makeText(getApplicationContext(), position + "번 눌림", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
