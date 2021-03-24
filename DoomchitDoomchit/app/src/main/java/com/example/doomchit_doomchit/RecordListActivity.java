@@ -5,6 +5,9 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
@@ -23,9 +26,9 @@ public class RecordListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+        //                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_recordlist);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
