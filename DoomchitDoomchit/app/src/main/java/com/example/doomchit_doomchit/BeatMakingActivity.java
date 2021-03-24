@@ -14,7 +14,6 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class BeatMakingActivity extends AppCompatActivity implements View.OnClickListener{
-    Animation startAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.glow_anim);
     ImageButton back; // 뒤로가기
     ImageButton beatvolum1; Button beat1, beat2, beat3, beat4, beat5, beat6;
 
@@ -63,6 +62,7 @@ public class BeatMakingActivity extends AppCompatActivity implements View.OnClic
         back.setOnClickListener(this);
     }
     public void onClick(View v) {
+        Animation startAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.glow_anim);
         switch(v.getId()) {
             case R.id.back :
                 MoveActivity(MainActivity.class);
