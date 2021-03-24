@@ -1,1 +1,29 @@
 * {padding: 0px; margin: 0px;}
+
+html{
+  font-family: 'Noto Sans KR', sans-serif;
+
+  /* 글꼴 크기 조정을 방지 */
+  -webkit-text-size-adjust: 100%; 
+  /* 폰트를 부드럽게 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* 웹킷 마음대로 눌림 하이라이트 막음 */
+  -webkit-tap-highlight-color: transparent;
+}
+
+body{
+  margin: 0;
+}
+
+.logo{
+  top: 15%; left:50%; transform:translateX(-50%);
+  position: absolute;
+}
+
+/* 브라우저는 렌더링 속도, 정밀도에 대한 가독성을 강조 */
+@media screen and (min-width: 960px) { 
+  html, body {
+      text-rendering: optimizeLegibility;
+  }
+}
