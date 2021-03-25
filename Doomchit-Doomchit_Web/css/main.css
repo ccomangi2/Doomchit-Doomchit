@@ -9,6 +9,8 @@
 
 html{
   font-family:'vtfont';
+  font-size: 62.5%;
+
   /* 글꼴 크기 조정을 방지 */
   -webkit-text-size-adjust: 100%; 
   /* 폰트를 부드럽게 */
@@ -20,46 +22,54 @@ html{
 
 body{
   margin: 0;
+  font-size: 1em;
 }
 
-.logo{
-  top: 15%; left:50%; transform:translateX(-50%);
-  position: absolute;
-}
-
-.guide{
-  color: #ED0082;
-  font-size: 24pt;
-  top: 55%; left:50%; transform:translateX(-50%);
-  position: absolute;
-}
-
-.playbtn{
-  top: 98%; left:50%; transform:translateX(-50%);
-  position: absolute;
-}
-
-.list{
-  color: #ED0082;
-  font-size: 24pt;
-  bottom: -58%; left:50%; transform:translateX(-50%);
-  position: absolute;
-}
-
-.content{
-  color: #ffffff;
-  font-size: 15pt;
-  bottom: -64%; left:50%; transform:translateX(-50%);
-  position: absolute;
+img{
+  max-width: 100%; height: auto;
 }
 
 hr{
-  width: 7%;
+  width: 5%;
   color: #ED0082;
   text-align: center;
   border: none; border: 1px solid #ED0082;
   position: absolute; left:50%; transform:translateX(-50%);
 }
+
+iframe {position: absolute; top: 50%; left:50%; transform:translateX(-50%);} 
+
+.logo{
+  top: 14%; left:50%; transform:translateX(-50%);
+  position: absolute;  max-width: 100%;  object-fit: cover;
+}
+.guide{
+  color: #ED0082;
+  font-size: 1em;
+  top: 40.5%; left:50%; transform:translateX(-50%);
+  position: absolute;
+}
+
+.playbtn{
+  top: 69%; left:50%; transform:translateX(-50%);
+  position: absolute;
+}
+
+.list{
+  color: #ED0082;
+  font-size: 1em;
+  bottom: -15.5%; left:50%; transform:translateX(-50%);
+  position: absolute;
+}
+
+.content{
+  color: #ffffff;
+  font-size: 0.7em;
+  bottom: -20.5%; left:50%; transform:translateX(-50%);
+  position: absolute;
+}
+
+
 
 /* 브라우저는 렌더링 속도, 정밀도에 대한 가독성을 강조 */
 /* @media screen and (min-width: 960px) { 
@@ -67,3 +77,19 @@ hr{
       text-rendering: optimizeLegibility;
   }
 } */
+
+@media (max-width: 300px) {
+  html { font-size: 70%; }
+}
+
+@media (min-width: 500px) {
+  html { font-size: 80%; }
+}
+
+@media (min-width: 700px) {
+  html { font-size: 120%; }
+}
+
+@media (min-width: 1200px) {
+  html { font-size: 200%; }
+}
