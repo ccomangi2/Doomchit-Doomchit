@@ -6,7 +6,7 @@
                 android:bottomLeftRadius="10dp"
                 android:topLeftRadius="10dp"
                 android:topRightRadius="10dp"/>
-            <solid android:color="@color/three_on" />
+            <solid android:color="@color/se_on_back" />
         </shape>
     </item>
 </selector>
