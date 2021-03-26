@@ -24,8 +24,8 @@
     <color name="three_on">#8ee8ff</color>
 
     <!-- 네번째 트랙 -->
-    <color name="four_off">#8ee8ff</color>
-    <color name="four_on">#8ee8ff</color>
+    <color name="four_off">#54d9e1 </color>
+    <color name="four_on">#54d9e1 </color>
 
     <!-- 다섯번째 트랙 -->
     <color name="five_off">#f44eb7</color>
