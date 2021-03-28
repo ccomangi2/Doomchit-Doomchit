@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <title>Doomchit-Doomchit[둠칫둠칫]</title>
   <link rel="stylesheet" type="text/css" href="css/main.css">
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 </head>
 
 <body
@@ -14,18 +16,18 @@
       <img src="img/web_logo.png" style="width: 80%; height: 60%;">
     </div>
 
-    <hr style="top: 40%;">
+    <!-- <hr style="top: 40%;">
     <div class="guide">GUIDE</div>
     <hr style="top: 44%;">
 
-    <!-- 비디오 -->
-    <!-- <div style="position: relative; height: 0px; padding-bottom: 56.25%; text-align: left;"> -->
-      <!-- <iframe width="45%" height="45%" src="https://www.youtube.com/embed/RNSxTfyvRHg?wmode=transparent" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen wmode="Opaque"></iframe> -->
-    <!-- </div> -->
+    비디오 
+    <div style="position: relative; height: 0px; padding-bottom: 56.25%; text-align: left;"> 
+      <iframe width="45%" height="45%" src="https://www.youtube.com/embed/RNSxTfyvRHg?wmode=transparent" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen wmode="Opaque"></iframe> 
+    </div>
 
-    <!-- <video controls>
+    <video controls>
       <source src="비디오 파일 경로" type="video/mp4">
-    </video> -->
+    </video>
     <div class="playbtn"><img src="img/web_playmovie.png" /></div>
 
     <hr style="width:4%; bottom:-12%;">
@@ -34,7 +36,84 @@
     <div class="content">직접 만든 비트를 들어보세요!</div>
   </center>
   <div class="frame">
-    <img src="img/테두리.png" style="width:100%; height:auto; position:relative;" />
+    <img src="img/테두리.png" style="width:100%; height:auto; position:relative;" /> -->
+  </center>
+  <hr style="top: 55%;">
+  <div class="guide">GUIDE</div>
+  <hr style="top: 60%;">
+
+  <div class="playbtn"><img src="img/web_playmovie.png" /></div>
+
+  <hr style="width:6%; bottom:-37.5%;">
+  <div class="list">LIST</div>
+  <hr style="width:6%; bottom:-42.5%;">
+  <div class="content">직접 만든 비트를 들어보세요!</div>
+
+  <div class="box" style="float: left; left: 50.5%;">
+    <div class="song_title">그만큼 신이 나신다는 거지</div>
+    <div class="composer">- 나는 모짜렐라</div>
+    <span class="music_length">3:05</span>
+    <span class="play"><img src="img/web_playsound.png" style="width: 20px; height: 25px;"></span>
+    <span class="share"><img src="img/web_share.png" style="width: 20px; height: 25px;"></span>
+  </div>
+  <div class="box" style="float: right; right: 50.5%;">
+    <div class="song_title">그만큼 신이 나신다는 거지</div>
+    <div class="composer">- 나는 모짜렐라</div>
+    <span class="music_length">3:05</span>
+    <span class="play"><img src="img/web_playsound.png" style="width: 20px; height: 25px;"></span>
+    <span class="share"><img src="img/web_share.png" style="width: 20px; height: 25px;"></span>
+  </div>
+  <div class="box" style="float: left; left: 50.5%; bottom: -80%;">
+    <div class="song_title">그만큼 신이 나신다는 거지</div>
+    <div class="composer">- 나는 모짜렐라</div>
+    <span class="music_length">3:05</span>
+    <span class="play"><img src="img/web_playsound.png" style="width: 20px; height: 25px;"></span>
+    <span class="share"><img src="img/web_share.png" style="width: 20px; height: 25px;"></span>
+  </div>
+  <div class="box" style="float: right; right: 50.5%; bottom: -80%;">
+    <div class="song_title">그만큼 신이 나신다는 거지</div>
+    <div class="composer">- 나는 모짜렐라</div>
+    <span class="music_length">3:05</span>
+    <span class="play"><img src="img/web_playsound.png" style="width: 20px; height: 25px;"></span>
+    <span class="share"><img src="img/web_share.png" style="width: 20px; height: 25px;"></span>
+  </div>
+  <div class="frame">
+    <img src="img/테두리.png" style="width:100%; height:auto;" />
+  </div>
+
+
+
+  <!-- 좌,우 슬라이드 버튼 -->
+  <div class="slide-control">
+    <div>
+      <label for="slide03" class="left"></label>
+      <label for="slide02" class="right"></label>
+    </div>
+    <div>
+      <label for="slide01" class="left"></label>
+      <label for="slide03" class="right"></label>
+    </div>
+    <div>
+      <label for="slide02" class="left"></label>
+      <label for="slide01" class="right"></label>
+    </div>
+  </div>
+  <div class="section">
+    <input type="radio" name="slide" id="slide01">
+    <input type="radio" name="slide" id="slide02">
+    <input type="radio" name="slide" id="slide03" checked>
+    <input type="radio" name="slide" id="slide04">
+    <input type="radio" name="slide" id="slide05">
+    <div class="slidewrap">
+      <!-- 페이징 -->
+      <ul class="slide-pagelist">
+        <li><label for="slide01"></label></li>
+        <li><label for="slide02"></label></li>
+        <li><label for="slide03"></label></li>
+        <li><label for="slide04"></label></li>
+        <li><label for="slide05"></label></li>
+      </ul>
+    </div>
   </div>
 </body>
 

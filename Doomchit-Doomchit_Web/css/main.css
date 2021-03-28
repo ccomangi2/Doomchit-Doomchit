@@ -51,25 +51,220 @@ iframe {position: absolute; top: 50%; left:50%; transform:translateX(-50%);}
 }
 
 .playbtn{
-  top: 69%; left:50%; transform:translateX(-50%);
+  /* top: 69%; left:50%; transform:translateX(-50%); */
+  top: 88%; left:50%; transform:translateX(-50%);
   position: absolute;
 }
 
 .list{
   color: #ED0082;
-  font-size: 1em;
-  bottom: -15.5%; left:50%; transform:translateX(-50%);
+  /* font-size: 1em;
+  bottom: -15.5%; left:50%; transform:translateX(-50%); */
+  font-size: 24pt;
+  bottom: -42%; left:50%; transform:translateX(-50%);
   position: absolute;
 }
 
 .content{
   color: #ffffff;
-  font-size: 0.7em;
-  bottom: -20.5%; left:50%; transform:translateX(-50%);
+  /* font-size: 0.7em;
+  bottom: -20.5%; left:50%; transform:translateX(-50%); */
+  font-size: 15pt;
+  bottom: -49%; left:50%; transform:translateX(-50%);
   position: absolute;
 }
 
 
+
+span {
+  position: absolute;
+}
+
+.box {
+  width: 30%;
+  height: 26%;
+  background: rgba(8, 159, 184, 0.1);
+  box-shadow: inset 1px 2px 8px rgba(255, 255, 255, 0.4);
+  border-radius: 25px;
+  border: 2px solid #61c2f7;
+  position: absolute;
+  bottom: -110%;
+}
+
+.box:hover {
+  width: 30%;
+  height: 26%;
+  background: rgba(237, 0, 130, 0.1);
+  box-shadow: inset 1px 2px 8px rgba(255, 255, 255, 0.38);
+  border-radius: 25px;
+  border: 3px solid #ff00ae;
+  position: absolute;
+}
+
+.box:hover>span:nth-of-type(2) {
+  filter: drop-shadow(0px 0px 8px rgba(237, 0, 130, 1));
+}
+
+.box:hover>span:nth-of-type(3) {
+  filter: drop-shadow(0px 0px 8px rgba(237, 0, 130, 1));
+}
+
+.song_title {
+  font-size: 15pt;
+  color: white;
+  text-align: left;
+  margin-top: 6%;
+  margin-left: 9%;
+}
+
+.composer {
+  font-size: 12pt;
+  color: #32eeff;
+  text-align: left;
+  margin-top: 1%;
+  margin-left: 9%;
+}
+
+.music_length {
+  font-size: 13pt;
+  color: white;
+  margin-top: 15%;
+  margin-right: 9%;
+  right: 23%;
+}
+
+.play {
+  margin-top: 14%;
+  right: 22%;
+  opacity: 0.7;
+  /* IE8 및 그 이하 버전용 */
+  filter: alpha(opacity=70);
+  filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.4));
+}
+
+.share {
+  margin-top: 14%;
+  right: 8%;
+  opacity: 0.7;
+  /* IE8 및 그 이하 버전용 */
+  filter: alpha(opacity=70);
+  filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.4));
+}
+
+
+/* -----slide------ */
+.section input[id*="slide"] {
+  display: none;
+}
+
+.section .slidewrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 좌,우 슬라이드 버튼 */
+.slide-control>div {
+  display: none; 
+  width: 30px;
+  height: 30px;
+  bottom:-123%;
+  position: absolute; left:50%; transform:translateX(-50%);
+}
+
+.section .left {
+  left: 30%;
+  background: url('img/left.png') center center / 100% no-repeat;
+}
+
+.section .right {
+  right: 30%;
+  background: url('img/right.png') center center / 100% no-repeat;
+}
+
+.section input[id="slide01"]:checked~.slidewrap .slide-control>div:nth-child(1) {
+  display: block;
+}
+
+.section input[id="slide02"]:checked~.slidewrap .slide-control>div:nth-child(2) {
+  display: block;
+}
+
+.section input[id="slide03"]:checked~.slidewrap .slide-control>div:nth-child(3) {
+  display: block;
+}
+
+.section input[id="slide04"]:checked~.slidewrap .slide-control>div:nth-child(4) {
+  display: block;
+}
+
+
+/* 페이징 */
+.slide-pagelist {
+  text-align: center;
+  padding: 20px;
+  bottom:-123%;
+  position: absolute; left:50%; transform:translateX(-50%);
+}
+
+.slide-pagelist>li {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.slide-pagelist>li>label {
+  display: block;
+  /* padding: 10px 10px;
+  background: #b8b8b8; */
+  border-radius: 50%;
+  margin: 0px 2px;
+  cursor: pointer;
+}
+
+.slide-pagelist>li:nth-child(1)>label {
+  background: #8a8a8a;
+  padding: 10px 10px;
+}
+
+.slide-pagelist>li:nth-child(2)>label {
+  background: #b8b8b8;
+  padding: 12px 12px;
+}
+
+.slide-pagelist>li:nth-child(3)>label {
+  background: #ed0082;
+  padding: 15px 15px;
+}
+
+.slide-pagelist>li:nth-child(4)>label {
+  background: #b8b8b8;
+  padding: 12px 12px;
+}
+
+.slide-pagelist>li:nth-child(5)>label {
+  background: #8a8a8a;
+  padding: 10px 10px;
+}
+
+.section input[id="slide01"]:checked~.slidewrap .slide-pagelist>li:nth-child(1)>label {
+  background: #ed0082;
+}
+
+.section input[id="slide02"]:checked~.slidewrap .slide-pagelist>li:nth-child(2)>label {
+  background: #ed0082;
+}
+
+.section input[id="slide03"]:checked~.slidewrap .slide-pagelist>li:nth-child(3)>label {
+  background: #ed0082;
+  padding: 15px 15px;
+}
+
+.section input[id="slide04"]:checked~.slidewrap .slide-pagelist>li:nth-child(4)>label {
+  background: #ed0082;
+}
+
+.section input[id="slide05"]:checked~.slidewrap .slide-pagelist>li:nth-child(5)>label {
+  background: #ed0082;
+}
 
 /* 브라우저는 렌더링 속도, 정밀도에 대한 가독성을 강조 */
 /* @media screen and (min-width: 960px) { 
