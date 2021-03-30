@@ -94,58 +94,77 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
-        <Button
-            android:id="@+id/beat1_off"
-            android:layout_width="110dp"
-            android:layout_height="85dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="115dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/button_off_click" />
 
-        <Button
+            <ImageButton
+                android:id="@+id/beat1_off"
+                android:layout_width="110dp"
+                android:layout_height="85dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="115dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/not_beat" />
+
+        <ImageButton
             android:id="@+id/beat2_off"
             android:layout_width="110dp"
             android:layout_height="85dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="210dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/button_off_click" />
+            android:background="@drawable/button_off_click"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/not_beat"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/beat3_off"
             android:layout_width="110dp"
             android:layout_height="85dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="305dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/button_off_click" />
+            android:background="@drawable/button_off_click"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/not_beat"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/beat4_off"
             android:layout_width="110dp"
             android:layout_height="85dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="400dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/button_off_click" />
+            android:background="@drawable/button_off_click"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/not_beat"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/beat5_off"
             android:layout_width="110dp"
             android:layout_height="85dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="495dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/button_off_click" />
+            android:background="@drawable/button_off_click"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/not_beat"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/beat6_off"
             android:layout_width="110dp"
             android:layout_height="85dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="590dp"
-            android:background="@drawable/button_off_click" />
+            android:background="@drawable/button_off_click"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/not_beat"/>
         </com.gigamole.library.ShadowLayout>
         <com.gigamole.library.ShadowLayout
             android:layout_width="wrap_content"
@@ -159,58 +178,70 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
-            <Button
+            <ImageButton
                 android:id="@+id/beat1_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_one_click" />
+                android:background="@drawable/button_one_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/beat"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/beat2_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="210dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_one_click" />
+                android:background="@drawable/button_one_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/beat"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/beat3_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="305dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_one_click" />
+                android:background="@drawable/button_one_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/beat"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/beat4_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_one_click" />
+                android:background="@drawable/button_one_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/beat"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/beat5_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_one_click" />
+                android:background="@drawable/button_one_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/beat"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/beat6_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="590dp"
-                android:background="@drawable/button_one_click" />
+                android:background="@drawable/button_one_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/beat"/>
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
 
@@ -246,58 +277,76 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
-            <Button
+            <ImageButton
                 android:id="@+id/two1_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/two_not_synth" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/two2_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="210dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/two_not_choir"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/two3_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="305dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/two_not_whistle"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/two4_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/two_not_synth"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/two5_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/two_not_piano"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/two6_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="590dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/two_not_mbira"/>
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -313,58 +362,70 @@
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
 
-            <Button
+            <ImageButton
                 android:id="@+id/two1_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_two_click" />
+                android:background="@drawable/button_two_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mbira"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/two2_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="210dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_two_click" />
+                android:background="@drawable/button_two_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/choir"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/two3_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="305dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_two_click" />
+                android:background="@drawable/button_two_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/whistle"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/two4_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_two_click" />
+                android:background="@drawable/button_two_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mbira"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/two5_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_two_click" />
+                android:background="@drawable/button_two_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/piano"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/two6_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="590dp"
-                android:background="@drawable/button_two_click" />
+                android:background="@drawable/button_two_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mbira"/>
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
 
@@ -400,58 +461,76 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
-            <Button
+            <ImageButton
                 android:id="@+id/three1_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/three_not_keys"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/three2_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="210dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/three_not_strings"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/three3_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="305dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/three_not_mallets"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/three4_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/three_not_pluck"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/three5_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/three_not_keys"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/three6_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="590dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/three_not_flute"/>
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -467,58 +546,70 @@
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
 
-            <Button
+            <ImageButton
                 android:id="@+id/three1_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_three_click" />
+                android:background="@drawable/button_three_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/keys"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/three2_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="210dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_three_click" />
+                android:background="@drawable/button_three_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/strings" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/three3_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="305dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_three_click" />
+                android:background="@drawable/button_three_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mallets" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/three4_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_three_click" />
+                android:background="@drawable/button_three_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pluck"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/three5_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_three_click" />
+                android:background="@drawable/button_three_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/keys"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/three6_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="590dp"
-                android:background="@drawable/button_three_click" />
+                android:background="@drawable/button_three_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/flute"/>
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
 
@@ -554,58 +645,76 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
-            <Button
+            <ImageButton
                 android:id="@+id/four1_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_bass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/four2_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="210dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_synth"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/four3_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="305dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_nor_pad"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/four4_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_brass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/four5_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_nor_string"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/four6_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="590dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_bass"/>
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -621,58 +730,70 @@
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
 
-            <Button
+            <ImageButton
                 android:id="@+id/four1_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_four_click" />
+                android:background="@drawable/button_four_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/bass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/four2_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="210dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_four_click" />
+                android:background="@drawable/button_four_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/bass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/four3_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="305dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_four_click" />
+                android:background="@drawable/button_four_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pad"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/four4_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_four_click" />
+                android:background="@drawable/button_four_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/brass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/four5_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_four_click" />
+                android:background="@drawable/button_four_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/strings"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/four6_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="590dp"
-                android:background="@drawable/button_four_click" />
+                android:background="@drawable/button_four_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/bass"/>
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
 
@@ -707,58 +828,73 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
-            <Button
+            <ImageButton
                 android:id="@+id/five1_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/five_not_strings"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/five2_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="210dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/five_not_pad"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/five3_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="305dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/five_not_synth"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/five4_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/five_not_synth"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/five5_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/five_not_brass" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/five6_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="590dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/five_not_bass"/>
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -774,58 +910,70 @@
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
 
-            <Button
+            <ImageButton
                 android:id="@+id/five1_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_five_click" />
+                android:background="@drawable/button_five_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/strings"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/five2_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="210dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_five_click" />
+                android:background="@drawable/button_five_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pad"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/five3_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="305dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_five_click" />
+                android:background="@drawable/button_five_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/five_not_bass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/five4_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_five_click" />
+                android:background="@drawable/button_five_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/five_not_bass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/five5_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_five_click" />
+                android:background="@drawable/button_five_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/brass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/five6_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="590dp"
-                android:background="@drawable/button_five_click" />
+                android:background="@drawable/button_five_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/bass"/>
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
 
@@ -861,58 +1009,76 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
-            <Button
+            <ImageButton
                 android:id="@+id/six1_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/six_not_vox"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/six2_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="210dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/six_not_vox"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/six3_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="305dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/six_not_vox"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/six4_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/six_not_vox"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/six5_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/six_not_vox"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/six6_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="590dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/six_not_vox"/>
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -928,7 +1094,7 @@
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
 
-            <Button
+            <ImageButton
                 android:id="@+id/six1_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -937,7 +1103,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_six_click" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/six2_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -946,7 +1112,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_six_click" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/six3_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -955,7 +1121,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_six_click" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/six4_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -964,7 +1130,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_six_click" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/six5_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -973,7 +1139,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_six_click" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/six6_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -1004,58 +1170,76 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
-            <Button
+            <ImageButton
                 android:id="@+id/seven1_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_bass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/seven2_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="210dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_bass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/seven3_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="305dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_bass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/seven4_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_bass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/seven5_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_bass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/seven6_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="590dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_bass"/>
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -1071,7 +1255,7 @@
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
 
-            <Button
+            <ImageButton
                 android:id="@+id/seven1_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -1080,7 +1264,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_se_click" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/seven2_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -1089,7 +1273,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_se_click" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/seven3_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -1098,7 +1282,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_se_click" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/seven4_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -1107,7 +1291,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_se_click" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/seven5_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -1116,7 +1300,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_se_click" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/seven6_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -1145,58 +1329,76 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
-            <Button
+            <ImageButton
                 android:id="@+id/eight1_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_bass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/eight2_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="210dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_bass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/eight3_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="305dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_bass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/eight4_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_bass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/eight5_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_bass"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/eight6_off"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="590dp"
-                android:background="@drawable/button_off_click" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/four_not_bass"/>
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -1212,7 +1414,7 @@
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
 
-            <Button
+            <ImageButton
                 android:id="@+id/eight1_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -1221,7 +1423,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_se_click" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/eight2_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -1230,7 +1432,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_se_click" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/eight3_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -1239,7 +1441,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_se_click" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/eight4_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -1248,7 +1450,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_se_click" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/eight5_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
@@ -1257,7 +1459,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_se_click" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/eight6_on"
                 android:layout_width="110dp"
                 android:layout_height="85dp"
