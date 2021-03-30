@@ -883,7 +883,10 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/five_not_brass" />
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/five_not_brass" />
 
             <ImageButton
                 android:id="@+id/five6_off"
@@ -1101,7 +1104,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_six_click" />
+                android:background="@drawable/button_six_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/vox"/>
 
             <ImageButton
                 android:id="@+id/six2_on"
@@ -1110,7 +1115,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="210dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_six_click" />
+                android:background="@drawable/button_six_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/vox"/>
 
             <ImageButton
                 android:id="@+id/six3_on"
@@ -1119,7 +1126,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="305dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_six_click" />
+                android:background="@drawable/button_six_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/vox"/>
 
             <ImageButton
                 android:id="@+id/six4_on"
@@ -1128,7 +1137,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_six_click" />
+                android:background="@drawable/button_six_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/vox"/>
 
             <ImageButton
                 android:id="@+id/six5_on"
@@ -1137,7 +1148,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_six_click" />
+                android:background="@drawable/button_six_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/vox"/>
 
             <ImageButton
                 android:id="@+id/six6_on"
@@ -1145,7 +1158,9 @@
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="590dp"
-                android:background="@drawable/button_six_click" />
+                android:background="@drawable/button_six_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/vox"/>
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
 
@@ -1180,7 +1195,7 @@
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_bass"/>
+                android:src="@drawable/not_fix"/>
 
             <ImageButton
                 android:id="@+id/seven2_off"
@@ -1192,7 +1207,7 @@
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_bass"/>
+                android:src="@drawable/not_fix"/>
 
             <ImageButton
                 android:id="@+id/seven3_off"
@@ -1204,7 +1219,7 @@
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_bass"/>
+                android:src="@drawable/not_fix"/>
 
             <ImageButton
                 android:id="@+id/seven4_off"
@@ -1216,7 +1231,7 @@
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_bass"/>
+                android:src="@drawable/not_fix"/>
 
             <ImageButton
                 android:id="@+id/seven5_off"
@@ -1228,7 +1243,7 @@
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_bass"/>
+                android:src="@drawable/not_fix"/>
 
             <ImageButton
                 android:id="@+id/seven6_off"
@@ -1239,7 +1254,7 @@
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_bass"/>
+                android:src="@drawable/not_fix"/>
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -1262,7 +1277,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_se_click" />
+                android:background="@drawable/button_se_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/fix"/>
 
             <ImageButton
                 android:id="@+id/seven2_on"
@@ -1271,7 +1288,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="210dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_se_click" />
+                android:background="@drawable/button_se_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/fix"/>
 
             <ImageButton
                 android:id="@+id/seven3_on"
@@ -1280,7 +1299,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="305dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_se_click" />
+                android:background="@drawable/button_se_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/fix"/>
 
             <ImageButton
                 android:id="@+id/seven4_on"
@@ -1289,7 +1310,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_se_click" />
+                android:background="@drawable/button_se_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/fix"/>
 
             <ImageButton
                 android:id="@+id/seven5_on"
@@ -1298,7 +1321,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_se_click" />
+                android:background="@drawable/button_se_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/fix"/>
 
             <ImageButton
                 android:id="@+id/seven6_on"
@@ -1306,7 +1331,9 @@
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="590dp"
-                android:background="@drawable/button_se_click" />
+                android:background="@drawable/button_se_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/fix"/>
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
     <RelativeLayout
@@ -1339,7 +1366,7 @@
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_bass"/>
+                android:src="@drawable/eight_not_vox"/>
 
             <ImageButton
                 android:id="@+id/eight2_off"
@@ -1351,7 +1378,7 @@
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_bass"/>
+                android:src="@drawable/eight_not_vox"/>
 
             <ImageButton
                 android:id="@+id/eight3_off"
@@ -1363,7 +1390,7 @@
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_bass"/>
+                android:src="@drawable/eight_not_vox"/>
 
             <ImageButton
                 android:id="@+id/eight4_off"
@@ -1375,7 +1402,7 @@
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_bass"/>
+                android:src="@drawable/eight_not_vox"/>
 
             <ImageButton
                 android:id="@+id/eight5_off"
@@ -1387,7 +1414,7 @@
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_bass"/>
+                android:src="@drawable/eight_not_vox"/>
 
             <ImageButton
                 android:id="@+id/eight6_off"
@@ -1398,7 +1425,7 @@
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_bass"/>
+                android:src="@drawable/eight_not_vox"/>
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -1421,7 +1448,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="115dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_se_click" />
+                android:background="@drawable/button_se_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/eight_vox"/>
 
             <ImageButton
                 android:id="@+id/eight2_on"
@@ -1430,7 +1459,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="210dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_se_click" />
+                android:background="@drawable/button_se_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/eight_vox"/>
 
             <ImageButton
                 android:id="@+id/eight3_on"
@@ -1439,7 +1470,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="305dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_se_click" />
+                android:background="@drawable/button_se_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/eight_vox"/>
 
             <ImageButton
                 android:id="@+id/eight4_on"
@@ -1448,7 +1481,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_se_click" />
+                android:background="@drawable/button_se_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/eight_vox"/>
 
             <ImageButton
                 android:id="@+id/eight5_on"
@@ -1457,7 +1492,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="495dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/button_se_click" />
+                android:background="@drawable/button_se_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/eight_vox"/>
 
             <ImageButton
                 android:id="@+id/eight6_on"
@@ -1465,7 +1502,9 @@
                 android:layout_height="85dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="590dp"
-                android:background="@drawable/button_se_click" />
+                android:background="@drawable/button_se_click"
+                android:scaleType="fitCenter"
+                android:src="@drawable/eight_vox"/>
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
 
