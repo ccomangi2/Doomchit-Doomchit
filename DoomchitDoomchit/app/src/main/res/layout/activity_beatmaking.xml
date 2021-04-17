@@ -750,7 +750,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_four_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/bass"/>
+                android:src="@drawable/synth"/>
 
             <ImageButton
                 android:id="@+id/four3_on"
@@ -944,7 +944,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_five_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/five_not_bass"/>
+                android:src="@drawable/synth"/>
 
             <ImageButton
                 android:id="@+id/five4_on"
@@ -955,7 +955,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_five_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/five_not_bass"/>
+                android:src="@drawable/synth"/>
 
             <ImageButton
                 android:id="@+id/five5_on"
