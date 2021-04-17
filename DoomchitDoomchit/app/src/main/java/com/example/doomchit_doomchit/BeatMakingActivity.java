@@ -3,8 +3,10 @@ package com.example.doomchit_doomchit;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.media.AudioManager;
 import android.media.MediaParser;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,43 +22,44 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class BeatMakingActivity extends AppCompatActivity implements View.OnClickListener{
+    private SoundPool sound_pool;
     ImageButton back; // 뒤로가기
     // 1트랙
-    //MediaPlayer beat1, beat2, beat3, beat4, beat5, beat6;
+    int beat1, beat2, beat3, beat4, beat5, beat6;
     ImageButton beatvolum1; ImageButton beat1_off, beat2_off, beat3_off, beat4_off, beat5_off, beat6_off;
     ImageButton beat1_on, beat2_on, beat3_on, beat4_on, beat5_on, beat6_on;
     // 2트랙
-    //MediaPlayer synth1, choir, whistle, synth2, piano, mbira;
+    int synth1, choir, whistle, synth2, piano, mbira;
     ImageButton beatvolum2; ImageButton two1_off, two2_off, two3_off, two4_off, two5_off, two6_off;
     ImageButton two1_on, two2_on, two3_on, two4_on, two5_on, two6_on;
 
     // 3트랙
-    //MediaPlayer keys1, strings1, mallets, pluck, keys2, flute;
+    int keys1, strings1, mallets, pluck, keys2, flute;
     ImageButton beatvolum3; ImageButton three1_off, three2_off, three3_off, three4_off, three5_off, three6_off;
     ImageButton three1_on, three2_on, three3_on, three4_on, three5_on, three6_on;
 
     // 4트랙
-    //MediaPlayer bass1, synth3, pad1, brass1, strings2, bass2;
+    int bass1, synth3, pad1, brass1, strings2, bass2;
     ImageButton beatvolum4; ImageButton four1_off, four2_off, four3_off, four4_off, four5_off, four6_off;
     ImageButton four1_on, four2_on, four3_on, four4_on, four5_on, four6_on;
 
     // 5트랙
-    //MediaPlayer strings3, pad2, synth4, synth5, brass2, bass3;
+    int strings3, pad2, synth4, synth5, brass2, bass3;
     ImageButton beatvolum5; ImageButton five1_off, five2_off, five3_off, five4_off, five5_off, five6_off;
     ImageButton five1_on, five2_on, five3_on, five4_on, five5_on, five6_on;
 
     // 6트랙
-    //MediaPlayer vox7, vox8, vox9, vox10, beat7, beat8;
+    int vox7, vox8, vox9, vox10, beat7, beat8;
     ImageButton beatvolum6; ImageButton six1_off, six2_off, six3_off, six4_off, six5_off, six6_off;
     ImageButton six1_on, six2_on, six3_on, six4_on, six5_on, six6_on;
 
     // 7트랙
-    //MediaPlayer fx1, fx2, fx3, fx4, fx5, fx6;
+    int fx1, fx2, fx3, fx4, fx5, fx6;
     ImageButton seven1_off, seven2_off, seven3_off, seven4_off, seven5_off, seven6_off;
     ImageButton seven1_on, seven2_on, seven3_on, seven4_on, seven5_on, seven6_on;
 
     // 8트랙
-    //MediaPlayer vox1, vox2, vox3, vox4, vox5, vox6;
+    int vox1, vox2, vox3, vox4, vox5, vox6;
     ImageButton eight1_off, eight2_off, eight3_off, eight4_off, eight5_off, eight6_off;
     ImageButton eight1_on, eight2_on, eight3_on, eight4_on, eight5_on, eight6_on;
 
@@ -71,8 +74,17 @@ public class BeatMakingActivity extends AppCompatActivity implements View.OnClic
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_beatmaking);
         //Animation startAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.glow_anim);
+        sound_pool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+
 
         // 1번째 트랙
+        beat1 = sound_pool.load(this, R.raw.beat1, 1);
+        beat1 = sound_pool.load(this, R.raw.beat2, 1);
+        beat1 = sound_pool.load(this, R.raw.beat3, 1);
+        beat1 = sound_pool.load(this, R.raw.beat4, 1);
+        beat1 = sound_pool.load(this, R.raw.beat5, 1);
+        beat1 = sound_pool.load(this, R.raw.beat6, 1);
+
         beatvolum1 = findViewById(R.id.beatvolum1);
         beat1_off = findViewById(R.id.beat1_off);
         beat2_off = findViewById(R.id.beat2_off);
@@ -398,9 +410,13 @@ public class BeatMakingActivity extends AppCompatActivity implements View.OnClic
                 beat5_on.setVisibility(View.GONE);
                 beat6_on.setVisibility(View.GONE);
                 if (beat1_on.getVisibility() == View.VISIBLE) {
-
+                    sound_pool.play(beat1, 1f, 1f, 0, -1, 1f);
                 }
-
+                sound_pool.stop(beat2);
+                sound_pool.stop(beat3);
+                sound_pool.stop(beat4);
+                sound_pool.stop(beat5);
+                sound_pool.stop(beat6);
                 break;
             case R.id.beat2_off:
                 //beat2.startAnimation(startAnimation);
@@ -411,8 +427,13 @@ public class BeatMakingActivity extends AppCompatActivity implements View.OnClic
                 beat5_on.setVisibility(View.GONE);
                 beat6_on.setVisibility(View.GONE);
                 if (beat2_on.getVisibility() == View.VISIBLE) {
-
+                    sound_pool.play(beat2, 1f, 1f, 0, -1, 1f);
                 }
+                sound_pool.stop(beat1);
+                sound_pool.stop(beat3);
+                sound_pool.stop(beat4);
+                sound_pool.stop(beat5);
+                sound_pool.stop(beat6);
 
                 break;
             case R.id.beat3_off:
@@ -424,8 +445,13 @@ public class BeatMakingActivity extends AppCompatActivity implements View.OnClic
                 beat5_on.setVisibility(View.GONE);
                 beat6_on.setVisibility(View.GONE);
                 if (beat3_on.getVisibility() == View.VISIBLE) {
-
+                    sound_pool.play(beat3, 1f, 1f, 0, -1, 1f);
                 }
+                sound_pool.stop(beat2);
+                sound_pool.stop(beat1);
+                sound_pool.stop(beat4);
+                sound_pool.stop(beat5);
+                sound_pool.stop(beat6);
 
                 break;
             case R.id.beat4_off:
@@ -437,8 +463,13 @@ public class BeatMakingActivity extends AppCompatActivity implements View.OnClic
                 beat5_on.setVisibility(View.GONE);
                 beat6_on.setVisibility(View.GONE);
                 if (beat4_on.getVisibility() == View.VISIBLE) {
-
+                    sound_pool.play(beat4, 1f, 1f, 0, -1, 1f);
                 }
+                sound_pool.stop(beat2);
+                sound_pool.stop(beat3);
+                sound_pool.stop(beat1);
+                sound_pool.stop(beat5);
+                sound_pool.stop(beat6);
 
                 break;
             case R.id.beat5_off:
@@ -450,8 +481,13 @@ public class BeatMakingActivity extends AppCompatActivity implements View.OnClic
                 beat5_on.setVisibility(View.VISIBLE);
                 beat6_on.setVisibility(View.GONE);
                 if (beat5_on.getVisibility() == View.VISIBLE) {
-
+                    sound_pool.play(beat5, 1f, 1f, 0, -1, 1f);
                 }
+                sound_pool.stop(beat2);
+                sound_pool.stop(beat3);
+                sound_pool.stop(beat4);
+                sound_pool.stop(beat1);
+                sound_pool.stop(beat6);
 
                 break;
             case R.id.beat6_off:
@@ -463,8 +499,13 @@ public class BeatMakingActivity extends AppCompatActivity implements View.OnClic
                 beat5_on.setVisibility(View.GONE);
                 beat6_on.setVisibility(View.VISIBLE);
                 if (beat6_on.getVisibility() == View.VISIBLE) {
-
+                    sound_pool.play(beat6, 1f, 1f, 0, -1, 1f);
                 }
+                sound_pool.stop(beat2);
+                sound_pool.stop(beat3);
+                sound_pool.stop(beat4);
+                sound_pool.stop(beat5);
+                sound_pool.stop(beat1);
 
                 break;
             case R.id.beat1_on:
@@ -472,42 +513,42 @@ public class BeatMakingActivity extends AppCompatActivity implements View.OnClic
                 if(beat1_on.getVisibility() == View.VISIBLE) {
                     beat1_on.setVisibility(View.GONE);
                 }
-
+                sound_pool.stop(beat1);
                 break;
             case R.id.beat2_on:
                 //beat2.startAnimation(startAnimation);
                 if(beat2_on.getVisibility() == View.VISIBLE) {
                     beat2_on.setVisibility(View.GONE);
                 }
-
+                sound_pool.stop(beat2);
                 break;
             case R.id.beat3_on:
                 //beat3.startAnimation(startAnimation);
                 if(beat3_on.getVisibility() == View.VISIBLE) {
                     beat3_on.setVisibility(View.GONE);
                 }
-
+                sound_pool.stop(beat3);
                 break;
             case R.id.beat4_on:
                 //beat4.startAnimation(startAnimation);
                 if(beat4_on.getVisibility() == View.VISIBLE) {
                     beat4_on.setVisibility(View.GONE);
                 }
-
+                sound_pool.stop(beat4);
                 break;
             case R.id.beat5_on:
                 //beat5.startAnimation(startAnimation);
                 if(beat5_on.getVisibility() == View.VISIBLE) {
                     beat5_on.setVisibility(View.GONE);
                 }
-
+                sound_pool.stop(beat5);
                 break;
             case R.id.beat6_on:
                 //beat6.startAnimation(startAnimation);
                 if(beat6_on.getVisibility() == View.VISIBLE) {
                     beat6_on.setVisibility(View.GONE);
                 }
-
+                sound_pool.stop(beat6);
                 break;
 
             // 2트랙 synth1, choir, whistle, synth2, piano, mbira;
