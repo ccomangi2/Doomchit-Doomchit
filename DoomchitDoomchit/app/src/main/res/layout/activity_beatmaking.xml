@@ -371,7 +371,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_two_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/mbira"/>
+                android:src="@drawable/synth"/>
 
             <ImageButton
                 android:id="@+id/two2_on"
@@ -404,7 +404,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/button_two_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/mbira"/>
+                android:src="@drawable/synth"/>
 
             <ImageButton
                 android:id="@+id/two5_on"
