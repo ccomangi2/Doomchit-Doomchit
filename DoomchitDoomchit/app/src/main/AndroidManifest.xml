@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.doomchit_doomchit">
 
     <application
@@ -9,6 +10,9 @@
         android:roundIcon="@mipmap/ic_logo_round"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar">
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true"/>
         <activity android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat"
             android:screenOrientation="landscape">
@@ -19,7 +23,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".BeatMakingActivity" android:theme="@style/Theme.AppCompat" android:screenOrientation="landscape" />
-        <activity android:name=".RecordListActivity" android:theme="@style/Theme.AppCompat" android:screenOrientation="landscape" />
+        <activity android:name=".RecordListActivity" android:theme="@style/Theme.AppCompat" android:screenOrientation="landscape"
+            tools:ignore="MissingClass" />
     </application>
-
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>

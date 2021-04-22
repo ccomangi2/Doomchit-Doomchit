@@ -1,13 +1,18 @@
 package com.example.doomchit_doomchit;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.media.MediaParser;
 import android.media.MediaPlayer;
+import android.media.MediaRecorder;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -18,19 +23,31 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import com.sdsmdg.harjot.crollerTest.Croller;
+import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
+
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Method;
 
+import static android.os.Environment.DIRECTORY_MUSIC;
+
 public class BeatMakingActivity extends AppCompatActivity {
+    // 녹음을 위한
+
+
     private SoundPool sound_pool1;
     private SoundPool sound_pool2;
     private SoundPool sound_pool3;
     private SoundPool sound_pool4;
     private SoundPool sound_pool5;
     private SoundPool sound_pool6;
-    private SoundPool sound_pool78;
     ImageButton back; // 뒤로가기
 
     // 1트랙
@@ -83,6 +100,7 @@ public class BeatMakingActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_beatmaking);
+
         //Animation startAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.glow_anim);
         sound_pool1 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
         sound_pool2 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
@@ -90,20 +108,163 @@ public class BeatMakingActivity extends AppCompatActivity {
         sound_pool4 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
         sound_pool5 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
         sound_pool6 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-        sound_pool78 = new SoundPool(12, AudioManager.STREAM_MUSIC, 0);
 
         FindViewByid();
         Raw_Loder();
         visible_Gone();
         Touch();
-
-        // 볼륨 버튼
-//        beatvolum1.setOnClickListener(this);
-//        beatvolum2.setOnClickListener(this);
-//        beatvolum3.setOnClickListener(this);
-//        beatvolum4.setOnClickListener(this);
-//        beatvolum5.setOnClickListener(this);
-//        beatvolum6.setOnClickListener(this);
+        final Croller croller1 = findViewById(R.id.beatvolum1);
+        final Croller croller2 = findViewById(R.id.beatvolum2);
+        final Croller croller3 = findViewById(R.id.beatvolum3);
+        final Croller croller4 = findViewById(R.id.beatvolum4);
+        final Croller croller5 = findViewById(R.id.beatvolum5);
+        final Croller croller6 = findViewById(R.id.beatvolum6);
+        croller1.setOnCrollerChangeListener(
+                new OnCrollerChangeListener() {
+                    @Override
+                    public void onProgressChanged(Croller croller,
+                                                  int progress) {
+                        float volume = (float)(1-Math.log(100 - croller1.getProgress()) / Math.log(100));
+                        sound_pool1.setVolume(beat1, volume, volume);
+                        sound_pool1.setVolume(beat2, volume, volume);
+                        sound_pool1.setVolume(beat3, volume, volume);
+                        sound_pool1.setVolume(beat4, volume, volume);
+                        sound_pool1.setVolume(beat5, volume, volume);
+                        sound_pool1.setVolume(beat6, volume, volume);
+                    }
+                    // when the user is starting to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStartTrackingTouch(Croller croller) {
+                    }
+                    // when the user stops to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStopTrackingTouch(Croller croller) {
+                    }
+                });
+        croller2.setOnCrollerChangeListener(
+                new OnCrollerChangeListener() {
+                    @Override
+                    public void onProgressChanged(Croller croller,
+                                                  int progress) {
+                        float volume = (float)(1-Math.log(100 - croller2.getProgress()) / Math.log(100));
+                        sound_pool2.setVolume(synth1 , volume, volume);
+                        sound_pool2.setVolume(choir , volume, volume);
+                        sound_pool2.setVolume(whistle , volume, volume);
+                        sound_pool2.setVolume(synth2 , volume, volume);
+                        sound_pool2.setVolume(piano , volume, volume);
+                        sound_pool2.setVolume(mbira , volume, volume);
+                    }
+                    // when the user is starting to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStartTrackingTouch(Croller croller) {
+                    }
+                    // when the user stops to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStopTrackingTouch(Croller croller) {
+                    }
+                });
+        croller3.setOnCrollerChangeListener(
+                new OnCrollerChangeListener() {
+                    @Override
+                    public void onProgressChanged(Croller croller,
+                                                  int progress) {
+                        float volume = (float)(1-Math.log(100 - croller3.getProgress()) / Math.log(100));
+                        sound_pool3.setVolume(keys1  , volume, volume);
+                        sound_pool3.setVolume(strings1  , volume, volume);
+                        sound_pool3.setVolume(mallets  , volume, volume);
+                        sound_pool3.setVolume(pluck  , volume, volume);
+                        sound_pool3.setVolume(keys2  , volume, volume);
+                        sound_pool3.setVolume(flute  , volume, volume);
+                    }
+                    // when the user is starting to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStartTrackingTouch(Croller croller) {
+                    }
+                    // when the user stops to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStopTrackingTouch(Croller croller) {
+                    }
+                });
+        croller4.setOnCrollerChangeListener(
+                new OnCrollerChangeListener() {
+                    @Override
+                    public void onProgressChanged(Croller croller,
+                                                  int progress) {
+                        float volume = (float)(1-Math.log(100 - croller4.getProgress()) / Math.log(100));
+                        sound_pool4.setVolume(bass1  , volume, volume);
+                        sound_pool4.setVolume(synth3  , volume, volume);
+                        sound_pool4.setVolume(pad1   , volume, volume);
+                        sound_pool4.setVolume(brass1  , volume, volume);
+                        sound_pool4.setVolume(strings2  , volume, volume);
+                        sound_pool4.setVolume(bass2  , volume, volume);
+                    }
+                    // when the user is starting to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStartTrackingTouch(Croller croller) {
+                    }
+                    // when the user stops to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStopTrackingTouch(Croller croller) {
+                    }
+                });
+        croller5.setOnCrollerChangeListener(
+                new OnCrollerChangeListener() {
+                    @Override
+                    public void onProgressChanged(Croller croller,
+                                                  int progress) {
+                        float volume = (float)(1-Math.log(100 - croller5.getProgress()) / Math.log(100));
+                        sound_pool5.setVolume(strings3  , volume, volume);
+                        sound_pool5.setVolume(pad2  , volume, volume);
+                        sound_pool5.setVolume(synth4  , volume, volume);
+                        sound_pool5.setVolume(synth5  , volume, volume);
+                        sound_pool5.setVolume(brass2  , volume, volume);
+                        sound_pool5.setVolume(bass3  , volume, volume);
+                    }
+                    // when the user is starting to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStartTrackingTouch(Croller croller) {
+                    }
+                    // when the user stops to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStopTrackingTouch(Croller croller) {
+                    }
+                });
+        croller6.setOnCrollerChangeListener(
+                new OnCrollerChangeListener() {
+                    @Override
+                    public void onProgressChanged(Croller croller,
+                                                  int progress) {
+                        float volume = (float)(1-Math.log(100 - croller6.getProgress()) / Math.log(100));
+                        sound_pool6.setVolume(vox7  , volume, volume);
+                        sound_pool6.setVolume(vox8  , volume, volume);
+                        sound_pool6.setVolume(vox9  , volume, volume);
+                        sound_pool6.setVolume(vox10  , volume, volume);
+                        sound_pool6.setVolume(beat7  , volume, volume);
+                        sound_pool6.setVolume(beat8  , volume, volume);
+                    }
+                    // when the user is starting to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStartTrackingTouch(Croller croller) {
+                    }
+                    // when the user stops to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStopTrackingTouch(Croller croller) {
+                    }
+                });
+        // when there is a change in the progress of croller
+        // this function get invoked automatically
 
         BeatBtn1(beat1_off, beat1_on, beat2_on, beat3_on, beat4_on, beat5_on, beat6_on, sound_pool1, beat1);
         BeatBtn1(beat2_off, beat2_on, beat1_on, beat3_on, beat4_on, beat5_on, beat6_on, sound_pool1, beat2);
@@ -147,13 +308,54 @@ public class BeatMakingActivity extends AppCompatActivity {
         BeatBtn6(six5_off, six5_on, six2_on, six3_on, six4_on, six1_on, six6_on, sound_pool6, beat7);
         BeatBtn6(six6_off, six6_on, six2_on, six3_on, six4_on, six5_on, six1_on, sound_pool6, beat8);
 
+        //녹음
+        final ImageButton record_btn = findViewById(R.id.record_btn);
+        final ImageButton record_btn_on = findViewById(R.id.record_btn_on);
 
+        final String[] permissions = {Manifest.permission.RECORD_AUDIO};
+
+        record_btn.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                record_btn.setVisibility(View.GONE);
+                record_btn_on.setVisibility(View.VISIBLE);
+                int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
+                if(permissionCheck == PackageManager.PERMISSION_GRANTED){
+                    Toast.makeText(getApplicationContext(), "녹음 시작", Toast.LENGTH_LONG).show();
+                    //recordAudio();
+                } else {
+                    Toast.makeText(getApplicationContext(), "녹음 권한 없음", Toast.LENGTH_SHORT).show();
+                    if(ActivityCompat.shouldShowRequestPermissionRationale(BeatMakingActivity.this, Manifest.permission.RECORD_AUDIO)){
+                        Toast.makeText(getApplicationContext(), "녹음 설명 필요함", Toast.LENGTH_SHORT).show();
+                    } else {
+                        ActivityCompat.requestPermissions(BeatMakingActivity.this, permissions, 1);
+                    }
+                }
+            }
+        });
+
+        record_btn_on.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                record_btn.setVisibility(View.VISIBLE);
+                record_btn_on.setVisibility(View.GONE);
+                int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
+                Toast.makeText(getApplicationContext(), "녹음 저장 완료", Toast.LENGTH_LONG).show();
+                //stopRecording();
+            }
+        });
         //뒤로가기
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MoveActivity(MainActivity.class);
+                track1_stop();
+                track2_stop();
+                track3_stop();
+                track4_stop();
+                track5_stop();
+                track6_stop();
             }
         });
 
@@ -385,7 +587,7 @@ public class BeatMakingActivity extends AppCompatActivity {
         sound_pool1.stop(beat6);
     }
     //on버튼
-    public void On1(ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, SoundPool s, int m) {
+    public void On1(final ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, final SoundPool s, final int m) {
         on.setVisibility(View.VISIBLE);
         off1.setVisibility(View.GONE);
         off2.setVisibility(View.GONE);
@@ -393,10 +595,19 @@ public class BeatMakingActivity extends AppCompatActivity {
         off4.setVisibility(View.GONE);
         off5.setVisibility(View.GONE);
         track1_stop();
-        if (on.getVisibility() == View.VISIBLE) {
-            track1_stop();
-            s.play(m, 1f, 1f, 0, -1, 1f);
-        }  if (on.getVisibility() == View.GONE) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (on.getVisibility() == View.VISIBLE) {
+                    track1_stop();
+                    final Croller croller1 = findViewById(R.id.beatvolum1);
+                    float volume = (float)(1-Math.log(100 - croller1.getProgress()) / Math.log(100));
+                    s.play(m, volume, volume, 0, -1, 1f);
+                }
+            }
+        }, 1000); //딜레이 타임 조절
+        if (on.getVisibility() == View.GONE) {
             track1_stop();
         }
     }
@@ -436,7 +647,7 @@ public class BeatMakingActivity extends AppCompatActivity {
         sound_pool2.stop(mbira);
     }
     //on버튼
-    public void On2(ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, SoundPool s, int m) {
+    public void On2(final ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, final SoundPool s, final int m) {
         on.setVisibility(View.VISIBLE);
         off1.setVisibility(View.GONE);
         off2.setVisibility(View.GONE);
@@ -444,10 +655,19 @@ public class BeatMakingActivity extends AppCompatActivity {
         off4.setVisibility(View.GONE);
         off5.setVisibility(View.GONE);
         track2_stop();
-        if (on.getVisibility() == View.VISIBLE) {
-            track2_stop();
-            s.play(m, 1f, 1f, 0, -1, 1f);
-        }  if (on.getVisibility() == View.GONE) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (on.getVisibility() == View.VISIBLE) {
+                    track2_stop();
+                    final Croller croller2 = findViewById(R.id.beatvolum2);
+                    float volume = (float)(1-Math.log(100 - croller2.getProgress()) / Math.log(100));
+                    s.play(m, volume, volume, 0, -1, 1f);
+                }
+            }
+        }, 1000); //딜레이 타임 조절
+        if (on.getVisibility() == View.GONE) {
             track2_stop();
         }
     }
@@ -487,7 +707,7 @@ public class BeatMakingActivity extends AppCompatActivity {
         sound_pool3.stop(flute);
     }
     //on버튼
-    public void On3(ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, SoundPool s, int m) {
+    public void On3(final ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, final SoundPool s, final int m) {
         on.setVisibility(View.VISIBLE);
         off1.setVisibility(View.GONE);
         off2.setVisibility(View.GONE);
@@ -495,10 +715,19 @@ public class BeatMakingActivity extends AppCompatActivity {
         off4.setVisibility(View.GONE);
         off5.setVisibility(View.GONE);
         track3_stop();
-        if (on.getVisibility() == View.VISIBLE) {
-            track3_stop();
-            s.play(m, 1f, 1f, 0, -1, 1f);
-        }  if (on.getVisibility() == View.GONE) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (on.getVisibility() == View.VISIBLE) {
+                    track3_stop();
+                    final Croller croller3 = findViewById(R.id.beatvolum3);
+                    float volume = (float)(1-Math.log(100 - croller3.getProgress()) / Math.log(100));
+                    s.play(m, volume, volume, 0, -1, 1f);
+                }
+            }
+        }, 1000); //딜레이 타임 조절
+        if (on.getVisibility() == View.GONE) {
             track3_stop();
         }
     }
@@ -537,7 +766,7 @@ public class BeatMakingActivity extends AppCompatActivity {
         sound_pool4.stop(bass2);
     }
     //on버튼
-    public void On4(ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, SoundPool s, int m) {
+    public void On4(final ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, final SoundPool s, final int m) {
         on.setVisibility(View.VISIBLE);
         off1.setVisibility(View.GONE);
         off2.setVisibility(View.GONE);
@@ -545,10 +774,19 @@ public class BeatMakingActivity extends AppCompatActivity {
         off4.setVisibility(View.GONE);
         off5.setVisibility(View.GONE);
         track4_stop();
-        if (on.getVisibility() == View.VISIBLE) {
-            track4_stop();
-            s.play(m, 1f, 1f, 0, -1, 1f);
-        }  if (on.getVisibility() == View.GONE) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (on.getVisibility() == View.VISIBLE) {
+                    track4_stop();
+                    final Croller croller4 = findViewById(R.id.beatvolum4);
+                    float volume = (float)(1-Math.log(100 - croller4.getProgress()) / Math.log(100));
+                    s.play(m, volume, volume, 0, -1, 1f);
+                }
+            }
+        }, 3000); //딜레이 타임 조절
+        if (on.getVisibility() == View.GONE) {
             track4_stop();
         }
     }
@@ -587,18 +825,26 @@ public class BeatMakingActivity extends AppCompatActivity {
         sound_pool5.stop(bass3);
     }
     //on버튼
-    public void On5(ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, SoundPool s, int m) {
+    public void On5(final ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, final SoundPool s, final int m) {
         on.setVisibility(View.VISIBLE);
         off1.setVisibility(View.GONE);
         off2.setVisibility(View.GONE);
         off3.setVisibility(View.GONE);
         off4.setVisibility(View.GONE);
         off5.setVisibility(View.GONE);
-        track5_stop();
-        if (on.getVisibility() == View.VISIBLE) {
-            track5_stop();
-            s.play(m, 1f, 1f, 0, -1, 1f);
-        }  if (on.getVisibility() == View.GONE) {
+        track5_stop();Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (on.getVisibility() == View.VISIBLE) {
+                    track5_stop();
+                    final Croller croller5 = findViewById(R.id.beatvolum5);
+                    float volume = (float)(1-Math.log(100 - croller5.getProgress()) / Math.log(100));
+                    s.play(m, volume, volume, 0, -1, 1f);
+                }
+            }
+        }, 1000); //딜레이 타임 조절
+        if (on.getVisibility() == View.GONE) {
             track5_stop();
         }
     }
@@ -637,7 +883,7 @@ public class BeatMakingActivity extends AppCompatActivity {
         sound_pool6.stop(beat8);
     }
     //on버튼
-    public void On6(ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, SoundPool s, int m) {
+    public void On6(final ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, final SoundPool s, final int m) {
         on.setVisibility(View.VISIBLE);
         off1.setVisibility(View.GONE);
         off2.setVisibility(View.GONE);
@@ -645,10 +891,19 @@ public class BeatMakingActivity extends AppCompatActivity {
         off4.setVisibility(View.GONE);
         off5.setVisibility(View.GONE);
         track6_stop();
-        if (on.getVisibility() == View.VISIBLE) {
-            track6_stop();
-            s.play(m, 1f, 1f, 0, -1, 1f);
-        }  if (on.getVisibility() == View.GONE) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (on.getVisibility() == View.VISIBLE) {
+                    track6_stop();
+                    final Croller croller6 = findViewById(R.id.beatvolum6);
+                    float volume = (float)(1-Math.log(100 - croller6.getProgress()) / Math.log(100));
+                    s.play(m, volume, volume, 0, -1, 1f);
+                }
+            }
+        }, 1000); //딜레이 타임 조절
+        if (on.getVisibility() == View.GONE) {
             track6_stop();
         }
     }
@@ -677,11 +932,8 @@ public class BeatMakingActivity extends AppCompatActivity {
         });
     }
 
-
-
     //findviewbyid
     public void FindViewByid() {
-        beatvolum1 = findViewById(R.id.beatvolum1);
         beat1_off = findViewById(R.id.beat1_off);
         beat2_off = findViewById(R.id.beat2_off);
         beat3_off = findViewById(R.id.beat3_off);
@@ -696,7 +948,6 @@ public class BeatMakingActivity extends AppCompatActivity {
         beat5_on = findViewById(R.id.beat5_on);
         beat6_on = findViewById(R.id.beat6_on);
 
-        beatvolum2 = findViewById(R.id.beatvolum2);
         two1_off = findViewById(R.id.two1_off);
         two2_off = findViewById(R.id.two2_off);
         two3_off = findViewById(R.id.two3_off);
@@ -711,7 +962,6 @@ public class BeatMakingActivity extends AppCompatActivity {
         two5_on = findViewById(R.id.two5_on);
         two6_on = findViewById(R.id.two6_on);
 
-        beatvolum3 = findViewById(R.id.beatvolum3);
         three1_off = findViewById(R.id.three1_off);
         three2_off = findViewById(R.id.three2_off);
         three3_off = findViewById(R.id.three3_off);
@@ -726,7 +976,6 @@ public class BeatMakingActivity extends AppCompatActivity {
         three5_on = findViewById(R.id.three5_on);
         three6_on = findViewById(R.id.three6_on);
 
-        beatvolum4 = findViewById(R.id.beatvolum4);
         four1_off = findViewById(R.id.four1_off);
         four2_off = findViewById(R.id.four2_off);
         four3_off = findViewById(R.id.four3_off);
@@ -741,7 +990,6 @@ public class BeatMakingActivity extends AppCompatActivity {
         four5_on = findViewById(R.id.four5_on);
         four6_on = findViewById(R.id.four6_on);
 
-        beatvolum5 = findViewById(R.id.beatvolum5);
         five1_off = findViewById(R.id.five1_off);
         five2_off = findViewById(R.id.five2_off);
         five3_off = findViewById(R.id.five3_off);
@@ -756,7 +1004,6 @@ public class BeatMakingActivity extends AppCompatActivity {
         five5_on = findViewById(R.id.five5_on);
         five6_on = findViewById(R.id.five6_on);
 
-        beatvolum6 = findViewById(R.id.beatvolum6);
         six1_off = findViewById(R.id.six1_off);
         six2_off = findViewById(R.id.six2_off);
         six3_off = findViewById(R.id.six3_off);
@@ -907,5 +1154,22 @@ public class BeatMakingActivity extends AppCompatActivity {
         eight4_on.setVisibility(View.GONE);
         eight5_on.setVisibility(View.GONE);
         eight6_on.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch(requestCode){
+            case 1:
+                if(grantResults.length > 0){
+                    if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                        Toast.makeText(this, "녹음 권한 동의함", Toast.LENGTH_SHORT).show();
+                    } else if(grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                        Toast.makeText(this, "녹음 권한 거부함", Toast.LENGTH_SHORT).show();
+                    }
+                } else{
+                    Toast.makeText(this, "녹음 권한 획득 실패", Toast.LENGTH_SHORT).show();
+                }
+
+        }
     }
 }
