@@ -6,20 +6,14 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
-import android.media.MediaParser;
 import android.media.MediaPlayer;
-import android.media.MediaRecorder;
 import android.media.SoundPool;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -31,12 +25,6 @@ import androidx.core.content.ContextCompat;
 
 import com.sdsmdg.harjot.crollerTest.Croller;
 import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
-
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Method;
-
-import static android.os.Environment.DIRECTORY_MUSIC;
 
 public class BeatMakingActivity extends AppCompatActivity {
     // 녹음을 위한
@@ -1171,5 +1159,26 @@ public class BeatMakingActivity extends AppCompatActivity {
                 }
 
         }
+    }
+
+    @Override
+    public void onBackPressed() { //뒤로가기 버튼
+        super.onBackPressed();
+        track1_stop();
+        track2_stop();
+        track3_stop();
+        track4_stop();
+        track5_stop();
+        track6_stop();
+    }
+    @Override
+    protected void onUserLeaveHint() {		// 홈 버튼 감지
+        super.onUserLeaveHint();
+        track1_stop();
+        track2_stop();
+        track3_stop();
+        track4_stop();
+        track5_stop();
+        track6_stop();
     }
 }
