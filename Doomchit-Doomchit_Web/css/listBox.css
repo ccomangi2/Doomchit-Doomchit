@@ -1,0 +1,70 @@
+.box {
+  width: 30%;
+  height: 26%;
+  background: rgba(8, 159, 184, 0.1);
+  box-shadow: inset 1px 2px 8px rgba(255, 255, 255, 0.4);
+  border-radius: 25px;
+  border: 2px solid #61c2f7;
+  position: absolute;
+  bottom: -110%;
+}
+
+.box:hover {
+  width: 30%;
+  height: 26%;
+  background: rgba(237, 0, 130, 0.1);
+  box-shadow: inset 1px 2px 8px rgba(255, 255, 255, 0.38);
+  border-radius: 25px;
+  border: 3px solid #ff00ae;
+  position: absolute;
+}
+
+.box:hover > span:nth-of-type(2) {
+  filter: drop-shadow(0px 0px 8px rgba(237, 0, 130, 1));
+}
+
+.box:hover > span:nth-of-type(3) {
+  filter: drop-shadow(0px 0px 8px rgba(237, 0, 130, 1));
+}
+
+.song_title {
+  font-size: 15pt;
+  color: white;
+  text-align: left;
+  margin-top: 6%;
+  margin-left: 9%;
+}
+
+.composer {
+  font-size: 12pt;
+  color: #32eeff;
+  text-align: left;
+  margin-top: 1%;
+  margin-left: 9%;
+}
+
+.music_length {
+  font-size: 13pt;
+  color: white;
+  margin-top: 15%;
+  margin-right: 9%;
+  right: 23%;
+}
+
+.play {
+  margin-top: 14%;
+  right: 22%;
+  opacity: 0.7;
+  /* IE8 및 그 이하 버전용 */
+  filter: alpha(opacity=70);
+  filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.4));
+}
+
+.share {
+  margin-top: 14%;
+  right: 8%;
+  opacity: 0.7;
+  /* IE8 및 그 이하 버전용 */
+  filter: alpha(opacity=70);
+  filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.4));
+}

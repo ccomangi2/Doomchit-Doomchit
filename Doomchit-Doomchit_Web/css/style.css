@@ -1,0 +1,18 @@
+@import "background.css";
+@import "main.css";
+@import "guide.css";
+@import "list.css";
+@import "listBox.css";
+@import "slide.css";
+
+@font-face {
+  font-family: "vtfont"; /* 폰트 이름은 임의로 설정 */
+  src: url("../font/DungGeunMo.woff") format("woff");
+  font-style: normal;
+  font-weight: normal;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
