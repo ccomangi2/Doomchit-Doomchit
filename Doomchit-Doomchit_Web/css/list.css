@@ -1,7 +1,7 @@
 .list {
   color: #ed0082;
-  font-size: 24pt;
-  bottom: -42%;
+  font-size: 1em;
+  bottom: -15.5%;
   left: 50%;
   transform: translateX(-50%);
   position: absolute;
@@ -9,24 +9,9 @@
 
 .content {
   color: #ffffff;
-  font-size: 15pt;
-  bottom: -49%;
+  font-size: 0.7em;
+  bottom: -20.5%;
   left: 50%;
   transform: translateX(-50%);
-  position: absolute;
-}
-
-hr {
-  width: 7%;
-  color: #ed0082;
-  text-align: center;
-  border: none;
-  border: 1px solid #ed0082;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-span {
   position: absolute;
 }

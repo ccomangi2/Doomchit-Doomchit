@@ -1,14 +1,14 @@
 .guide {
   color: #ed0082;
-  font-size: 24pt;
-  top: 55%;
+  font-size: 1em;
+  top: 40.5%;
   left: 50%;
   transform: translateX(-50%);
   position: absolute;
 }
 
 .playbtn {
-  top: 88%;
+  top: 69%;
   left: 50%;
   transform: translateX(-50%);
   position: absolute;
