@@ -72,4 +72,5 @@
 .share > img {
   width: 70%;
   height: 75%;
+  cursor: pointer;
 }
