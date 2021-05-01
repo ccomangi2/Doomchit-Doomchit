@@ -15,26 +15,19 @@ img {
 }
 
 hr {
-  width: 5%;
-  color: #ed0082;
-  text-align: center;
-  border: none;
-  border: 1px solid #ed0082;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 7%;
+  height: 1px;
+  border-width: 0.5px 0px 0px 0px;
+  border-style: solid;
+  border-color: #ed0082;
 }
 
-span {
-  position: absolute;
-}
-
-iframe {
+/* iframe {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-}
+  transform: translateX(-50%); 
+} */
 
 /* 브라우저는 렌더링 속도, 정밀도에 대한 가독성을 강조 */
 /* @media screen and (min-width: 960px) { 
@@ -42,27 +35,3 @@ iframe {
       text-rendering: optimizeLegibility;
   }
 } */
-
-@media (max-width: 300px) {
-  html {
-    font-size: 70%;
-  }
-}
-
-@media (min-width: 500px) {
-  html {
-    font-size: 80%;
-  }
-}
-
-@media (min-width: 700px) {
-  html {
-    font-size: 120%;
-  }
-}
-
-@media (min-width: 1200px) {
-  html {
-    font-size: 200%;
-  }
-}

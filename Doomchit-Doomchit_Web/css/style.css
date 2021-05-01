@@ -21,3 +21,99 @@ body {
   margin: 0;
   font-size: 1em;
 }
+
+@media (max-width: 300px) {
+  html {
+    font-size: 70%;
+    margin-bottom: 2%;
+  }
+  .play > img,
+  .share > img {
+    width: 30%;
+    height: 35%;
+  }
+  .play,
+  .share {
+    margin-right: 3%;
+  }
+}
+
+@media (min-width: 500px) {
+  html {
+    font-size: 80%;
+    margin-bottom: 2%;
+  }
+  .play > img,
+  .share > img {
+    width: 30%;
+    height: 35%;
+  }
+  .play,
+  .share {
+    margin-right: 3%;
+  }
+}
+
+@media (min-width: 700px) {
+  html {
+    font-size: 120%;
+    margin-bottom: 6%;
+  }
+  .play > img,
+  .share > img {
+    width: 55%;
+    height: 60%;
+  }
+  .play,
+  .share {
+    margin-right: 4%;
+  }
+}
+
+@media (min-width: 1000px) {
+  html {
+    font-size: 150%;
+    margin-bottom: 12%;
+  }
+  .play > img,
+  .share > img {
+    width: 60%;
+    height: 65%;
+  }
+  .play,
+  .share {
+    margin-right: 5%;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 200%;
+    margin-bottom: 14%;
+  }
+  .play > img,
+  .share > img {
+    width: 70%;
+    height: 75%;
+  }
+  .play,
+  .share {
+    margin-right: 6%;
+  }
+}
+
+@media (min-width: 1400px) {
+  html {
+    font-size: 200%;
+    margin-bottom: 15%;
+  }
+  .play > img,
+  .share > img {
+    width: 70%;
+    height: 75%;
+  }
+  .play,
+  .share {
+    margin-right: 7%;
+  }
+}

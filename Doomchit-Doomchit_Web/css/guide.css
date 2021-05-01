@@ -1,15 +1,26 @@
+.guide_container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  margin: 2%;
+}
+
 .guide {
   color: #ed0082;
   font-size: 1em;
-  top: 40.5%;
-  left: 50%;
-  transform: translateX(-50%);
-  position: absolute;
+}
+
+.video {
+  width: 45%;
+  height: 45%;
+  /* position: relative; */
+  /* padding-bottom: 56.25%; */
+  /* text-align: left; */
 }
 
 .playbtn {
-  top: 69%;
-  left: 50%;
-  transform: translateX(-50%);
-  position: absolute;
+  margin: 10%;
 }
