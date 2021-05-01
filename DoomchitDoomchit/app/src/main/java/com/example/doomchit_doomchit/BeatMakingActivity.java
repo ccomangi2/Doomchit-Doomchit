@@ -1,66 +1,85 @@
 package com.example.doomchit_doomchit;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.media.MediaParser;
+import android.content.pm.PackageManager;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
-public class BeatMakingActivity extends AppCompatActivity implements View.OnClickListener{
+import com.sdsmdg.harjot.crollerTest.Croller;
+import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
+
+public class BeatMakingActivity extends AppCompatActivity {
+    // 녹음을 위한
+
+
+    private SoundPool sound_pool1;
+    private SoundPool sound_pool2;
+    private SoundPool sound_pool3;
+    private SoundPool sound_pool4;
+    private SoundPool sound_pool5;
+    private SoundPool sound_pool6;
     ImageButton back; // 뒤로가기
+
     // 1트랙
-    MediaPlayer beat1, beat2, beat3, beat4, beat5, beat6;
-    ImageButton beatvolum1; Button beat1_off, beat2_off, beat3_off, beat4_off, beat5_off, beat6_off;
-                            Button beat1_on, beat2_on, beat3_on, beat4_on, beat5_on, beat6_on;
+    int beat1, beat2, beat3, beat4, beat5, beat6;
+    ImageButton beatvolum1; ImageButton beat1_off, beat2_off, beat3_off, beat4_off, beat5_off, beat6_off;
+    ImageButton beat1_on, beat2_on, beat3_on, beat4_on, beat5_on, beat6_on;
+
     // 2트랙
-    MediaPlayer synth1, choir, whistle, synth2, piano, mbira;
-    ImageButton beatvolum2; Button two1_off, two2_off, two3_off, two4_off, two5_off, two6_off;
-                            Button two1_on, two2_on, two3_on, two4_on, two5_on, two6_on;
+    int synth1, choir, whistle, synth2, piano, mbira;
+    ImageButton beatvolum2; ImageButton two1_off, two2_off, two3_off, two4_off, two5_off, two6_off;
+    ImageButton two1_on, two2_on, two3_on, two4_on, two5_on, two6_on;
 
     // 3트랙
-    MediaPlayer keys1, strings1, mallets, pluck, keys2, flute;
-    ImageButton beatvolum3; Button three1_off, three2_off, three3_off, three4_off, three5_off, three6_off;
-                            Button three1_on, three2_on, three3_on, three4_on, three5_on, three6_on;
+    int keys1, strings1, mallets, pluck, keys2, flute;
+    ImageButton beatvolum3; ImageButton three1_off, three2_off, three3_off, three4_off, three5_off, three6_off;
+    ImageButton three1_on, three2_on, three3_on, three4_on, three5_on, three6_on;
 
     // 4트랙
-    MediaPlayer bass1, synth3, pad1, brass1, strings2, bass2;
-    ImageButton beatvolum4; Button four1_off, four2_off, four3_off, four4_off, four5_off, four6_off;
-                            Button four1_on, four2_on, four3_on, four4_on, four5_on, four6_on;
+    int bass1, synth3, pad1, brass1, strings2, bass2;
+    ImageButton beatvolum4; ImageButton four1_off, four2_off, four3_off, four4_off, four5_off, four6_off;
+    ImageButton four1_on, four2_on, four3_on, four4_on, four5_on, four6_on;
 
     // 5트랙
-    MediaPlayer strings3, pad2, synth4, synth5, brass2, bass3;
-    ImageButton beatvolum5; Button five1_off, five2_off, five3_off, five4_off, five5_off, five6_off;
-                            Button five1_on, five2_on, five3_on, five4_on, five5_on, five6_on;
+    int strings3, pad2, synth4, synth5, brass2, bass3;
+    ImageButton beatvolum5; ImageButton five1_off, five2_off, five3_off, five4_off, five5_off, five6_off;
+    ImageButton five1_on, five2_on, five3_on, five4_on, five5_on, five6_on;
 
     // 6트랙
-    MediaPlayer vox7, vox8, vox9, vox10, beat7, beat8;
-    ImageButton beatvolum6; Button six1_off, six2_off, six3_off, six4_off, six5_off, six6_off;
-                            Button six1_on, six2_on, six3_on, six4_on, six5_on, six6_on;
+    int vox7, vox8, vox9, vox10, beat7, beat8;
+    ImageButton beatvolum6; ImageButton six1_off, six2_off, six3_off, six4_off, six5_off, six6_off;
+    ImageButton six1_on, six2_on, six3_on, six4_on, six5_on, six6_on;
 
     // 7트랙
     MediaPlayer fx1, fx2, fx3, fx4, fx5, fx6;
-    Button seven1_off, seven2_off, seven3_off, seven4_off, seven5_off, seven6_off;
-    Button seven1_on, seven2_on, seven3_on, seven4_on, seven5_on, seven6_on;
+    ImageButton seven1_off, seven2_off, seven3_off, seven4_off, seven5_off, seven6_off;
+    ImageButton seven1_on, seven2_on, seven3_on, seven4_on, seven5_on, seven6_on;
 
     // 8트랙
     MediaPlayer vox1, vox2, vox3, vox4, vox5, vox6;
-    Button eight1_off, eight2_off, eight3_off, eight4_off, eight5_off, eight6_off;
-    Button eight1_on, eight2_on, eight3_on, eight4_on, eight5_on, eight6_on;
+    ImageButton eight1_off, eight2_off, eight3_off, eight4_off, eight5_off, eight6_off;
+    ImageButton eight1_on, eight2_on, eight3_on, eight4_on, eight5_on, eight6_on;
 
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,1338 +88,267 @@ public class BeatMakingActivity extends AppCompatActivity implements View.OnClic
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_beatmaking);
+
         //Animation startAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.glow_anim);
+        sound_pool1 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        sound_pool2 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        sound_pool3 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        sound_pool4 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        sound_pool5 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        sound_pool6 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
 
-        // 1번째 트랙
-        beatvolum1 = findViewById(R.id.beatvolum1);
-        beat1_off = findViewById(R.id.beat1_off);
-        beat2_off = findViewById(R.id.beat2_off);
-        beat3_off = findViewById(R.id.beat3_off);
-        beat4_off = findViewById(R.id.beat4_off);
-        beat5_off = findViewById(R.id.beat5_off);
-        beat6_off = findViewById(R.id.beat6_off);
+        FindViewByid();
+        Raw_Loder();
+        visible_Gone();
+        Touch();
+        final Croller croller1 = findViewById(R.id.beatvolum1);
+        final Croller croller2 = findViewById(R.id.beatvolum2);
+        final Croller croller3 = findViewById(R.id.beatvolum3);
+        final Croller croller4 = findViewById(R.id.beatvolum4);
+        final Croller croller5 = findViewById(R.id.beatvolum5);
+        final Croller croller6 = findViewById(R.id.beatvolum6);
+        croller1.setOnCrollerChangeListener(
+                new OnCrollerChangeListener() {
+                    @Override
+                    public void onProgressChanged(Croller croller,
+                                                  int progress) {
+                        float volume = (float)(1-Math.log(100 - croller1.getProgress()) / Math.log(100));
+                        sound_pool1.setVolume(beat1, volume, volume);
+                        sound_pool1.setVolume(beat2, volume, volume);
+                        sound_pool1.setVolume(beat3, volume, volume);
+                        sound_pool1.setVolume(beat4, volume, volume);
+                        sound_pool1.setVolume(beat5, volume, volume);
+                        sound_pool1.setVolume(beat6, volume, volume);
+                    }
+                    // when the user is starting to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStartTrackingTouch(Croller croller) {
+                    }
+                    // when the user stops to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStopTrackingTouch(Croller croller) {
+                    }
+                });
+        croller2.setOnCrollerChangeListener(
+                new OnCrollerChangeListener() {
+                    @Override
+                    public void onProgressChanged(Croller croller,
+                                                  int progress) {
+                        float volume = (float)(1-Math.log(100 - croller2.getProgress()) / Math.log(100));
+                        sound_pool2.setVolume(synth1 , volume, volume);
+                        sound_pool2.setVolume(choir , volume, volume);
+                        sound_pool2.setVolume(whistle , volume, volume);
+                        sound_pool2.setVolume(synth2 , volume, volume);
+                        sound_pool2.setVolume(piano , volume, volume);
+                        sound_pool2.setVolume(mbira , volume, volume);
+                    }
+                    // when the user is starting to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStartTrackingTouch(Croller croller) {
+                    }
+                    // when the user stops to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStopTrackingTouch(Croller croller) {
+                    }
+                });
+        croller3.setOnCrollerChangeListener(
+                new OnCrollerChangeListener() {
+                    @Override
+                    public void onProgressChanged(Croller croller,
+                                                  int progress) {
+                        float volume = (float)(1-Math.log(100 - croller3.getProgress()) / Math.log(100));
+                        sound_pool3.setVolume(keys1  , volume, volume);
+                        sound_pool3.setVolume(strings1  , volume, volume);
+                        sound_pool3.setVolume(mallets  , volume, volume);
+                        sound_pool3.setVolume(pluck  , volume, volume);
+                        sound_pool3.setVolume(keys2  , volume, volume);
+                        sound_pool3.setVolume(flute  , volume, volume);
+                    }
+                    // when the user is starting to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStartTrackingTouch(Croller croller) {
+                    }
+                    // when the user stops to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStopTrackingTouch(Croller croller) {
+                    }
+                });
+        croller4.setOnCrollerChangeListener(
+                new OnCrollerChangeListener() {
+                    @Override
+                    public void onProgressChanged(Croller croller,
+                                                  int progress) {
+                        float volume = (float)(1-Math.log(100 - croller4.getProgress()) / Math.log(100));
+                        sound_pool4.setVolume(bass1  , volume, volume);
+                        sound_pool4.setVolume(synth3  , volume, volume);
+                        sound_pool4.setVolume(pad1   , volume, volume);
+                        sound_pool4.setVolume(brass1  , volume, volume);
+                        sound_pool4.setVolume(strings2  , volume, volume);
+                        sound_pool4.setVolume(bass2  , volume, volume);
+                    }
+                    // when the user is starting to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStartTrackingTouch(Croller croller) {
+                    }
+                    // when the user stops to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStopTrackingTouch(Croller croller) {
+                    }
+                });
+        croller5.setOnCrollerChangeListener(
+                new OnCrollerChangeListener() {
+                    @Override
+                    public void onProgressChanged(Croller croller,
+                                                  int progress) {
+                        float volume = (float)(1-Math.log(100 - croller5.getProgress()) / Math.log(100));
+                        sound_pool5.setVolume(strings3  , volume, volume);
+                        sound_pool5.setVolume(pad2  , volume, volume);
+                        sound_pool5.setVolume(synth4  , volume, volume);
+                        sound_pool5.setVolume(synth5  , volume, volume);
+                        sound_pool5.setVolume(brass2  , volume, volume);
+                        sound_pool5.setVolume(bass3  , volume, volume);
+                    }
+                    // when the user is starting to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStartTrackingTouch(Croller croller) {
+                    }
+                    // when the user stops to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStopTrackingTouch(Croller croller) {
+                    }
+                });
+        croller6.setOnCrollerChangeListener(
+                new OnCrollerChangeListener() {
+                    @Override
+                    public void onProgressChanged(Croller croller,
+                                                  int progress) {
+                        float volume = (float)(1-Math.log(100 - croller6.getProgress()) / Math.log(100));
+                        sound_pool6.setVolume(vox7  , volume, volume);
+                        sound_pool6.setVolume(vox8  , volume, volume);
+                        sound_pool6.setVolume(vox9  , volume, volume);
+                        sound_pool6.setVolume(vox10  , volume, volume);
+                        sound_pool6.setVolume(beat7  , volume, volume);
+                        sound_pool6.setVolume(beat8  , volume, volume);
+                    }
+                    // when the user is starting to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStartTrackingTouch(Croller croller) {
+                    }
+                    // when the user stops to change the progress
+                    // this function gets invoked automatically.
+                    @Override
+                    public void onStopTrackingTouch(Croller croller) {
+                    }
+                });
+        // when there is a change in the progress of croller
+        // this function get invoked automatically
 
-        beat1_on = findViewById(R.id.beat1_on);
-        beat2_on = findViewById(R.id.beat2_on);
-        beat3_on = findViewById(R.id.beat3_on);
-        beat4_on = findViewById(R.id.beat4_on);
-        beat5_on = findViewById(R.id.beat5_on);
-        beat6_on = findViewById(R.id.beat6_on);
+        BeatBtn1(beat1_off, beat1_on, beat2_on, beat3_on, beat4_on, beat5_on, beat6_on, sound_pool1, beat1);
+        BeatBtn1(beat2_off, beat2_on, beat1_on, beat3_on, beat4_on, beat5_on, beat6_on, sound_pool1, beat2);
+        BeatBtn1(beat3_off, beat3_on, beat2_on, beat1_on, beat4_on, beat5_on, beat6_on, sound_pool1, beat3);
+        BeatBtn1(beat4_off, beat4_on, beat2_on, beat3_on, beat1_on, beat5_on, beat6_on, sound_pool1, beat4);
+        BeatBtn1(beat5_off, beat5_on, beat2_on, beat3_on, beat4_on, beat1_on, beat6_on, sound_pool1, beat5);
+        BeatBtn1(beat6_off, beat6_on, beat2_on, beat3_on, beat4_on, beat5_on, beat1_on, sound_pool1, beat6);
 
+        BeatBtn2(two1_off, two1_on, two2_on, two3_on, two4_on, two5_on, two6_on, sound_pool2, synth1);
+        BeatBtn2(two2_off, two2_on, two1_on, two3_on, two4_on, two5_on, two6_on, sound_pool2, choir);
+        BeatBtn2(two3_off, two3_on, two2_on, two1_on, two4_on, two5_on, two6_on, sound_pool2, whistle);
+        BeatBtn2(two4_off, two4_on, two2_on, two3_on, two1_on, two5_on, two6_on, sound_pool2, synth2);
+        BeatBtn2(two5_off, two5_on, two2_on, two3_on, two4_on, two1_on, two6_on, sound_pool2, piano);
+        BeatBtn2(two6_off, two6_on, two2_on, two3_on, two4_on, two5_on, two1_on, sound_pool2, mbira);
 
-        beatvolum1.setOnClickListener(this);
-        beat1_off.setOnClickListener(this);
-        beat2_off.setOnClickListener(this);
-        beat3_off.setOnClickListener(this);
-        beat4_off.setOnClickListener(this);
-        beat5_off.setOnClickListener(this);
-        beat6_off.setOnClickListener(this);
+        BeatBtn3(three1_off, three1_on, three2_on, three3_on, three4_on, three5_on, three6_on, sound_pool3, keys1);
+        BeatBtn3(three2_off, three2_on, three1_on, three3_on, three4_on, three5_on, three6_on, sound_pool3, strings1);
+        BeatBtn3(three3_off, three3_on, three2_on, three1_on, three4_on, three5_on, three6_on, sound_pool3, mallets);
+        BeatBtn3(three4_off, three4_on, three2_on, three3_on, three1_on, three5_on, three6_on, sound_pool3, pluck);
+        BeatBtn3(three5_off, three5_on, three2_on, three3_on, three4_on, three1_on, three6_on, sound_pool3, keys2);
+        BeatBtn3(three6_off, three6_on, three2_on, three3_on, three4_on, three5_on, three1_on, sound_pool3, flute);
 
-        beat1_on.setOnClickListener(this);
-        beat2_on.setOnClickListener(this);
-        beat3_on.setOnClickListener(this);
-        beat4_on.setOnClickListener(this);
-        beat5_on.setOnClickListener(this);
-        beat6_on.setOnClickListener(this);
+        BeatBtn4(four1_off, four1_on, four2_on, four3_on, four4_on, four5_on, four6_on, sound_pool4, bass1);
+        BeatBtn4(four2_off, four2_on, four1_on, four3_on, four4_on, four5_on, four6_on, sound_pool4, synth3);
+        BeatBtn4(four3_off, four3_on, four2_on, four1_on, four4_on, four5_on, four6_on, sound_pool4, pad1);
+        BeatBtn4(four4_off, four4_on, four2_on, four3_on, four1_on, four5_on, four6_on, sound_pool4, brass1);
+        BeatBtn4(four5_off, four5_on, four2_on, four3_on, four4_on, four1_on, four6_on, sound_pool4, strings2);
+        BeatBtn4(four6_off, four6_on, four2_on, four3_on, four4_on, four5_on, four1_on, sound_pool4, bass2);
 
+        BeatBtn5(five1_off, five1_on, five2_on, five3_on, five4_on, five5_on, five6_on, sound_pool5, strings3);
+        BeatBtn5(five2_off, five2_on, five1_on, five3_on, five4_on, five5_on, five6_on, sound_pool5, pad2);
+        BeatBtn5(five3_off, five3_on, five2_on, five1_on, five4_on, five5_on, five6_on, sound_pool5, synth4);
+        BeatBtn5(five4_off, five4_on, five2_on, five3_on, five1_on, five5_on, five6_on, sound_pool5, synth5);
+        BeatBtn5(five5_off, five5_on, five2_on, five3_on, five4_on, five1_on, five6_on, sound_pool5, brass2);
+        BeatBtn5(five6_off, five6_on, five2_on, five3_on, five4_on, five5_on, five1_on, sound_pool5, bass3);
 
-        beat1_on.setVisibility(View.GONE);
-        beat2_on.setVisibility(View.GONE);
-        beat3_on.setVisibility(View.GONE);
-        beat4_on.setVisibility(View.GONE);
-        beat5_on.setVisibility(View.GONE);
-        beat6_on.setVisibility(View.GONE);
+        BeatBtn6(six1_off, six1_on, six2_on, six3_on, six4_on, six5_on, six6_on, sound_pool6, vox7);
+        BeatBtn6(six2_off, six2_on, six1_on, six3_on, six4_on, six5_on, six6_on, sound_pool6, vox8);
+        BeatBtn6(six3_off, six3_on, six2_on, six1_on, six4_on, six5_on, six6_on, sound_pool6, vox9);
+        BeatBtn6(six4_off, six4_on, six2_on, six3_on, six1_on, six5_on, six6_on, sound_pool6, vox10);
+        BeatBtn6(six5_off, six5_on, six2_on, six3_on, six4_on, six1_on, six6_on, sound_pool6, beat7);
+        BeatBtn6(six6_off, six6_on, six2_on, six3_on, six4_on, six5_on, six1_on, sound_pool6, beat8);
 
+        //녹음
+        final ImageButton record_btn = findViewById(R.id.record_btn);
+        final ImageButton record_btn_on = findViewById(R.id.record_btn_on);
 
-        // 2번째 트랙
-        beatvolum2 = findViewById(R.id.beatvolum2);
-        two1_off = findViewById(R.id.two1_off);
-        two2_off = findViewById(R.id.two2_off);
-        two3_off = findViewById(R.id.two3_off);
-        two4_off = findViewById(R.id.two4_off);
-        two5_off = findViewById(R.id.two5_off);
-        two6_off = findViewById(R.id.two6_off);
+        final String[] permissions = {Manifest.permission.RECORD_AUDIO};
 
-        two1_on = findViewById(R.id.two1_on);
-        two2_on = findViewById(R.id.two2_on);
-        two3_on = findViewById(R.id.two3_on);
-        two4_on = findViewById(R.id.two4_on);
-        two5_on = findViewById(R.id.two5_on);
-        two6_on = findViewById(R.id.two6_on);
+        record_btn.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                record_btn.setVisibility(View.GONE);
+                record_btn_on.setVisibility(View.VISIBLE);
+                int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
+                if(permissionCheck == PackageManager.PERMISSION_GRANTED){
+                    Toast.makeText(getApplicationContext(), "녹음 시작", Toast.LENGTH_LONG).show();
+                    //recordAudio();
+                } else {
+                    Toast.makeText(getApplicationContext(), "녹음 권한 없음", Toast.LENGTH_SHORT).show();
+                    if(ActivityCompat.shouldShowRequestPermissionRationale(BeatMakingActivity.this, Manifest.permission.RECORD_AUDIO)){
+                        Toast.makeText(getApplicationContext(), "녹음 설명 필요함", Toast.LENGTH_SHORT).show();
+                    } else {
+                        ActivityCompat.requestPermissions(BeatMakingActivity.this, permissions, 1);
+                    }
+                }
+            }
+        });
 
-
-        beatvolum2.setOnClickListener(this);
-        two1_off.setOnClickListener(this);
-        two2_off.setOnClickListener(this);
-        two3_off.setOnClickListener(this);
-        two4_off.setOnClickListener(this);
-        two5_off.setOnClickListener(this);
-        two6_off.setOnClickListener(this);
-
-        two1_on.setOnClickListener(this);
-        two2_on.setOnClickListener(this);
-        two3_on.setOnClickListener(this);
-        two4_on.setOnClickListener(this);
-        two5_on.setOnClickListener(this);
-        two6_on.setOnClickListener(this);
-
-
-        two1_on.setVisibility(View.GONE);
-        two2_on.setVisibility(View.GONE);
-        two3_on.setVisibility(View.GONE);
-        two4_on.setVisibility(View.GONE);
-        two5_on.setVisibility(View.GONE);
-        two6_on.setVisibility(View.GONE);
-
-        // 3번째 트랙
-        beatvolum3 = findViewById(R.id.beatvolum3);
-        three1_off = findViewById(R.id.three1_off);
-        three2_off = findViewById(R.id.three2_off);
-        three3_off = findViewById(R.id.three3_off);
-        three4_off = findViewById(R.id.three4_off);
-        three5_off = findViewById(R.id.three5_off);
-        three6_off = findViewById(R.id.three6_off);
-
-        three1_on = findViewById(R.id.three1_on);
-        three2_on = findViewById(R.id.three2_on);
-        three3_on = findViewById(R.id.three3_on);
-        three4_on = findViewById(R.id.three4_on);
-        three5_on = findViewById(R.id.three5_on);
-        three6_on = findViewById(R.id.three6_on);
-
-
-        beatvolum3.setOnClickListener(this);
-        three1_off.setOnClickListener(this);
-        three2_off.setOnClickListener(this);
-        three3_off.setOnClickListener(this);
-        three4_off.setOnClickListener(this);
-        three5_off.setOnClickListener(this);
-        three6_off.setOnClickListener(this);
-
-        three1_on.setOnClickListener(this);
-        three2_on.setOnClickListener(this);
-        three3_on.setOnClickListener(this);
-        three4_on.setOnClickListener(this);
-        three5_on.setOnClickListener(this);
-        three6_on.setOnClickListener(this);
-
-
-        three1_on.setVisibility(View.GONE);
-        three2_on.setVisibility(View.GONE);
-        three3_on.setVisibility(View.GONE);
-        three4_on.setVisibility(View.GONE);
-        three5_on.setVisibility(View.GONE);
-        three6_on.setVisibility(View.GONE);
-
-        // 4번째 트랙
-        beatvolum4 = findViewById(R.id.beatvolum4);
-        four1_off = findViewById(R.id.four1_off);
-        four2_off = findViewById(R.id.four2_off);
-        four3_off = findViewById(R.id.four3_off);
-        four4_off = findViewById(R.id.four4_off);
-        four5_off = findViewById(R.id.four5_off);
-        four6_off = findViewById(R.id.four6_off);
-
-        four1_on = findViewById(R.id.four1_on);
-        four2_on = findViewById(R.id.four2_on);
-        four3_on = findViewById(R.id.four3_on);
-        four4_on = findViewById(R.id.four4_on);
-        four5_on = findViewById(R.id.four5_on);
-        four6_on = findViewById(R.id.four6_on);
-
-
-        beatvolum4.setOnClickListener(this);
-        four1_off.setOnClickListener(this);
-        four2_off.setOnClickListener(this);
-        four3_off.setOnClickListener(this);
-        four4_off.setOnClickListener(this);
-        four5_off.setOnClickListener(this);
-        four6_off.setOnClickListener(this);
-
-        four1_on.setOnClickListener(this);
-        four2_on.setOnClickListener(this);
-        four3_on.setOnClickListener(this);
-        four4_on.setOnClickListener(this);
-        four5_on.setOnClickListener(this);
-        four6_on.setOnClickListener(this);
-
-
-        four1_on.setVisibility(View.GONE);
-        four2_on.setVisibility(View.GONE);
-        four3_on.setVisibility(View.GONE);
-        four4_on.setVisibility(View.GONE);
-        four5_on.setVisibility(View.GONE);
-        four6_on.setVisibility(View.GONE);
-
-        // 5번째 트랙
-        beatvolum5 = findViewById(R.id.beatvolum5);
-        five1_off = findViewById(R.id.five1_off);
-        five2_off = findViewById(R.id.five2_off);
-        five3_off = findViewById(R.id.five3_off);
-        five4_off = findViewById(R.id.five4_off);
-        five5_off = findViewById(R.id.five5_off);
-        five6_off = findViewById(R.id.five6_off);
-
-        five1_on = findViewById(R.id.five1_on);
-        five2_on = findViewById(R.id.five2_on);
-        five3_on = findViewById(R.id.five3_on);
-        five4_on = findViewById(R.id.five4_on);
-        five5_on = findViewById(R.id.five5_on);
-        five6_on = findViewById(R.id.five6_on);
-
-
-        beatvolum5.setOnClickListener(this);
-        five1_off.setOnClickListener(this);
-        five2_off.setOnClickListener(this);
-        five3_off.setOnClickListener(this);
-        five4_off.setOnClickListener(this);
-        five5_off.setOnClickListener(this);
-        five6_off.setOnClickListener(this);
-
-        five1_on.setOnClickListener(this);
-        five2_on.setOnClickListener(this);
-        five3_on.setOnClickListener(this);
-        five4_on.setOnClickListener(this);
-        five5_on.setOnClickListener(this);
-        five6_on.setOnClickListener(this);
-
-
-        five1_on.setVisibility(View.GONE);
-        five2_on.setVisibility(View.GONE);
-        five3_on.setVisibility(View.GONE);
-        five4_on.setVisibility(View.GONE);
-        five5_on.setVisibility(View.GONE);
-        five6_on.setVisibility(View.GONE);
-
-        // 6번째 트랙
-        beatvolum6 = findViewById(R.id.beatvolum6);
-        six1_off = findViewById(R.id.six1_off);
-        six2_off = findViewById(R.id.six2_off);
-        six3_off = findViewById(R.id.six3_off);
-        six4_off = findViewById(R.id.six4_off);
-        six5_off = findViewById(R.id.six5_off);
-        six6_off = findViewById(R.id.six6_off);
-
-        six1_on = findViewById(R.id.six1_on);
-        six2_on = findViewById(R.id.six2_on);
-        six3_on = findViewById(R.id.six3_on);
-        six4_on = findViewById(R.id.six4_on);
-        six5_on = findViewById(R.id.six5_on);
-        six6_on = findViewById(R.id.six6_on);
-
-
-        beatvolum6.setOnClickListener(this);
-        six1_off.setOnClickListener(this);
-        six2_off.setOnClickListener(this);
-        six3_off.setOnClickListener(this);
-        six4_off.setOnClickListener(this);
-        six5_off.setOnClickListener(this);
-        six6_off.setOnClickListener(this);
-
-        six1_on.setOnClickListener(this);
-        six2_on.setOnClickListener(this);
-        six3_on.setOnClickListener(this);
-        six4_on.setOnClickListener(this);
-        six5_on.setOnClickListener(this);
-        six6_on.setOnClickListener(this);
-
-
-        six1_on.setVisibility(View.GONE);
-        six2_on.setVisibility(View.GONE);
-        six3_on.setVisibility(View.GONE);
-        six4_on.setVisibility(View.GONE);
-        six5_on.setVisibility(View.GONE);
-        six6_on.setVisibility(View.GONE);
-
-        // 7번째 트랙
-        seven1_off = findViewById(R.id.seven1_off);
-        seven2_off = findViewById(R.id.seven2_off);
-        seven3_off = findViewById(R.id.seven3_off);
-        seven4_off = findViewById(R.id.seven4_off);
-        seven5_off = findViewById(R.id.seven5_off);
-        seven6_off = findViewById(R.id.seven6_off);
-
-        seven1_on = findViewById(R.id.seven1_on);
-        seven2_on = findViewById(R.id.seven2_on);
-        seven3_on = findViewById(R.id.seven3_on);
-        seven4_on = findViewById(R.id.seven4_on);
-        seven5_on = findViewById(R.id.seven5_on);
-        seven6_on = findViewById(R.id.seven6_on);
-
-        seven1_off.setOnTouchListener(onTouchListener);
-        seven2_off.setOnTouchListener(onTouchListener);
-        seven3_off.setOnTouchListener(onTouchListener);
-        seven4_off.setOnTouchListener(onTouchListener);
-        seven5_off.setOnTouchListener(onTouchListener);
-        seven6_off.setOnTouchListener(onTouchListener);
-
-        seven1_on.setVisibility(View.GONE);
-        seven2_on.setVisibility(View.GONE);
-        seven3_on.setVisibility(View.GONE);
-        seven4_on.setVisibility(View.GONE);
-        seven5_on.setVisibility(View.GONE);
-        seven6_on.setVisibility(View.GONE);
-
-        // 8번째 트랙
-        eight1_off = findViewById(R.id.eight1_off);
-        eight2_off = findViewById(R.id.eight2_off);
-        eight3_off = findViewById(R.id.eight3_off);
-        eight4_off = findViewById(R.id.eight4_off);
-        eight5_off = findViewById(R.id.eight5_off);
-        eight6_off = findViewById(R.id.eight6_off);
-
-
-        eight1_on = findViewById(R.id.eight1_on);
-        eight2_on = findViewById(R.id.eight2_on);
-        eight3_on = findViewById(R.id.eight3_on);
-        eight4_on = findViewById(R.id.eight4_on);
-        eight5_on = findViewById(R.id.eight5_on);
-        eight6_on = findViewById(R.id.eight6_on);
-
-        eight1_off.setOnTouchListener(onTouchListener);
-        eight2_off.setOnTouchListener(onTouchListener);
-        eight3_off.setOnTouchListener(onTouchListener);
-        eight4_off.setOnTouchListener(onTouchListener);
-        eight5_off.setOnTouchListener(onTouchListener);
-        eight6_off.setOnTouchListener(onTouchListener);
-
-        eight1_on.setVisibility(View.GONE);
-        eight2_on.setVisibility(View.GONE);
-        eight3_on.setVisibility(View.GONE);
-        eight4_on.setVisibility(View.GONE);
-        eight5_on.setVisibility(View.GONE);
-        eight6_on.setVisibility(View.GONE);
-
+        record_btn_on.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                record_btn.setVisibility(View.VISIBLE);
+                record_btn_on.setVisibility(View.GONE);
+                int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
+                Toast.makeText(getApplicationContext(), "녹음 저장 완료", Toast.LENGTH_LONG).show();
+                //stopRecording();
+            }
+        });
         //뒤로가기
         back = findViewById(R.id.back);
-        back.setOnClickListener(this);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MoveActivity(MainActivity.class);
+                track1_stop();
+                track2_stop();
+                track3_stop();
+                track4_stop();
+                track5_stop();
+                track6_stop();
+            }
+        });
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-    }
-    public void onClick(View v) {
-        //Animation startAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.glow_anim);
-        switch(v.getId()) {
-            case R.id.back :
-                MoveActivity(MainActivity.class);
-                stopAudio(beat1);
-                stopAudio(beat2);
-                stopAudio(beat3);
-                stopAudio(beat4);
-                stopAudio(beat5);
-                stopAudio(beat6);
-
-                stopAudio(synth1);
-                stopAudio(choir);
-                stopAudio(whistle);
-                stopAudio(synth2);
-                stopAudio(piano);
-                stopAudio(mbira);
-
-                stopAudio(keys1);
-                stopAudio(strings1);
-                stopAudio(mallets);
-                stopAudio(pluck);
-                stopAudio(keys2);
-                stopAudio(flute);
-
-                stopAudio(bass1);
-                stopAudio(synth3);
-                stopAudio(pad1);
-                stopAudio(brass1);
-                stopAudio(strings2);
-                stopAudio(bass2);
-
-                stopAudio(strings3);
-                stopAudio(pad2);
-                stopAudio(synth4);
-                stopAudio(synth5);
-                stopAudio(brass2);
-                stopAudio(bass3);
-
-                stopAudio(vox7);
-                stopAudio(vox8);
-                stopAudio(vox9);
-                stopAudio(vox10);
-                stopAudio(beat7);
-                stopAudio(beat8);
-                stopAudio(fx1);
-                stopAudio(fx2);
-                stopAudio(fx3);
-                stopAudio(fx4);
-                stopAudio(fx5);
-                stopAudio(fx6);
-
-                stopAudio(vox1);
-                stopAudio(vox2);
-                stopAudio(vox3);
-                stopAudio(vox4);
-                stopAudio(vox5);
-                stopAudio(vox6);
-                break;
-            // 1트랙
-            case R.id.beatvolum1:
-                break;
-            case R.id.beat1_off:
-                //beat1.startAnimation(startAnimation);
-                beat1_on.setVisibility(View.VISIBLE);
-                beat2_on.setVisibility(View.GONE);
-                beat3_on.setVisibility(View.GONE);
-                beat4_on.setVisibility(View.GONE);
-                beat5_on.setVisibility(View.GONE);
-                beat6_on.setVisibility(View.GONE);
-                if (beat1_on.getVisibility() == View.VISIBLE) {
-                    beat1 = MediaPlayer.create(BeatMakingActivity.this, R.raw.beat1);
-                    beat1.start();
-                    beat1.setLooping(true);
-                }
-                stopAudio(beat2);
-                stopAudio(beat3);
-                stopAudio(beat4);
-                stopAudio(beat5);
-                stopAudio(beat6);
-                break;
-            case R.id.beat2_off:
-                //beat2.startAnimation(startAnimation);
-                beat1_on.setVisibility(View.GONE);
-                beat2_on.setVisibility(View.VISIBLE);
-                beat3_on.setVisibility(View.GONE);
-                beat4_on.setVisibility(View.GONE);
-                beat5_on.setVisibility(View.GONE);
-                beat6_on.setVisibility(View.GONE);
-                if (beat2_on.getVisibility() == View.VISIBLE) {
-                    beat2 = MediaPlayer.create(BeatMakingActivity.this, R.raw.beat2);
-                    beat2.start();
-                    beat2.setLooping(true);
-                }
-                stopAudio(beat1);
-                stopAudio(beat3);
-                stopAudio(beat4);
-                stopAudio(beat5);
-                stopAudio(beat6);
-                break;
-            case R.id.beat3_off:
-                //beat3.startAnimation(startAnimation);
-                beat1_on.setVisibility(View.GONE);
-                beat2_on.setVisibility(View.GONE);
-                beat3_on.setVisibility(View.VISIBLE);
-                beat4_on.setVisibility(View.GONE);
-                beat5_on.setVisibility(View.GONE);
-                beat6_on.setVisibility(View.GONE);
-                if (beat3_on.getVisibility() == View.VISIBLE) {
-                    beat3 = MediaPlayer.create(BeatMakingActivity.this, R.raw.beat3);
-                    beat3.start();
-                    beat3.setLooping(true);
-                }
-                stopAudio(beat1);
-                stopAudio(beat2);
-                stopAudio(beat4);
-                stopAudio(beat5);
-                stopAudio(beat6);
-                break;
-            case R.id.beat4_off:
-                //beat4.startAnimation(startAnimation);
-                beat1_on.setVisibility(View.GONE);
-                beat2_on.setVisibility(View.GONE);
-                beat3_on.setVisibility(View.GONE);
-                beat4_on.setVisibility(View.VISIBLE);
-                beat5_on.setVisibility(View.GONE);
-                beat6_on.setVisibility(View.GONE);
-                if (beat4_on.getVisibility() == View.VISIBLE) {
-                    beat4 = MediaPlayer.create(BeatMakingActivity.this, R.raw.beat4);
-                    beat4.start();
-                    beat4.setLooping(true);
-                }
-                stopAudio(beat1);
-                stopAudio(beat3);
-                stopAudio(beat2);
-                stopAudio(beat5);
-                stopAudio(beat6);
-                break;
-            case R.id.beat5_off:
-                //beat5.startAnimation(startAnimation);
-                beat1_on.setVisibility(View.GONE);
-                beat2_on.setVisibility(View.GONE);
-                beat3_on.setVisibility(View.GONE);
-                beat4_on.setVisibility(View.GONE);
-                beat5_on.setVisibility(View.VISIBLE);
-                beat6_on.setVisibility(View.GONE);
-                if (beat5_on.getVisibility() == View.VISIBLE) {
-                    beat5 = MediaPlayer.create(BeatMakingActivity.this, R.raw.beat5);
-                    beat5.start();
-                    beat5.setLooping(true);
-                }
-                stopAudio(beat1);
-                stopAudio(beat3);
-                stopAudio(beat4);
-                stopAudio(beat2);
-                stopAudio(beat6);
-                break;
-            case R.id.beat6_off:
-                //beat6.startAnimation(startAnimation);
-                beat1_on.setVisibility(View.GONE);
-                beat2_on.setVisibility(View.GONE);
-                beat3_on.setVisibility(View.GONE);
-                beat4_on.setVisibility(View.GONE);
-                beat5_on.setVisibility(View.GONE);
-                beat6_on.setVisibility(View.VISIBLE);
-                if (beat6_on.getVisibility() == View.VISIBLE) {
-                    beat6 = MediaPlayer.create(BeatMakingActivity.this, R.raw.beat6);
-                    beat6.start();
-                    beat6.setLooping(true);
-                }
-                stopAudio(beat1);
-                stopAudio(beat3);
-                stopAudio(beat4);
-                stopAudio(beat5);
-                stopAudio(beat2);
-                break;
-            case R.id.beat1_on:
-                //beat1.startAnimation(startAnimation);
-                if(beat1_on.getVisibility() == View.VISIBLE) {
-                    beat1_on.setVisibility(View.GONE);
-                }
-                stopAudio(beat1);
-                break;
-            case R.id.beat2_on:
-                //beat2.startAnimation(startAnimation);
-                if(beat2_on.getVisibility() == View.VISIBLE) {
-                    beat2_on.setVisibility(View.GONE);
-                }
-                stopAudio(beat2);
-                break;
-            case R.id.beat3_on:
-                //beat3.startAnimation(startAnimation);
-                if(beat3_on.getVisibility() == View.VISIBLE) {
-                    beat3_on.setVisibility(View.GONE);
-                }
-                stopAudio(beat3);
-                break;
-            case R.id.beat4_on:
-                //beat4.startAnimation(startAnimation);
-                if(beat4_on.getVisibility() == View.VISIBLE) {
-                    beat4_on.setVisibility(View.GONE);
-                }
-                stopAudio(beat4);
-                break;
-            case R.id.beat5_on:
-                //beat5.startAnimation(startAnimation);
-                if(beat5_on.getVisibility() == View.VISIBLE) {
-                    beat5_on.setVisibility(View.GONE);
-                }
-                stopAudio(beat5);
-                break;
-            case R.id.beat6_on:
-                //beat6.startAnimation(startAnimation);
-                if(beat6_on.getVisibility() == View.VISIBLE) {
-                    beat6_on.setVisibility(View.GONE);
-                }
-                stopAudio(beat6);
-                break;
-
-            // 2트랙 synth1, choir, whistle, synth2, piano, mbira;
-            case R.id.beatvolum2:
-                break;
-            case R.id.two1_off:
-                //beat1.startAnimation(startAnimation);
-                two1_on.setVisibility(View.VISIBLE);
-                two2_on.setVisibility(View.GONE);
-                two3_on.setVisibility(View.GONE);
-                two4_on.setVisibility(View.GONE);
-                two5_on.setVisibility(View.GONE);
-                two6_on.setVisibility(View.GONE);
-                if (two1_on.getVisibility() == View.VISIBLE) {
-                    synth1 = MediaPlayer.create(BeatMakingActivity.this, R.raw.synth1);
-                    synth1.start();
-                    synth1.setLooping(true);
-                }
-                stopAudio(choir);
-                stopAudio(whistle);
-                stopAudio(synth2);
-                stopAudio(piano);
-                stopAudio(mbira);
-                break;
-            case R.id.two2_off:
-                //beat2.startAnimation(startAnimation);
-                two1_on.setVisibility(View.GONE);
-                two2_on.setVisibility(View.VISIBLE);
-                two3_on.setVisibility(View.GONE);
-                two4_on.setVisibility(View.GONE);
-                two5_on.setVisibility(View.GONE);
-                two6_on.setVisibility(View.GONE);
-                if (two2_on.getVisibility() == View.VISIBLE) {
-                    choir = MediaPlayer.create(BeatMakingActivity.this, R.raw.choir);
-                    choir.start();
-                    choir.setLooping(true);
-                }
-                stopAudio(synth1);
-                stopAudio(whistle);
-                stopAudio(synth2);
-                stopAudio(piano);
-                stopAudio(mbira);
-                break;
-            case R.id.two3_off:
-                //beat3.startAnimation(startAnimation);
-                two1_on.setVisibility(View.GONE);
-                two2_on.setVisibility(View.GONE);
-                two3_on.setVisibility(View.VISIBLE);
-                two4_on.setVisibility(View.GONE);
-                two5_on.setVisibility(View.GONE);
-                two6_on.setVisibility(View.GONE);
-                if (two3_on.getVisibility() == View.VISIBLE) {
-                    whistle = MediaPlayer.create(BeatMakingActivity.this, R.raw.whistle);
-                    whistle.start();
-                    whistle.setLooping(true);
-                }
-                stopAudio(synth1);
-                stopAudio(choir);
-                stopAudio(synth2);
-                stopAudio(piano);
-                stopAudio(mbira);
-                break;
-            case R.id.two4_off:
-                //beat4.startAnimation(startAnimation);
-                two1_on.setVisibility(View.GONE);
-                two2_on.setVisibility(View.GONE);
-                two3_on.setVisibility(View.GONE);
-                two4_on.setVisibility(View.VISIBLE);
-                two5_on.setVisibility(View.GONE);
-                two6_on.setVisibility(View.GONE);
-                if (two4_on.getVisibility() == View.VISIBLE) {
-                    synth2 = MediaPlayer.create(BeatMakingActivity.this, R.raw.synth2);
-                    synth2.start();
-                    synth2.setLooping(true);
-                }
-                stopAudio(synth1);
-                stopAudio(whistle);
-                stopAudio(choir);
-                stopAudio(piano);
-                stopAudio(mbira);
-                break;
-            case R.id.two5_off:
-                //beat5.startAnimation(startAnimation);
-                two1_on.setVisibility(View.GONE);
-                two2_on.setVisibility(View.GONE);
-                two3_on.setVisibility(View.GONE);
-                two4_on.setVisibility(View.GONE);
-                two5_on.setVisibility(View.VISIBLE);
-                two6_on.setVisibility(View.GONE);
-                if (two5_on.getVisibility() == View.VISIBLE) {
-                    piano = MediaPlayer.create(BeatMakingActivity.this, R.raw.piano);
-                    piano.start();
-                    piano.setLooping(true);
-                }
-                stopAudio(synth1);
-                stopAudio(whistle);
-                stopAudio(synth2);
-                stopAudio(choir);
-                stopAudio(mbira);
-                break;
-            case R.id.two6_off:
-                //beat6.startAnimation(startAnimation);
-                two1_on.setVisibility(View.GONE);
-                two2_on.setVisibility(View.GONE);
-                two3_on.setVisibility(View.GONE);
-                two4_on.setVisibility(View.GONE);
-                two5_on.setVisibility(View.GONE);
-                two6_on.setVisibility(View.VISIBLE);
-                if (two6_on.getVisibility() == View.VISIBLE) {
-                    mbira = MediaPlayer.create(BeatMakingActivity.this, R.raw.mbira);
-                    mbira.start();
-                    mbira.setLooping(true);
-                }
-                stopAudio(synth1);
-                stopAudio(whistle);
-                stopAudio(synth2);
-                stopAudio(piano);
-                stopAudio(choir);
-                break;
-            case R.id.two1_on:
-                //beat1.startAnimation(startAnimation); synth1, choir, whistle, synth2, piano, mbira;
-                if(two1_on.getVisibility() == View.VISIBLE) {
-                    two1_on.setVisibility(View.GONE);
-                }
-                stopAudio(synth1);
-                break;
-            case R.id.two2_on:
-                //beat2.startAnimation(startAnimation);
-                if(two2_on.getVisibility() == View.VISIBLE) {
-                    two2_on.setVisibility(View.GONE);
-                }
-                stopAudio(choir);
-                break;
-            case R.id.two3_on:
-                //beat3.startAnimation(startAnimation);
-                if(two3_on.getVisibility() == View.VISIBLE) {
-                    two3_on.setVisibility(View.GONE);
-                }
-                stopAudio(whistle);
-                break;
-            case R.id.two4_on:
-                //beat4.startAnimation(startAnimation);
-                if(two4_on.getVisibility() == View.VISIBLE) {
-                    two4_on.setVisibility(View.GONE);
-                }
-                stopAudio(synth2);
-                break;
-            case R.id.two5_on:
-                //beat5.startAnimation(startAnimation);
-                if(two5_on.getVisibility() == View.VISIBLE) {
-                    two5_on.setVisibility(View.GONE);
-                }
-                stopAudio(piano);
-                break;
-            case R.id.two6_on:
-                //beat6.startAnimation(startAnimation);
-                if(two6_on.getVisibility() == View.VISIBLE) {
-                    two6_on.setVisibility(View.GONE);
-                }
-                stopAudio(mbira);
-                break;
-
-            // 3트랙 keys1, strings1, mallets, pluck, keys2, flute;
-            case R.id.beatvolum3:
-                break;
-            case R.id.three1_off:
-                //beat1.startAnimation(startAnimation);
-                three1_on.setVisibility(View.VISIBLE);
-                three2_on.setVisibility(View.GONE);
-                three3_on.setVisibility(View.GONE);
-                three4_on.setVisibility(View.GONE);
-                three5_on.setVisibility(View.GONE);
-                three6_on.setVisibility(View.GONE);
-                if (three1_on.getVisibility() == View.VISIBLE) {
-                    keys1 = MediaPlayer.create(BeatMakingActivity.this, R.raw.keys1);
-                    keys1.start();
-                    keys1.setLooping(true);
-                }
-                stopAudio(strings1);
-                stopAudio(mallets);
-                stopAudio(pluck);
-                stopAudio(keys2);
-                stopAudio(flute);
-                break;
-            case R.id.three2_off:
-                //beat2.startAnimation(startAnimation);
-                three1_on.setVisibility(View.GONE);
-                three2_on.setVisibility(View.VISIBLE);
-                three3_on.setVisibility(View.GONE);
-                three4_on.setVisibility(View.GONE);
-                three5_on.setVisibility(View.GONE);
-                three6_on.setVisibility(View.GONE);
-                if (three2_on.getVisibility() == View.VISIBLE) {
-                    strings1 = MediaPlayer.create(BeatMakingActivity.this, R.raw.strings1);
-                    strings1.start();
-                    strings1.setLooping(true);
-                }
-                stopAudio(keys1);
-                stopAudio(mallets);
-                stopAudio(pluck);
-                stopAudio(keys2);
-                stopAudio(flute);
-                break;
-            case R.id.three3_off:
-                //beat3.startAnimation(startAnimation);
-                three1_on.setVisibility(View.GONE);
-                three2_on.setVisibility(View.GONE);
-                three3_on.setVisibility(View.VISIBLE);
-                three4_on.setVisibility(View.GONE);
-                three5_on.setVisibility(View.GONE);
-                three6_on.setVisibility(View.GONE);
-                if (three3_on.getVisibility() == View.VISIBLE) {
-                    mallets = MediaPlayer.create(BeatMakingActivity.this, R.raw.mallets);
-                    mallets.start();
-                    mallets.setLooping(true);
-                }
-                stopAudio(keys1);
-                stopAudio(strings1);
-                stopAudio(pluck);
-                stopAudio(keys2);
-                stopAudio(flute);
-                break;
-            case R.id.three4_off:
-                //beat4.startAnimation(startAnimation);
-                three1_on.setVisibility(View.GONE);
-                three2_on.setVisibility(View.GONE);
-                three3_on.setVisibility(View.GONE);
-                three4_on.setVisibility(View.VISIBLE);
-                three5_on.setVisibility(View.GONE);
-                three6_on.setVisibility(View.GONE);
-                if (three4_on.getVisibility() == View.VISIBLE) {
-                    pluck = MediaPlayer.create(BeatMakingActivity.this, R.raw.pluck);
-                    pluck.start();
-                    pluck.setLooping(true);
-                }
-                stopAudio(keys1);
-                stopAudio(mallets);
-                stopAudio(strings1);
-                stopAudio(keys2);
-                stopAudio(flute);
-                break;
-            case R.id.three5_off:
-                //beat5.startAnimation(startAnimation);
-                three1_on.setVisibility(View.GONE);
-                three2_on.setVisibility(View.GONE);
-                three3_on.setVisibility(View.GONE);
-                three4_on.setVisibility(View.GONE);
-                three5_on.setVisibility(View.VISIBLE);
-                three6_on.setVisibility(View.GONE);
-                if (three5_on.getVisibility() == View.VISIBLE) {
-                    keys2 = MediaPlayer.create(BeatMakingActivity.this, R.raw.keys2);
-                    keys2.start();
-                    keys2.setLooping(true);
-                }
-                stopAudio(keys1);
-                stopAudio(mallets);
-                stopAudio(pluck);
-                stopAudio(strings1);
-                stopAudio(flute);
-                break;
-            case R.id.three6_off:
-                //beat6.startAnimation(startAnimation);
-                three1_on.setVisibility(View.GONE);
-                three2_on.setVisibility(View.GONE);
-                three3_on.setVisibility(View.GONE);
-                three4_on.setVisibility(View.GONE);
-                three5_on.setVisibility(View.GONE);
-                three6_on.setVisibility(View.VISIBLE);
-                if (three6_on.getVisibility() == View.VISIBLE) {
-                    flute = MediaPlayer.create(BeatMakingActivity.this, R.raw.flute);
-                    flute.start();
-                    flute.setLooping(true);
-                }
-                stopAudio(keys1);
-                stopAudio(mallets);
-                stopAudio(pluck);
-                stopAudio(keys2);
-                stopAudio(strings1);
-                break;
-            case R.id.three1_on:
-                //beat1.startAnimation(startAnimation); keys1, strings1, mallets, pluck, keys2, flute;
-                if(three1_on.getVisibility() == View.VISIBLE) {
-                    three1_on.setVisibility(View.GONE);
-                }
-                stopAudio(keys1);
-                break;
-            case R.id.three2_on:
-                //beat2.startAnimation(startAnimation);
-                if(three2_on.getVisibility() == View.VISIBLE) {
-                    three2_on.setVisibility(View.GONE);
-                }
-                stopAudio(strings1);
-                break;
-            case R.id.three3_on:
-                //beat3.startAnimation(startAnimation);
-                if(three3_on.getVisibility() == View.VISIBLE) {
-                    three3_on.setVisibility(View.GONE);
-                }
-                stopAudio(mallets);
-                break;
-            case R.id.three4_on:
-                //beat4.startAnimation(startAnimation);
-                if(three4_on.getVisibility() == View.VISIBLE) {
-                    three4_on.setVisibility(View.GONE);
-                }
-                stopAudio(pluck);
-                break;
-            case R.id.three5_on:
-                //beat5.startAnimation(startAnimation);
-                if(three5_on.getVisibility() == View.VISIBLE) {
-                    three5_on.setVisibility(View.GONE);
-                }
-                stopAudio(keys2);
-                break;
-            case R.id.three6_on:
-                //beat6.startAnimation(startAnimation);
-                if(three6_on.getVisibility() == View.VISIBLE) {
-                    three6_on.setVisibility(View.GONE);
-                }
-                stopAudio(flute);
-                break;
-
-            // 4트랙 bass1, synth3, pad1, brass1, strings2, bass2;
-            case R.id.beatvolum4:
-                break;
-            case R.id.four1_off:
-                //beat1.startAnimation(startAnimation);
-                four1_on.setVisibility(View.VISIBLE);
-                four2_on.setVisibility(View.GONE);
-                four3_on.setVisibility(View.GONE);
-                four4_on.setVisibility(View.GONE);
-                four5_on.setVisibility(View.GONE);
-                four6_on.setVisibility(View.GONE);
-                if (four1_on.getVisibility() == View.VISIBLE) {
-                    bass1 = MediaPlayer.create(BeatMakingActivity.this, R.raw.bass1);
-                    bass1.start();
-                    bass1.setLooping(true);
-                }
-                stopAudio(synth3);
-                stopAudio(pad1);
-                stopAudio(brass1);
-                stopAudio(strings2);
-                stopAudio(bass2);
-                break;
-            case R.id.four2_off:
-                //beat2.startAnimation(startAnimation);
-                four1_on.setVisibility(View.GONE);
-                four2_on.setVisibility(View.VISIBLE);
-                four3_on.setVisibility(View.GONE);
-                four4_on.setVisibility(View.GONE);
-                four5_on.setVisibility(View.GONE);
-                four6_on.setVisibility(View.GONE);
-                if (four2_on.getVisibility() == View.VISIBLE) {
-                    synth3 = MediaPlayer.create(BeatMakingActivity.this, R.raw.synth3);
-                    synth3.start();
-                    synth3.setLooping(true);
-                }
-                stopAudio(bass1);
-                stopAudio(pad1);
-                stopAudio(brass1);
-                stopAudio(strings2);
-                stopAudio(bass2);
-                break;
-            case R.id.four3_off:
-                //beat3.startAnimation(startAnimation);
-                four1_on.setVisibility(View.GONE);
-                four2_on.setVisibility(View.GONE);
-                four3_on.setVisibility(View.VISIBLE);
-                four4_on.setVisibility(View.GONE);
-                four5_on.setVisibility(View.GONE);
-                four6_on.setVisibility(View.GONE);
-                if (four3_on.getVisibility() == View.VISIBLE) {
-                    pad1 = MediaPlayer.create(BeatMakingActivity.this, R.raw.pad1);
-                    pad1.start();
-                    pad1.setLooping(true);
-                }
-                stopAudio(bass1);
-                stopAudio(synth3);
-                stopAudio(brass1);
-                stopAudio(strings2);
-                stopAudio(bass2);
-                break;
-            case R.id.four4_off:
-                //beat4.startAnimation(startAnimation);
-                four1_on.setVisibility(View.GONE);
-                four2_on.setVisibility(View.GONE);
-                four3_on.setVisibility(View.GONE);
-                four4_on.setVisibility(View.VISIBLE);
-                four5_on.setVisibility(View.GONE);
-                four6_on.setVisibility(View.GONE);
-                if (four4_on.getVisibility() == View.VISIBLE) {
-                    brass1 = MediaPlayer.create(BeatMakingActivity.this, R.raw.brass1);
-                    brass1.start();
-                    brass1.setLooping(true);
-                }
-                stopAudio(bass1);
-                stopAudio(pad1);
-                stopAudio(synth3);
-                stopAudio(strings2);
-                stopAudio(bass2);
-                break;
-            case R.id.four5_off:
-                //beat5.startAnimation(startAnimation);
-                four1_on.setVisibility(View.GONE);
-                four2_on.setVisibility(View.GONE);
-                four3_on.setVisibility(View.GONE);
-                four4_on.setVisibility(View.GONE);
-                four5_on.setVisibility(View.VISIBLE);
-                four6_on.setVisibility(View.GONE);
-                if (four5_on.getVisibility() == View.VISIBLE) {
-                    strings2 = MediaPlayer.create(BeatMakingActivity.this, R.raw.strings2);
-                    strings2.start();
-                    strings2.setLooping(true);
-                }
-                stopAudio(bass1);
-                stopAudio(pad1);
-                stopAudio(brass1);
-                stopAudio(synth3);
-                stopAudio(bass2);
-                break;
-            case R.id.four6_off:
-                //beat6.startAnimation(startAnimation);
-                four1_on.setVisibility(View.GONE);
-                four2_on.setVisibility(View.GONE);
-                four3_on.setVisibility(View.GONE);
-                four4_on.setVisibility(View.GONE);
-                four5_on.setVisibility(View.GONE);
-                four6_on.setVisibility(View.VISIBLE);
-                if (four6_on.getVisibility() == View.VISIBLE) {
-                    bass2 = MediaPlayer.create(BeatMakingActivity.this, R.raw.bass2);
-                    bass2.start();
-                    bass2.setLooping(true);
-                }
-                stopAudio(bass1);
-                stopAudio(pad1);
-                stopAudio(brass1);
-                stopAudio(strings2);
-                stopAudio(synth3);
-                break;
-            case R.id.four1_on:
-                //beat1.startAnimation(startAnimation);  bass1, synth3, pad1, brass1, strings2, bass2;
-                if(four1_on.getVisibility() == View.VISIBLE) {
-                    four1_on.setVisibility(View.GONE);
-                }
-                stopAudio(bass1);
-                break;
-            case R.id.four2_on:
-                //beat2.startAnimation(startAnimation);
-                if(four2_on.getVisibility() == View.VISIBLE) {
-                    four2_on.setVisibility(View.GONE);
-                }
-                stopAudio(synth3);
-                break;
-            case R.id.four3_on:
-                //beat3.startAnimation(startAnimation);
-                if(four3_on.getVisibility() == View.VISIBLE) {
-                    four3_on.setVisibility(View.GONE);
-                }
-                stopAudio(pad1);
-                break;
-            case R.id.four4_on:
-                //beat4.startAnimation(startAnimation);
-                if(four4_on.getVisibility() == View.VISIBLE) {
-                    four4_on.setVisibility(View.GONE);
-                }
-                stopAudio(brass1);
-                break;
-            case R.id.four5_on:
-                //beat5.startAnimation(startAnimation);
-                if(four5_on.getVisibility() == View.VISIBLE) {
-                    four5_on.setVisibility(View.GONE);
-                }
-                stopAudio(strings2);
-                break;
-            case R.id.four6_on:
-                //beat6.startAnimation(startAnimation);
-                if(four6_on.getVisibility() == View.VISIBLE) {
-                    four6_on.setVisibility(View.GONE);
-                }
-                stopAudio(bass2);
-                break;
-
-
-            // 5트랙 strings3, pad2, synth4, synth5, brass2, bass3;
-            case R.id.beatvolum5:
-                break;
-            case R.id.five1_off:
-                //beat1.startAnimation(startAnimation);
-                five1_on.setVisibility(View.VISIBLE);
-                five2_on.setVisibility(View.GONE);
-                five3_on.setVisibility(View.GONE);
-                five4_on.setVisibility(View.GONE);
-                five5_on.setVisibility(View.GONE);
-                five6_on.setVisibility(View.GONE);
-                if (five1_on.getVisibility() == View.VISIBLE) {
-                    strings3 = MediaPlayer.create(BeatMakingActivity.this, R.raw.strings3);
-                    strings3.start();
-                    strings3.setLooping(true);
-                }
-                stopAudio(pad2);
-                stopAudio(synth4);
-                stopAudio(synth5);
-                stopAudio(brass2);
-                stopAudio(bass3);
-                break;
-            case R.id.five2_off:
-                //beat2.startAnimation(startAnimation);
-                five1_on.setVisibility(View.GONE);
-                five2_on.setVisibility(View.VISIBLE);
-                five3_on.setVisibility(View.GONE);
-                five4_on.setVisibility(View.GONE);
-                five5_on.setVisibility(View.GONE);
-                five6_on.setVisibility(View.GONE);
-                if (five2_on.getVisibility() == View.VISIBLE) {
-                    pad2 = MediaPlayer.create(BeatMakingActivity.this, R.raw.pad2);
-                    pad2.start();
-                    pad2.setLooping(true);
-                }
-                stopAudio(strings3);
-                stopAudio(synth4);
-                stopAudio(synth5);
-                stopAudio(brass2);
-                stopAudio(bass3);
-                break;
-            case R.id.five3_off:
-                //beat3.startAnimation(startAnimation);
-                five1_on.setVisibility(View.GONE);
-                five2_on.setVisibility(View.GONE);
-                five3_on.setVisibility(View.VISIBLE);
-                five4_on.setVisibility(View.GONE);
-                five5_on.setVisibility(View.GONE);
-                five6_on.setVisibility(View.GONE);
-                if (five3_on.getVisibility() == View.VISIBLE) {
-                    synth4 = MediaPlayer.create(BeatMakingActivity.this, R.raw.synth4);
-                    synth4.start();
-                    synth4.setLooping(true);
-                }
-                stopAudio(strings3);
-                stopAudio(pad2);
-                stopAudio(synth5);
-                stopAudio(brass2);
-                stopAudio(bass3);
-                break;
-            case R.id.five4_off:
-                //beat4.startAnimation(startAnimation);
-                five1_on.setVisibility(View.GONE);
-                five2_on.setVisibility(View.GONE);
-                five3_on.setVisibility(View.GONE);
-                five4_on.setVisibility(View.VISIBLE);
-                five5_on.setVisibility(View.GONE);
-                five6_on.setVisibility(View.GONE);
-                if (five4_on.getVisibility() == View.VISIBLE) {
-                    synth5 = MediaPlayer.create(BeatMakingActivity.this, R.raw.synth5);
-                    synth5.start();
-                    synth5.setLooping(true);
-                }
-                stopAudio(strings3);
-                stopAudio(pad2);
-                stopAudio(synth4);
-                stopAudio(brass2);
-                stopAudio(bass3);
-                break;
-            case R.id.five5_off:
-                //beat5.startAnimation(startAnimation);
-                five1_on.setVisibility(View.GONE);
-                five2_on.setVisibility(View.GONE);
-                five3_on.setVisibility(View.GONE);
-                five4_on.setVisibility(View.GONE);
-                five5_on.setVisibility(View.VISIBLE);
-                five6_on.setVisibility(View.GONE);
-                if (five5_on.getVisibility() == View.VISIBLE) {
-                    brass2 = MediaPlayer.create(BeatMakingActivity.this, R.raw.brass2);
-                    brass2.start();
-                    brass2.setLooping(true);
-                }
-                stopAudio(strings3);
-                stopAudio(pad2);
-                stopAudio(synth4);
-                stopAudio(synth5);
-                stopAudio(bass3);
-                break;
-            case R.id.five6_off:
-                //beat6.startAnimation(startAnimation);
-                five1_on.setVisibility(View.GONE);
-                five2_on.setVisibility(View.GONE);
-                five3_on.setVisibility(View.GONE);
-                five4_on.setVisibility(View.GONE);
-                five5_on.setVisibility(View.GONE);
-                five6_on.setVisibility(View.VISIBLE);
-                if (five6_on.getVisibility() == View.VISIBLE) {
-                    bass3 = MediaPlayer.create(BeatMakingActivity.this, R.raw.bass3);
-                    bass3.start();
-                    bass3.setLooping(true);
-                }
-                stopAudio(strings3);
-                stopAudio(pad2);
-                stopAudio(synth4);
-                stopAudio(synth5);
-                stopAudio(brass2);
-                break;
-            case R.id.five1_on:
-                //beat1.startAnimation(startAnimation); strings3, pad2, synth4, synth5, brass2, bass3;
-                if(five1_on.getVisibility() == View.VISIBLE) {
-                    five1_on.setVisibility(View.GONE);
-                }
-                stopAudio(strings3);
-                break;
-            case R.id.five2_on:
-                //beat2.startAnimation(startAnimation);
-                if(five2_on.getVisibility() == View.VISIBLE) {
-                    five2_on.setVisibility(View.GONE);
-                }
-                stopAudio(pad2);
-                break;
-            case R.id.five3_on:
-                //beat3.startAnimation(startAnimation);
-                if(five3_on.getVisibility() == View.VISIBLE) {
-                    five3_on.setVisibility(View.GONE);
-                }
-                stopAudio(synth4);
-                break;
-            case R.id.five4_on:
-                //beat4.startAnimation(startAnimation);
-                if(five4_on.getVisibility() == View.VISIBLE) {
-                    five4_on.setVisibility(View.GONE);
-                }
-                stopAudio(synth5);
-                break;
-            case R.id.five5_on:
-                //beat5.startAnimation(startAnimation);
-                if(five5_on.getVisibility() == View.VISIBLE) {
-                    five5_on.setVisibility(View.GONE);
-                }
-                stopAudio(brass2);
-                break;
-            case R.id.five6_on:
-                //beat6.startAnimation(startAnimation);
-                if(five6_on.getVisibility() == View.VISIBLE) {
-                    five6_on.setVisibility(View.GONE);
-                }
-                stopAudio(bass3);
-                break;
-
-            // 6트랙 vox7, vox8, vox9, vox10, beat7, beat8;
-            case R.id.beatvolum6:
-                break;
-            case R.id.six1_off:
-                //beat1.startAnimation(startAnimation);
-                six1_on.setVisibility(View.VISIBLE);
-                six2_on.setVisibility(View.GONE);
-                six3_on.setVisibility(View.GONE);
-                six4_on.setVisibility(View.GONE);
-                six5_on.setVisibility(View.GONE);
-                six6_on.setVisibility(View.GONE);
-                if (six1_on.getVisibility() == View.VISIBLE) {
-                    vox1 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox1);
-                    vox1.start();
-                    vox1.setLooping(true);
-                }
-                stopAudio(vox2);
-                stopAudio(vox3);
-                stopAudio(vox4);
-                stopAudio(vox5);
-                stopAudio(vox6);
-                break;
-            case R.id.six2_off:
-                //beat2.startAnimation(startAnimation);
-                six1_on.setVisibility(View.GONE);
-                six2_on.setVisibility(View.VISIBLE);
-                six3_on.setVisibility(View.GONE);
-                six4_on.setVisibility(View.GONE);
-                six5_on.setVisibility(View.GONE);
-                six6_on.setVisibility(View.GONE);
-                if (six2_on.getVisibility() == View.VISIBLE) {
-                    vox2 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox2);
-                    vox2.start();
-                    vox2.setLooping(true);
-                }
-                stopAudio(vox1);
-                stopAudio(vox3);
-                stopAudio(vox4);
-                stopAudio(vox5);
-                stopAudio(vox6);
-                break;
-            case R.id.six3_off:
-                //beat3.startAnimation(startAnimation);
-                six1_on.setVisibility(View.GONE);
-                six2_on.setVisibility(View.GONE);
-                six3_on.setVisibility(View.VISIBLE);
-                six4_on.setVisibility(View.GONE);
-                six5_on.setVisibility(View.GONE);
-                six6_on.setVisibility(View.GONE);
-                if (six3_on.getVisibility() == View.VISIBLE) {
-                    vox3 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox3);
-                    vox3.start();
-                    vox3.setLooping(true);
-                }
-                stopAudio(vox1);
-                stopAudio(vox2);
-                stopAudio(vox4);
-                stopAudio(vox5);
-                stopAudio(vox6);
-                break;
-            case R.id.six4_off:
-                //beat4.startAnimation(startAnimation);
-                six1_on.setVisibility(View.GONE);
-                six2_on.setVisibility(View.GONE);
-                six3_on.setVisibility(View.GONE);
-                six4_on.setVisibility(View.VISIBLE);
-                six5_on.setVisibility(View.GONE);
-                six6_on.setVisibility(View.GONE);
-                if (six4_on.getVisibility() == View.VISIBLE) {
-                    vox4 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox4);
-                    vox4.start();
-                    vox4.setLooping(true);
-                }
-                stopAudio(vox1);
-                stopAudio(vox2);
-                stopAudio(vox3);
-                stopAudio(vox5);
-                stopAudio(vox6);
-                break;
-            case R.id.six5_off:
-                //beat5.startAnimation(startAnimation);
-                six1_on.setVisibility(View.GONE);
-                six2_on.setVisibility(View.GONE);
-                six3_on.setVisibility(View.GONE);
-                six4_on.setVisibility(View.GONE);
-                six5_on.setVisibility(View.VISIBLE);
-                six6_on.setVisibility(View.GONE);
-                if (six5_on.getVisibility() == View.VISIBLE) {
-                    vox5 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox5);
-                    vox5.start();
-                    vox5.setLooping(true);
-                }
-                stopAudio(vox1);
-                stopAudio(vox2);
-                stopAudio(vox3);
-                stopAudio(vox4);
-                stopAudio(vox6);
-                break;
-            case R.id.six6_off:
-                //beat6.startAnimation(startAnimation);
-                six1_on.setVisibility(View.GONE);
-                six2_on.setVisibility(View.GONE);
-                six3_on.setVisibility(View.GONE);
-                six4_on.setVisibility(View.GONE);
-                six5_on.setVisibility(View.GONE);
-                six6_on.setVisibility(View.VISIBLE);
-                if (six6_on.getVisibility() == View.VISIBLE) {
-                    vox6 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox6);
-                    vox6.start();
-                    vox6.setLooping(true);
-                }
-                stopAudio(vox1);
-                stopAudio(vox2);
-                stopAudio(vox3);
-                stopAudio(vox4);
-                stopAudio(vox5);
-                break;
-            case R.id.six1_on:
-                //beat1.startAnimation(startAnimation);
-                if(six1_on.getVisibility() == View.VISIBLE) {
-                    six1_on.setVisibility(View.GONE);
-                }
-                stopAudio(vox1);
-                break;
-            case R.id.six2_on:
-                //beat2.startAnimation(startAnimation);
-                if(six2_on.getVisibility() == View.VISIBLE) {
-                    six2_on.setVisibility(View.GONE);
-                }
-                stopAudio(vox2);
-                break;
-            case R.id.six3_on:
-                //beat3.startAnimation(startAnimation);
-                if(six3_on.getVisibility() == View.VISIBLE) {
-                    six3_on.setVisibility(View.GONE);
-                }
-                stopAudio(vox3);
-                break;
-            case R.id.six4_on:
-                //beat4.startAnimation(startAnimation);
-                if(six4_on.getVisibility() == View.VISIBLE) {
-                    six4_on.setVisibility(View.GONE);
-                }
-                stopAudio(vox4);
-                break;
-            case R.id.six5_on:
-                //beat5.startAnimation(startAnimation);
-                if(six5_on.getVisibility() == View.VISIBLE) {
-                    six5_on.setVisibility(View.GONE);
-                }
-                stopAudio(vox5);
-                break;
-            case R.id.six6_on:
-                //beat6.startAnimation(startAnimation);
-                if(six6_on.getVisibility() == View.VISIBLE) {
-                    six6_on.setVisibility(View.GONE);
-                }
-                stopAudio(vox6);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + v.getId());
-        }
     }
 
     private View.OnTouchListener onTouchListener = new View.OnTouchListener() {
@@ -1470,52 +418,52 @@ public class BeatMakingActivity extends AppCompatActivity implements View.OnClic
                             //beat1.startAnimation(startAnimation);
                             eight1_on.setVisibility(View.VISIBLE);
                             if (eight1_on.getVisibility() == View.VISIBLE) {
-                                vox7 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox7);
-                                vox7.start();
-                                vox7.setLooping(true);
+                                vox1 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox1);
+                                vox1.start();
+                                vox1.setLooping(true);
                             }
                             break;
                         case R.id.eight2_off:
                             //beat2.startAnimation(startAnimation);
                             eight2_on.setVisibility(View.VISIBLE);
                             if (eight2_on.getVisibility() == View.VISIBLE) {
-                                vox8 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox8);
-                                vox8.start();
-                                vox8.setLooping(true);
+                                vox2 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox2);
+                                vox2.start();
+                                vox2.setLooping(true);
                             }
                             break;
                         case R.id.eight3_off:
                             //beat3.startAnimation(startAnimation);
                             eight3_on.setVisibility(View.VISIBLE);
                             if (eight3_on.getVisibility() == View.VISIBLE) {
-                                vox9 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox9);
-                                vox9.start();
-                                vox9.setLooping(true);
+                                vox3 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox3);
+                                vox3.start();
+                                vox3.setLooping(true);
                             }
                             break;
                         case R.id.eight4_off:
                             //beat4.startAnimation(startAnimation);
                             eight4_on.setVisibility(View.VISIBLE);
                             if (eight4_on.getVisibility() == View.VISIBLE) {
-                                vox10 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox10);
-                                vox10.start();
-                                vox10.setLooping(true);
+                                vox4 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox4);
+                                vox4.start();
+                                vox4.setLooping(true);
                             }
                             break;
                         case R.id.eight5_off:
                             eight5_on.setVisibility(View.VISIBLE);
                             if (eight5_on.getVisibility() == View.VISIBLE) {
-                                beat7 = MediaPlayer.create(BeatMakingActivity.this, R.raw.beat7);
-                                beat7.start();
-                                beat7.setLooping(true);
+                                vox5 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox5);
+                                vox5.start();
+                                vox5.setLooping(true);
                             }
                             break;
                         case R.id.eight6_off:
                             eight6_on.setVisibility(View.VISIBLE);
                             if (eight6_on.getVisibility() == View.VISIBLE) {
-                                beat8 = MediaPlayer.create(BeatMakingActivity.this, R.raw.beat8);
-                                beat8.start();
-                                beat8.setLooping(true);
+                                vox6 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox6);
+                                vox6.start();
+                                vox6.setLooping(true);
                             }
                             break;
                     }
@@ -1556,30 +504,30 @@ public class BeatMakingActivity extends AppCompatActivity implements View.OnClic
                         case R.id.eight1_off:
                             //beat1.startAnimation(startAnimation);
                             eight1_on.setVisibility(View.GONE);
-                            stopAudio(vox7);
+                            stopAudio(vox1);
                             break;
                         case R.id.eight2_off:
                             //beat2.startAnimation(startAnimation);
                             eight2_on.setVisibility(View.GONE);
-                            stopAudio(vox8);
+                            stopAudio(vox2);
                             break;
                         case R.id.eight3_off:
                             //beat3.startAnimation(startAnimation);
                             eight3_on.setVisibility(View.GONE);
-                            stopAudio(vox9);
+                            stopAudio(vox3);
                             break;
                         case R.id.eight4_off:
                             //beat4.startAnimation(startAnimation);
                             eight4_on.setVisibility(View.GONE);
-                            stopAudio(vox10);
+                            stopAudio(vox4);
                             break;
                         case R.id.eight5_off:
                             eight5_on.setVisibility(View.GONE);
-                            stopAudio(beat7);
+                            stopAudio(vox5);
                             break;
                         case R.id.eight6_off:
                             eight6_on.setVisibility(View.GONE);
-                            stopAudio(beat8);
+                            stopAudio(vox6);
                             break;
                         default:
                             break;
@@ -1590,24 +538,647 @@ public class BeatMakingActivity extends AppCompatActivity implements View.OnClic
             return true;
         }
     };
-
     private void stopAudio(MediaPlayer media) {
         if(media != null && media.isPlaying()){
             media.stop();
         }
     }
-
-    /* 녹음 시 마이크 리소스 제한. 누군가가 lock 걸어놓으면 다른 앱에서 사용할 수 없음.
-     * 따라서 꼭 리소스를 해제해주어야함. */
-    public void closePlayer() {
-        if (beat1 != null) {
-            beat1.release();
-            beat1 = null;
-        }
+    @SuppressLint("ClickableViewAccessibility")
+    public void Touch() {
+        seven1_off.setOnTouchListener(onTouchListener);
+        seven2_off.setOnTouchListener(onTouchListener);
+        seven3_off.setOnTouchListener(onTouchListener);
+        seven4_off.setOnTouchListener(onTouchListener);
+        seven5_off.setOnTouchListener(onTouchListener);
+        seven6_off.setOnTouchListener(onTouchListener);
+        eight1_off.setOnTouchListener(onTouchListener);
+        eight2_off.setOnTouchListener(onTouchListener);
+        eight3_off.setOnTouchListener(onTouchListener);
+        eight4_off.setOnTouchListener(onTouchListener);
+        eight5_off.setOnTouchListener(onTouchListener);
+        eight6_off.setOnTouchListener(onTouchListener);
     }
+
     // 액티비티 이동 메서드
     public void MoveActivity(Class activity) {
         Intent intent = new Intent(this, activity);
         startActivity(intent);
+    }
+    //track1/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //멈춤
+    public void track1_stop() {
+        sound_pool1.stop(beat1);
+        sound_pool1.stop(beat2);
+        sound_pool1.stop(beat3);
+        sound_pool1.stop(beat4);
+        sound_pool1.stop(beat5);
+        sound_pool1.stop(beat6);
+    }
+    //on버튼
+    public void On1(final ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, final SoundPool s, final int m) {
+        on.setVisibility(View.VISIBLE);
+        off1.setVisibility(View.GONE);
+        off2.setVisibility(View.GONE);
+        off3.setVisibility(View.GONE);
+        off4.setVisibility(View.GONE);
+        off5.setVisibility(View.GONE);
+        track1_stop();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (on.getVisibility() == View.VISIBLE) {
+                    track1_stop();
+                    final Croller croller1 = findViewById(R.id.beatvolum1);
+                    float volume = (float)(1-Math.log(100 - croller1.getProgress()) / Math.log(100));
+                    s.play(m, volume, volume, 0, -1, 1f);
+                }
+            }
+        }, 1000); //딜레이 타임 조절
+        if (on.getVisibility() == View.GONE) {
+            track1_stop();
+        }
+    }
+    //off버튼
+    public void Off1(ImageButton on) {
+        track1_stop();
+        if(on.getVisibility() == View.VISIBLE) {
+            on.setVisibility(View.GONE);
+        } if (on.getVisibility() == View.GONE) {
+            track1_stop();
+        }
+    }
+    //on,off합침
+    public void BeatBtn1(ImageButton off_btn, final ImageButton on, final ImageButton off1, final ImageButton off2, final ImageButton off3, final ImageButton off4, final ImageButton off5, final SoundPool s, final int m) {
+        off_btn.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                On1(on, off1, off2, off3, off4, off5, s, m);
+            }
+        });
+        on.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                Off1(on);
+            }
+        });
+    }
+
+
+    //track2/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void track2_stop() {
+        sound_pool2.stop(synth1);
+        sound_pool2.stop(choir);
+        sound_pool2.stop(whistle);
+        sound_pool2.stop(synth2);
+        sound_pool2.stop(piano);
+        sound_pool2.stop(mbira);
+    }
+    //on버튼
+    public void On2(final ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, final SoundPool s, final int m) {
+        on.setVisibility(View.VISIBLE);
+        off1.setVisibility(View.GONE);
+        off2.setVisibility(View.GONE);
+        off3.setVisibility(View.GONE);
+        off4.setVisibility(View.GONE);
+        off5.setVisibility(View.GONE);
+        track2_stop();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (on.getVisibility() == View.VISIBLE) {
+                    track2_stop();
+                    final Croller croller2 = findViewById(R.id.beatvolum2);
+                    float volume = (float)(1-Math.log(100 - croller2.getProgress()) / Math.log(100));
+                    s.play(m, volume, volume, 0, -1, 1f);
+                }
+            }
+        }, 1000); //딜레이 타임 조절
+        if (on.getVisibility() == View.GONE) {
+            track2_stop();
+        }
+    }
+    //off버튼
+    public void Off2(ImageButton on) {
+        track2_stop();
+        if(on.getVisibility() == View.VISIBLE) {
+            on.setVisibility(View.GONE);
+        } if (on.getVisibility() == View.GONE) {
+            track2_stop();
+        }
+    }
+    //on,off합침
+    public void BeatBtn2(ImageButton off_btn, final ImageButton on, final ImageButton off1, final ImageButton off2, final ImageButton off3, final ImageButton off4, final ImageButton off5, final SoundPool s, final int m) {
+        off_btn.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                On2(on, off1, off2, off3, off4, off5, s, m);
+            }
+        });
+        on.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                Off2(on);
+            }
+        });
+    }
+
+
+    //track3/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void track3_stop() {
+        sound_pool3.stop(keys1);
+        sound_pool3.stop(strings1);
+        sound_pool3.stop(mallets);
+        sound_pool3.stop(pluck);
+        sound_pool3.stop(keys2);
+        sound_pool3.stop(flute);
+    }
+    //on버튼
+    public void On3(final ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, final SoundPool s, final int m) {
+        on.setVisibility(View.VISIBLE);
+        off1.setVisibility(View.GONE);
+        off2.setVisibility(View.GONE);
+        off3.setVisibility(View.GONE);
+        off4.setVisibility(View.GONE);
+        off5.setVisibility(View.GONE);
+        track3_stop();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (on.getVisibility() == View.VISIBLE) {
+                    track3_stop();
+                    final Croller croller3 = findViewById(R.id.beatvolum3);
+                    float volume = (float)(1-Math.log(100 - croller3.getProgress()) / Math.log(100));
+                    s.play(m, volume, volume, 0, -1, 1f);
+                }
+            }
+        }, 1000); //딜레이 타임 조절
+        if (on.getVisibility() == View.GONE) {
+            track3_stop();
+        }
+    }
+    //off버튼
+    public void Off3(ImageButton on) {
+        track3_stop();
+        if(on.getVisibility() == View.VISIBLE) {
+            on.setVisibility(View.GONE);
+        } if (on.getVisibility() == View.GONE) {
+            track3_stop();
+        }
+    }
+    //on,off합침
+    public void BeatBtn3(ImageButton off_btn, final ImageButton on, final ImageButton off1, final ImageButton off2, final ImageButton off3, final ImageButton off4, final ImageButton off5, final SoundPool s, final int m) {
+        off_btn.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                On3(on, off1, off2, off3, off4, off5, s, m);
+            }
+        });
+        on.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                Off3(on);
+            }
+        });
+    }
+
+    //track4/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void track4_stop() {
+        sound_pool4.stop(bass1);
+        sound_pool4.stop(synth3);
+        sound_pool4.stop(pad1);
+        sound_pool4.stop(brass1);
+        sound_pool4.stop(strings2);
+        sound_pool4.stop(bass2);
+    }
+    //on버튼
+    public void On4(final ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, final SoundPool s, final int m) {
+        on.setVisibility(View.VISIBLE);
+        off1.setVisibility(View.GONE);
+        off2.setVisibility(View.GONE);
+        off3.setVisibility(View.GONE);
+        off4.setVisibility(View.GONE);
+        off5.setVisibility(View.GONE);
+        track4_stop();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (on.getVisibility() == View.VISIBLE) {
+                    track4_stop();
+                    final Croller croller4 = findViewById(R.id.beatvolum4);
+                    float volume = (float)(1-Math.log(100 - croller4.getProgress()) / Math.log(100));
+                    s.play(m, volume, volume, 0, -1, 1f);
+                }
+            }
+        }, 3000); //딜레이 타임 조절
+        if (on.getVisibility() == View.GONE) {
+            track4_stop();
+        }
+    }
+    //off버튼
+    public void Off4(ImageButton on) {
+        track4_stop();
+        if(on.getVisibility() == View.VISIBLE) {
+            on.setVisibility(View.GONE);
+        } if (on.getVisibility() == View.GONE) {
+            track4_stop();
+        }
+    }
+    //on,off합침
+    public void BeatBtn4(ImageButton off_btn, final ImageButton on, final ImageButton off1, final ImageButton off2, final ImageButton off3, final ImageButton off4, final ImageButton off5, final SoundPool s, final int m) {
+        off_btn.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                On4(on, off1, off2, off3, off4, off5, s, m);
+            }
+        });
+        on.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                Off4(on);
+            }
+        });
+    }
+
+    //track5/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void track5_stop() {
+        sound_pool5.stop(strings3);
+        sound_pool5.stop(pad2);
+        sound_pool5.stop(synth4);
+        sound_pool5.stop(synth5);
+        sound_pool5.stop(brass2);
+        sound_pool5.stop(bass3);
+    }
+    //on버튼
+    public void On5(final ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, final SoundPool s, final int m) {
+        on.setVisibility(View.VISIBLE);
+        off1.setVisibility(View.GONE);
+        off2.setVisibility(View.GONE);
+        off3.setVisibility(View.GONE);
+        off4.setVisibility(View.GONE);
+        off5.setVisibility(View.GONE);
+        track5_stop();Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (on.getVisibility() == View.VISIBLE) {
+                    track5_stop();
+                    final Croller croller5 = findViewById(R.id.beatvolum5);
+                    float volume = (float)(1-Math.log(100 - croller5.getProgress()) / Math.log(100));
+                    s.play(m, volume, volume, 0, -1, 1f);
+                }
+            }
+        }, 1000); //딜레이 타임 조절
+        if (on.getVisibility() == View.GONE) {
+            track5_stop();
+        }
+    }
+    //off버튼
+    public void Off5(ImageButton on) {
+        track5_stop();
+        if(on.getVisibility() == View.VISIBLE) {
+            on.setVisibility(View.GONE);
+        } if (on.getVisibility() == View.GONE) {
+            track5_stop();
+        }
+    }
+    //on,off합침
+    public void BeatBtn5(ImageButton off_btn, final ImageButton on, final ImageButton off1, final ImageButton off2, final ImageButton off3, final ImageButton off4, final ImageButton off5, final SoundPool s, final int m) {
+        off_btn.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                On5(on, off1, off2, off3, off4, off5, s, m);
+            }
+        });
+        on.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                Off5(on);
+            }
+        });
+    }
+
+    //track6/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void track6_stop() {
+        sound_pool6.stop(vox7);
+        sound_pool6.stop(vox8);
+        sound_pool6.stop(vox9);
+        sound_pool6.stop(vox10);
+        sound_pool6.stop(beat7);
+        sound_pool6.stop(beat8);
+    }
+    //on버튼
+    public void On6(final ImageButton on, ImageButton off1, ImageButton off2, ImageButton off3, ImageButton off4, ImageButton off5, final SoundPool s, final int m) {
+        on.setVisibility(View.VISIBLE);
+        off1.setVisibility(View.GONE);
+        off2.setVisibility(View.GONE);
+        off3.setVisibility(View.GONE);
+        off4.setVisibility(View.GONE);
+        off5.setVisibility(View.GONE);
+        track6_stop();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (on.getVisibility() == View.VISIBLE) {
+                    track6_stop();
+                    final Croller croller6 = findViewById(R.id.beatvolum6);
+                    float volume = (float)(1-Math.log(100 - croller6.getProgress()) / Math.log(100));
+                    s.play(m, volume, volume, 0, -1, 1f);
+                }
+            }
+        }, 1000); //딜레이 타임 조절
+        if (on.getVisibility() == View.GONE) {
+            track6_stop();
+        }
+    }
+    //off버튼
+    public void Off6(ImageButton on) {
+        track6_stop();
+        if(on.getVisibility() == View.VISIBLE) {
+            on.setVisibility(View.GONE);
+        } if (on.getVisibility() == View.GONE) {
+            track6_stop();
+        }
+    }
+    //on,off합침
+    public void BeatBtn6(ImageButton off_btn, final ImageButton on, final ImageButton off1, final ImageButton off2, final ImageButton off3, final ImageButton off4, final ImageButton off5, final SoundPool s, final int m) {
+        off_btn.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                On6(on, off1, off2, off3, off4, off5, s, m);
+            }
+        });
+        on.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                Off6(on);
+            }
+        });
+    }
+
+    //findviewbyid
+    public void FindViewByid() {
+        beat1_off = findViewById(R.id.beat1_off);
+        beat2_off = findViewById(R.id.beat2_off);
+        beat3_off = findViewById(R.id.beat3_off);
+        beat4_off = findViewById(R.id.beat4_off);
+        beat5_off = findViewById(R.id.beat5_off);
+        beat6_off = findViewById(R.id.beat6_off);
+
+        beat1_on = findViewById(R.id.beat1_on);
+        beat2_on = findViewById(R.id.beat2_on);
+        beat3_on = findViewById(R.id.beat3_on);
+        beat4_on = findViewById(R.id.beat4_on);
+        beat5_on = findViewById(R.id.beat5_on);
+        beat6_on = findViewById(R.id.beat6_on);
+
+        two1_off = findViewById(R.id.two1_off);
+        two2_off = findViewById(R.id.two2_off);
+        two3_off = findViewById(R.id.two3_off);
+        two4_off = findViewById(R.id.two4_off);
+        two5_off = findViewById(R.id.two5_off);
+        two6_off = findViewById(R.id.two6_off);
+
+        two1_on = findViewById(R.id.two1_on);
+        two2_on = findViewById(R.id.two2_on);
+        two3_on = findViewById(R.id.two3_on);
+        two4_on = findViewById(R.id.two4_on);
+        two5_on = findViewById(R.id.two5_on);
+        two6_on = findViewById(R.id.two6_on);
+
+        three1_off = findViewById(R.id.three1_off);
+        three2_off = findViewById(R.id.three2_off);
+        three3_off = findViewById(R.id.three3_off);
+        three4_off = findViewById(R.id.three4_off);
+        three5_off = findViewById(R.id.three5_off);
+        three6_off = findViewById(R.id.three6_off);
+
+        three1_on = findViewById(R.id.three1_on);
+        three2_on = findViewById(R.id.three2_on);
+        three3_on = findViewById(R.id.three3_on);
+        three4_on = findViewById(R.id.three4_on);
+        three5_on = findViewById(R.id.three5_on);
+        three6_on = findViewById(R.id.three6_on);
+
+        four1_off = findViewById(R.id.four1_off);
+        four2_off = findViewById(R.id.four2_off);
+        four3_off = findViewById(R.id.four3_off);
+        four4_off = findViewById(R.id.four4_off);
+        four5_off = findViewById(R.id.four5_off);
+        four6_off = findViewById(R.id.four6_off);
+
+        four1_on = findViewById(R.id.four1_on);
+        four2_on = findViewById(R.id.four2_on);
+        four3_on = findViewById(R.id.four3_on);
+        four4_on = findViewById(R.id.four4_on);
+        four5_on = findViewById(R.id.four5_on);
+        four6_on = findViewById(R.id.four6_on);
+
+        five1_off = findViewById(R.id.five1_off);
+        five2_off = findViewById(R.id.five2_off);
+        five3_off = findViewById(R.id.five3_off);
+        five4_off = findViewById(R.id.five4_off);
+        five5_off = findViewById(R.id.five5_off);
+        five6_off = findViewById(R.id.five6_off);
+
+        five1_on = findViewById(R.id.five1_on);
+        five2_on = findViewById(R.id.five2_on);
+        five3_on = findViewById(R.id.five3_on);
+        five4_on = findViewById(R.id.five4_on);
+        five5_on = findViewById(R.id.five5_on);
+        five6_on = findViewById(R.id.five6_on);
+
+        six1_off = findViewById(R.id.six1_off);
+        six2_off = findViewById(R.id.six2_off);
+        six3_off = findViewById(R.id.six3_off);
+        six4_off = findViewById(R.id.six4_off);
+        six5_off = findViewById(R.id.six5_off);
+        six6_off = findViewById(R.id.six6_off);
+
+        six1_on = findViewById(R.id.six1_on);
+        six2_on = findViewById(R.id.six2_on);
+        six3_on = findViewById(R.id.six3_on);
+        six4_on = findViewById(R.id.six4_on);
+        six5_on = findViewById(R.id.six5_on);
+        six6_on = findViewById(R.id.six6_on);
+
+        seven1_off = findViewById(R.id.seven1_off);
+        seven2_off = findViewById(R.id.seven2_off);
+        seven3_off = findViewById(R.id.seven3_off);
+        seven4_off = findViewById(R.id.seven4_off);
+        seven5_off = findViewById(R.id.seven5_off);
+        seven6_off = findViewById(R.id.seven6_off);
+
+        seven1_on = findViewById(R.id.seven1_on);
+        seven2_on = findViewById(R.id.seven2_on);
+        seven3_on = findViewById(R.id.seven3_on);
+        seven4_on = findViewById(R.id.seven4_on);
+        seven5_on = findViewById(R.id.seven5_on);
+        seven6_on = findViewById(R.id.seven6_on);
+
+        eight1_off = findViewById(R.id.eight1_off);
+        eight2_off = findViewById(R.id.eight2_off);
+        eight3_off = findViewById(R.id.eight3_off);
+        eight4_off = findViewById(R.id.eight4_off);
+        eight5_off = findViewById(R.id.eight5_off);
+        eight6_off = findViewById(R.id.eight6_off);
+
+
+        eight1_on = findViewById(R.id.eight1_on);
+        eight2_on = findViewById(R.id.eight2_on);
+        eight3_on = findViewById(R.id.eight3_on);
+        eight4_on = findViewById(R.id.eight4_on);
+        eight5_on = findViewById(R.id.eight5_on);
+        eight6_on = findViewById(R.id.eight6_on);
+    }
+    //음원 로더
+    public void Raw_Loder() {
+        //1번째 트랙
+        beat1 = sound_pool1.load(this, R.raw.beat1, 1);
+        beat2 = sound_pool1.load(this, R.raw.beat2, 1);
+        beat3 = sound_pool1.load(this, R.raw.beat3, 1);
+        beat4 = sound_pool1.load(this, R.raw.beat4, 1);
+        beat5 = sound_pool1.load(this, R.raw.beat5, 1);
+        beat6 = sound_pool1.load(this, R.raw.beat6, 1);
+
+        // 2번째 트랙
+        synth1 = sound_pool2.load(this, R.raw.synth1, 1);
+        choir = sound_pool2.load(this, R.raw.choir, 1);
+        whistle = sound_pool2.load(this, R.raw.whistle, 1);
+        synth2 = sound_pool2.load(this, R.raw.synth2, 1);
+        piano = sound_pool2.load(this, R.raw.piano, 1);
+        mbira = sound_pool2.load(this, R.raw.mbira, 1);
+
+        // 3번째 트랙
+        keys1 = sound_pool3.load(this, R.raw.keys1, 1);
+        strings1 = sound_pool3.load(this, R.raw.strings1, 1);
+        mallets = sound_pool3.load(this, R.raw.mallets, 1);
+        pluck = sound_pool3.load(this, R.raw.pluck, 1);
+        keys2 = sound_pool3.load(this, R.raw.keys2, 1);
+        flute = sound_pool3.load(this, R.raw.flute, 1);
+
+        // 4번째 트랙
+        bass1 = sound_pool4.load(this, R.raw.bass1, 1);
+        synth3 = sound_pool4.load(this, R.raw.synth3, 1);
+        pad1 = sound_pool4.load(this, R.raw.pad1, 1);
+        brass1 = sound_pool4.load(this, R.raw.brass1, 1);
+        strings2 = sound_pool4.load(this, R.raw.strings2, 1);
+        bass2 = sound_pool4.load(this, R.raw.bass2, 1);
+
+        // 5번째 트랙
+        strings3 = sound_pool5.load(this, R.raw.strings3, 1);
+        pad2 = sound_pool5.load(this, R.raw.pad2, 1);
+        synth4 = sound_pool5.load(this, R.raw.synth4, 1);
+        synth5 = sound_pool5.load(this, R.raw.synth5, 1);
+        brass2 = sound_pool5.load(this, R.raw.brass2, 1);
+        bass3 = sound_pool5.load(this, R.raw.bass3, 1);
+
+        // 6번째 트랙
+        vox7 = sound_pool6.load(this, R.raw.vox7, 1);
+        vox8 = sound_pool6.load(this, R.raw.vox8, 1);
+        vox9 = sound_pool6.load(this, R.raw.vox9, 1);
+        vox10 = sound_pool6.load(this, R.raw.vox10, 1);
+        beat7 = sound_pool6.load(this, R.raw.beat7, 1);
+        beat8 = sound_pool6.load(this, R.raw.beat8, 1);
+    }
+    //뷰 Gone
+    public void visible_Gone() {
+        beat1_on.setVisibility(View.GONE);
+        beat2_on.setVisibility(View.GONE);
+        beat3_on.setVisibility(View.GONE);
+        beat4_on.setVisibility(View.GONE);
+        beat5_on.setVisibility(View.GONE);
+        beat6_on.setVisibility(View.GONE);
+
+        two1_on.setVisibility(View.GONE);
+        two2_on.setVisibility(View.GONE);
+        two3_on.setVisibility(View.GONE);
+        two4_on.setVisibility(View.GONE);
+        two5_on.setVisibility(View.GONE);
+        two6_on.setVisibility(View.GONE);
+
+        three1_on.setVisibility(View.GONE);
+        three2_on.setVisibility(View.GONE);
+        three3_on.setVisibility(View.GONE);
+        three4_on.setVisibility(View.GONE);
+        three5_on.setVisibility(View.GONE);
+        three6_on.setVisibility(View.GONE);
+
+        four1_on.setVisibility(View.GONE);
+        four2_on.setVisibility(View.GONE);
+        four3_on.setVisibility(View.GONE);
+        four4_on.setVisibility(View.GONE);
+        four5_on.setVisibility(View.GONE);
+        four6_on.setVisibility(View.GONE);
+
+        five1_on.setVisibility(View.GONE);
+        five2_on.setVisibility(View.GONE);
+        five3_on.setVisibility(View.GONE);
+        five4_on.setVisibility(View.GONE);
+        five5_on.setVisibility(View.GONE);
+        five6_on.setVisibility(View.GONE);
+
+        six1_on.setVisibility(View.GONE);
+        six2_on.setVisibility(View.GONE);
+        six3_on.setVisibility(View.GONE);
+        six4_on.setVisibility(View.GONE);
+        six5_on.setVisibility(View.GONE);
+        six6_on.setVisibility(View.GONE);
+
+        seven1_on.setVisibility(View.GONE);
+        seven2_on.setVisibility(View.GONE);
+        seven3_on.setVisibility(View.GONE);
+        seven4_on.setVisibility(View.GONE);
+        seven5_on.setVisibility(View.GONE);
+        seven6_on.setVisibility(View.GONE);
+
+        eight1_on.setVisibility(View.GONE);
+        eight2_on.setVisibility(View.GONE);
+        eight3_on.setVisibility(View.GONE);
+        eight4_on.setVisibility(View.GONE);
+        eight5_on.setVisibility(View.GONE);
+        eight6_on.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch(requestCode){
+            case 1:
+                if(grantResults.length > 0){
+                    if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                        Toast.makeText(this, "녹음 권한 동의함", Toast.LENGTH_SHORT).show();
+                    } else if(grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                        Toast.makeText(this, "녹음 권한 거부함", Toast.LENGTH_SHORT).show();
+                    }
+                } else{
+                    Toast.makeText(this, "녹음 권한 획득 실패", Toast.LENGTH_SHORT).show();
+                }
+
+        }
+    }
+
+    @Override
+    public void onBackPressed() { //뒤로가기 버튼
+        super.onBackPressed();
+        track1_stop();
+        track2_stop();
+        track3_stop();
+        track4_stop();
+        track5_stop();
+        track6_stop();
+    }
+    @Override
+    protected void onUserLeaveHint() {		// 홈 버튼 감지
+        super.onUserLeaveHint();
+        track1_stop();
+        track2_stop();
+        track3_stop();
+        track4_stop();
+        track5_stop();
+        track6_stop();
     }
 }
