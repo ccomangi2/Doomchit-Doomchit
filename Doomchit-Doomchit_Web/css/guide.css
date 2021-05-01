@@ -14,11 +14,27 @@
 }
 
 .video {
-  width: 45%;
-  height: 45%;
-  /* position: relative; */
-  /* padding-bottom: 56.25%; */
-  /* text-align: left; */
+  width: 100%;
+  max-width: 900px;
+  box-sizing: border-box;
+}
+
+.video-container {
+  position: relative;
+  width: 80%;
+  height: auto;
+  padding-top: 50%;
+}
+
+iframe {
+  z-index: 1;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 90%;
+  border-radius: 30px;
+  margin-bottom: 3%;
 }
 
 .playbtn {
