@@ -19,6 +19,19 @@
   box-sizing: border-box;
 }
 
+#play-video {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0.5%;
+}
+
+#play-video > img {
+  border-radius: 30px;
+  height: auto;
+}
+
 .video-container {
   position: relative;
   width: 75%;
@@ -27,16 +40,16 @@
 }
 
 iframe {
-  z-index: 1;
   top: 0;
   left: 0;
   position: absolute;
   width: 100%;
-  height: 80%;
+  height: 84%;
   border-radius: 30px;
   margin-bottom: 3%;
+  display: none;
 }
 
-.playbtn {
+/* .playbtn {
   margin: 10%;
-}
+} */
