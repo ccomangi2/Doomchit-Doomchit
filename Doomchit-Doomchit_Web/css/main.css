@@ -1,1 +1,30 @@
-* {padding: 0px; margin: 0px;}
+html {
+  font-family: "vtfont";
+  /* 글꼴 크기 조정을 방지 */
+  -webkit-text-size-adjust: 100%;
+  /* 폰트를 부드럽게 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* 웹킷 마음대로 눌림 하이라이트 막음 */
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  width: 7%;
+  height: 1px;
+  border-width: 0.5px 0px 0px 0px;
+  border-style: solid;
+  border-color: #ed0082;
+}
+
+/* 브라우저는 렌더링 속도, 정밀도에 대한 가독성을 강조 */
+/* @media screen and (min-width: 960px) { 
+  html, body {
+      text-rendering: optimizeLegibility;
+  }
+} */

@@ -1,0 +1,20 @@
+.list_container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  margin: 2%;
+}
+
+.list {
+  color: #ed0082;
+  font-size: 1em;
+}
+
+.content {
+  color: #ffffff;
+  font-size: 0.7em;
+  margin-top: 12px;
+}
