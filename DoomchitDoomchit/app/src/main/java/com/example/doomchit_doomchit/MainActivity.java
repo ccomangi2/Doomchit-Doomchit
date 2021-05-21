@@ -18,8 +18,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton btn_play; // 비트 제작
     ImageButton btn_list; // 녹음 리스트
 
-    private Socket socket;
-    private String SERVER_URL = "http://xxx.xxx.xxx.xxx:3000"; //소켓 통신할 서버url
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +52,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void SocketConnect() {
-        try{
-            socket = IO.socket(SERVER_URL);
-        } catch (URISyntaxException ue) {
-            ue.printStackTrace();
-        }
-        socket.connect();
-
-    }
 }
