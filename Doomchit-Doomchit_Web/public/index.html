@@ -60,7 +60,7 @@
       <div class="share" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://github.com/ccomangi2/Doomchit-Doomchit','Doomchit-Doomchit','width=500,height=600,location=no,status=no,scrollbars=no');">
         <img src="img/web_share.png" alt="Share on Facebook"/>
       </div>
-      <div class="play" onclick="location.href ='#'"><img src="img/web_playsound.png" alt="play sound button"/></div>
+      <div class="play" onclick="location.href ='https://firebasestorage.googleapis.com/v0/b/doomchit-doomchit.appspot.com/o/test%2Fstrings2.mp3?alt=media&token=101bf559-b246-4b54-acc7-d4358e6158af'"><img src="img/web_playsound.png" alt="play sound button"/></div>
     </div>
     <div class="box">
       <div class="song_title">그만큼 신이 나신다는 거지</div>
@@ -69,7 +69,7 @@
       <div class="share" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://github.com/ccomangi2/Doomchit-Doomchit','Doomchit-Doomchit','width=500,height=600,location=no,status=no,scrollbars=no');">
         <img src="img/web_share.png" alt="Share on Facebook"/>
       </div>
-      <div class="play" onclick="location.href ='#'"><img src="img/web_playsound.png" alt="play sound button"/></div>
+      <div class="play" onclick="location.href ='https://firebasestorage.googleapis.com/v0/b/doomchit-doomchit.appspot.com/o/test%2Fstrings2.mp3?alt=media&token=101bf559-b246-4b54-acc7-d4358e6158af'"><img src="img/web_playsound.png" alt="play sound button"/></div>
     </div>
     <div class="box">
       <div class="song_title">그만큼 신이 나신다는 거지</div>
@@ -78,18 +78,18 @@
       <div class="share" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://github.com/ccomangi2/Doomchit-Doomchit','Doomchit-Doomchit','width=500,height=600,location=no,status=no,scrollbars=no');">
         <img src="img/web_share.png" alt="Share on Facebook"/>
       </div>
-      <div class="play" onclick="location.href ='#'"><img src="img/web_playsound.png" alt="play sound button"/></div>
+      <div class="play" onclick="location.href ='https://firebasestorage.googleapis.com/v0/b/doomchit-doomchit.appspot.com/o/test%2Fstrings2.mp3?alt=media&token=101bf559-b246-4b54-acc7-d4358e6158af'"><img src="img/web_playsound.png" alt="play sound button"/></div>
     </div>
-    <div class="box" >
+    <div class="box">
       <div class="song_title">그만큼 신이 나신다는 거지</div>
       <div class="composer">- 나는 모짜렐라</div>
       <div class="music_length">3:05</div>
       <div class="share" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://github.com/ccomangi2/Doomchit-Doomchit','Doomchit-Doomchit','width=500,height=600,location=no,status=no,scrollbars=no');">
         <img src="img/web_share.png" alt="Share on Facebook"/>
       </div>
-      <!-- <div class="share" onclick="javascript:share('https://github.com/ccomangi2/Doomchit-Doomchit/')" target="_blank" ><img src="img/web_share.png" alt="Share on Facebook"/></div> -->
-      <div class="play" onclick="location.href ='#'"><img src="img/web_playsound.png" alt="play sound button"/></div>
+      <div class="play" onclick="location.href ='https://firebasestorage.googleapis.com/v0/b/doomchit-doomchit.appspot.com/o/test%2Fstrings2.mp3?alt=media&token=101bf559-b246-4b54-acc7-d4358e6158af'"><img src="img/web_playsound.png" alt="play sound button"/></div>
     </div>
+ 
   </div>
 </center>
 
@@ -126,16 +126,32 @@
     </div>
   </div>  -->
 
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="/__/firebase/8.6.2/firebase-app.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="/__/firebase/8.6.2/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
 
-<!-- Initialize Firebase -->
-<script src="/__/firebase/init.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyDp0Ih07F0aTZltrmeWoOhQkNjcAri4CzU",
+    authDomain: "doomchit-doomchit.firebaseapp.com",
+    databaseURL: "https://doomchit-doomchit-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "doomchit-doomchit",
+    storageBucket: "doomchit-doomchit.appspot.com",
+    messagingSenderId: "898978285254",
+    appId: "1:898978285254:web:52e2e11e3770163bcf39c7",
+    measurementId: "G-B089KPEVS5"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 
 </body>
 
 </html>
+
