@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "898978285254",
+    "firebase_url": "https://doomchit-doomchit-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "doomchit-doomchit",
+    "storage_bucket": "doomchit-doomchit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898978285254:android:93b0f4f014a80034cf39c7",
+        "android_client_info": {
+          "package_name": "com.example.doomchit_doomchit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898978285254-c909po9p4sl89mbo3u03bg6omfh14pds.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.doomchit_doomchit",
+            "certificate_hash": "74b55e31456d37c7947474d4917c07c4dd543061"
+          }
+        },
+        {
+          "client_id": "898978285254-o1m0ac2birmvflke4bdcnp2k5hn95nu0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJN-qH0JGnGwlPSD_caUzQ7FASqW9jzok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898978285254-o1m0ac2birmvflke4bdcnp2k5hn95nu0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -22,8 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".BeatMakingActivity" android:theme="@style/Theme.AppCompat" android:screenOrientation="landscape" />
-        <activity android:name=".RecordListActivity" android:theme="@style/Theme.AppCompat" android:screenOrientation="landscape"
-            tools:ignore="MissingClass" />
+        <activity android:name=".RecordListActivity" android:theme="@style/Theme.AppCompat" android:screenOrientation="landscape" />
     </application>
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
