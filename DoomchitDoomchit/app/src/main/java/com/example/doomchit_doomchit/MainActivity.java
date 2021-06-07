@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         btn_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MoveActivity(BeatMakingActivity.class);
+                MoveActivity(BeatSelectActivity.class);
             }
         });
 
