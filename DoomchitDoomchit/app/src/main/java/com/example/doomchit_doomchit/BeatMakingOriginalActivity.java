@@ -28,8 +28,6 @@ import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
 
 public class BeatMakingOriginalActivity extends AppCompatActivity {
     // 녹음을 위한
-
-
     private SoundPool sound_pool1;
     private SoundPool sound_pool2;
     private SoundPool sound_pool3;

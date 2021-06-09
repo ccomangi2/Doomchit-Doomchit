@@ -35,7 +35,7 @@ public class BeatSelectActivity extends AppCompatActivity {
         original_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MoveActivity(BeatMakingPopActivity.class);
+                MoveActivity(BeatMakingOriginalActivity.class);
             }
         });
 
@@ -51,7 +51,7 @@ public class BeatSelectActivity extends AppCompatActivity {
         classic_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MoveActivity(BeatMakingPopActivity.class);
+                MoveActivity(BeatMakingClassicActivity.class);
             }
         });
 
