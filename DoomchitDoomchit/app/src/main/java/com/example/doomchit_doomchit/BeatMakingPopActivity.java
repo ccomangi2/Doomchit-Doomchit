@@ -60,7 +60,7 @@ public class BeatMakingPopActivity extends AppCompatActivity {
     public static String BROADCAST_EXTRA_DATA = "com.example.doomchit_doomchit.waveform_data";
     private ImageButton record_btn;
     private boolean isRecording = false;
-
+    private Long durationTime = Long.valueOf(0);
 
     private SoundPool sound_pool1;
     private SoundPool sound_pool2;
@@ -1167,22 +1167,6 @@ public class BeatMakingPopActivity extends AppCompatActivity {
         eight6_on.setVisibility(View.GONE);
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch(requestCode){
-            case 1:
-                if(grantResults.length > 0){
-                    if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                        Toast.makeText(this, "녹음 권한 동의함", Toast.LENGTH_SHORT).show();
-                    } else if(grantResults[0] == PackageManager.PERMISSION_DENIED) {
-                        Toast.makeText(this, "녹음 권한 거부함", Toast.LENGTH_SHORT).show();
-                    }
-                } else{
-                    Toast.makeText(this, "녹음 권한 획득 실패", Toast.LENGTH_SHORT).show();
-                }
-
-        }
-    }
 
     @Override
     public void onBackPressed() { //뒤로가기 버튼
@@ -1239,6 +1223,7 @@ public class BeatMakingPopActivity extends AppCompatActivity {
                 ContextCompat.startForegroundService(this, intent);
                 record_btn.setImageResource(R.drawable.record_btn_on);
                 isRecording = true;
+                durationTime = System.currentTimeMillis();
             }
         }
     }
@@ -1247,6 +1232,7 @@ public class BeatMakingPopActivity extends AppCompatActivity {
         @Override
         public void onReceive(final Context context, final Intent intent) {
             final String action = intent.getAction();
+            final long time = (System.currentTimeMillis() - durationTime)/1000;
             if (BROADCAST_WAVEFORM.equals(action) && intent.getExtras() != null) {
                 final File file = (File) intent.getExtras().getSerializable(BROADCAST_EXTRA_DATA);
 
@@ -1276,7 +1262,11 @@ public class BeatMakingPopActivity extends AppCompatActivity {
                             .setView(layout)
                             .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    file.renameTo(new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),System.currentTimeMillis() / 1000 +"_"+title.getText().toString()+"_"+name.getText().toString()+ ".wav"));
+                                    String tstr = title.getText().toString();
+                                    tstr.replace("_", "");
+                                    String nstr = name.getText().toString();
+                                    nstr.replace("_", "");
+                                    file.renameTo(new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),System.currentTimeMillis() / 1000 +"_"+time+"_"+tstr+"_"+nstr+ ".wav"));
                                 }
                             }).show();
 

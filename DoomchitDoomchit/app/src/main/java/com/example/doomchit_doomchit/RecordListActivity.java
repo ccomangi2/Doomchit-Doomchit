@@ -3,6 +3,9 @@ package com.example.doomchit_doomchit;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.AudioFormat;
+import android.media.MediaMetadataRetriever;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -20,6 +23,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.sdsmdg.harjot.crollerTest.utilities.Utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -48,27 +53,15 @@ public class RecordListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         mArrayList = new ArrayList<RecordList>();
+        mAdapter = new RecordListAdapter(getApplicationContext());
 
         for (int i=0; i< files.length; i++) {
             String[] info = files[i].getName().split("_");
-
-//
-//
-//            mArrayList.add(new RecordList());
-
+            mAdapter.addItem(new RecordList(timeFormat(info[1]),info[2],info[3].substring(0,info[3].length()-4)));
         }
-
-
-        for(int i=0; i<100; i++) {
-            mArrayList.add(new RecordList("00:00", "녹음 제목이오", "이수빈"));
-        }
-
-        mAdapter = new RecordListAdapter(getApplicationContext());
-
-
         mAdapter.notifyDataSetChanged();
-
         recyclerView.setAdapter(mAdapter);
+
 
         mAdapter.setOnItemClicklistener(new OnRecordListClickListener() {
             @Override
@@ -111,14 +104,15 @@ public class RecordListActivity extends AppCompatActivity {
         }
     }
 
-//    private static float getDuration(File file) throws Exception {
-//        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
-//        AudioFormat format = audioInputStream.getFormat();
-//        long audioFileLength = file.length();
-//        int frameSize = format.getFrameSize();
-//        float frameRate = format.getFrameRate();
-//        float durationInSeconds = (audioFileLength / (frameSize * frameRate));
-//        return (durationInSeconds);
-//    }
+    protected String timeFormat(String second){
+        int time = Integer.parseInt(second);
+        String min = String.valueOf(time/60);
+        String sec = String.valueOf(time%60);
+        if(min.length()==1) min = "0"+min;
+        if(sec.length()==1) sec = "0"+sec;
+        return min+":"+sec;
+    }
+
+
 
 }

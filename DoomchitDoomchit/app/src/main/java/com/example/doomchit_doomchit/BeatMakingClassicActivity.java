@@ -58,6 +58,7 @@ public class BeatMakingClassicActivity extends AppCompatActivity {
     public static String BROADCAST_EXTRA_DATA = "com.example.doomchit_doomchit.waveform_data";
     private ImageButton record_btn;
     private boolean isRecording = false;
+    private Long durationTime = Long.valueOf(0);
 
     private SoundPool sound_pool1;
     private SoundPool sound_pool2;
@@ -1240,6 +1241,7 @@ public class BeatMakingClassicActivity extends AppCompatActivity {
                 ContextCompat.startForegroundService(this, intent);
                 record_btn.setImageResource(R.drawable.record_btn_on);
                 isRecording = true;
+                durationTime = System.currentTimeMillis();
             }
         }
     }
@@ -1247,6 +1249,7 @@ public class BeatMakingClassicActivity extends AppCompatActivity {
         @Override
         public void onReceive(final Context context, final Intent intent) {
             final String action = intent.getAction();
+            final long time = (System.currentTimeMillis() - durationTime)/1000;
             if (BROADCAST_WAVEFORM.equals(action) && intent.getExtras() != null) {
                 final File file = (File) intent.getExtras().getSerializable(BROADCAST_EXTRA_DATA);
 
@@ -1276,7 +1279,11 @@ public class BeatMakingClassicActivity extends AppCompatActivity {
                             .setView(layout)
                             .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    file.renameTo(new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),System.currentTimeMillis() / 1000 +"_"+title.getText().toString()+"_"+name.getText().toString()+ ".wav"));
+                                    String tstr = title.getText().toString();
+                                    tstr.replace("_", "");
+                                    String nstr = name.getText().toString();
+                                    nstr.replace("_", "");
+                                    file.renameTo(new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),System.currentTimeMillis() / 1000 +"_"+time+"_"+tstr+"_"+nstr+ ".wav"));
                                 }
                             }).show();
 
