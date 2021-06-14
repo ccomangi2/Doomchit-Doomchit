@@ -63,6 +63,7 @@ public class BeatMakingOriginalActivity extends AppCompatActivity {
     private SoundPool sound_pool4;
     private SoundPool sound_pool5;
     private SoundPool sound_pool6;
+    private SoundPool sound_pool78;
     ImageButton back; // 뒤로가기
 
     // 1트랙
@@ -96,12 +97,12 @@ public class BeatMakingOriginalActivity extends AppCompatActivity {
     ImageButton six1_on, six2_on, six3_on, six4_on, six5_on, six6_on;
 
     // 7트랙
-    MediaPlayer fx1, fx2, fx3, fx4, fx5, fx6;
+    int fx1, fx2, fx3, fx4, fx5, fx6;
     ImageButton seven1_off, seven2_off, seven3_off, seven4_off, seven5_off, seven6_off;
     ImageButton seven1_on, seven2_on, seven3_on, seven4_on, seven5_on, seven6_on;
 
     // 8트랙
-    MediaPlayer vox1, vox2, vox3, vox4, vox5, vox6;
+    int vox1, vox2, vox3, vox4, vox5, vox6;
     ImageButton eight1_off, eight2_off, eight3_off, eight4_off, eight5_off, eight6_off;
     ImageButton eight1_on, eight2_on, eight3_on, eight4_on, eight5_on, eight6_on;
 
@@ -123,6 +124,7 @@ public class BeatMakingOriginalActivity extends AppCompatActivity {
         sound_pool4 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
         sound_pool5 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
         sound_pool6 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        sound_pool78 = new SoundPool(12, AudioManager.STREAM_MUSIC, 0);
 
         FindViewByid();
         Raw_Loder();
@@ -381,9 +383,7 @@ public class BeatMakingOriginalActivity extends AppCompatActivity {
                             //beat1.startAnimation(startAnimation);
                             seven1_on.setVisibility(View.VISIBLE);
                             if (seven1_on.getVisibility() == View.VISIBLE) {
-                                fx1 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.fx1);
-                                fx1.start();
-                                fx1.setLooping(true);
+                                sound_pool78.play(fx1, 100, 100, 0, -1, 1f);
                             }
                             //Toast.makeText(BeatMakingActivity.this, "7-1", Toast.LENGTH_SHORT).show();
                             break;
@@ -391,43 +391,33 @@ public class BeatMakingOriginalActivity extends AppCompatActivity {
                             //beat2.startAnimation(startAnimation);
                             seven2_on.setVisibility(View.VISIBLE);
                             if (seven2_on.getVisibility() == View.VISIBLE) {
-                                fx2 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.fx2);
-                                fx2.start();
-                                fx2.setLooping(true);
+                                sound_pool78.play(fx2, 100, 100, 0, -1, 1f);
                             }
                             break;
                         case R.id.seven3_off:
                             //beat3.startAnimation(startAnimation);
                             seven3_on.setVisibility(View.VISIBLE);
                             if (seven3_on.getVisibility() == View.VISIBLE) {
-                                fx3 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.fx3);
-                                fx3.start();
-                                fx3.setLooping(true);
+                                sound_pool78.play(fx3, 100, 100, 0, -1, 1f);
                             }
                             break;
                         case R.id.seven4_off:
                             //beat4.startAnimation(startAnimation);
                             seven4_on.setVisibility(View.VISIBLE);
                             if (seven4_on.getVisibility() == View.VISIBLE) {
-                                fx4 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.fx4);
-                                fx4.start();
-                                fx4.setLooping(true);
+                                sound_pool78.play(fx4, 100, 100, 0, -1, 1f);
                             }
                             break;
                         case R.id.seven5_off:
                             seven5_on.setVisibility(View.VISIBLE);
                             if (seven5_on.getVisibility() == View.VISIBLE) {
-                                fx5 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.fx5);
-                                fx5.start();
-                                fx5.setLooping(true);
+                                sound_pool78.play(fx5, 100, 100, 0, -1, 1f);
                             }
                             break;
                         case R.id.seven6_off:
                             seven6_on.setVisibility(View.VISIBLE);
                             if (seven6_on.getVisibility() == View.VISIBLE) {
-                                fx6 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.fx6);
-                                fx6.start();
-                                fx6.setLooping(true);
+                                sound_pool78.play(fx6, 100, 100, 0, -1, 1f);
                             }
                             break;
 
@@ -436,52 +426,40 @@ public class BeatMakingOriginalActivity extends AppCompatActivity {
                             //beat1.startAnimation(startAnimation);
                             eight1_on.setVisibility(View.VISIBLE);
                             if (eight1_on.getVisibility() == View.VISIBLE) {
-                                vox1 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.vox1);
-                                vox1.start();
-                                vox1.setLooping(true);
+                                sound_pool78.play(vox1, 100, 100, 0, -1, 1f);
                             }
                             break;
                         case R.id.eight2_off:
                             //beat2.startAnimation(startAnimation);
                             eight2_on.setVisibility(View.VISIBLE);
                             if (eight2_on.getVisibility() == View.VISIBLE) {
-                                vox2 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.vox2);
-                                vox2.start();
-                                vox2.setLooping(true);
+                                sound_pool78.play(vox2, 100, 100, 0, -1, 1f);
                             }
                             break;
                         case R.id.eight3_off:
                             //beat3.startAnimation(startAnimation);
                             eight3_on.setVisibility(View.VISIBLE);
                             if (eight3_on.getVisibility() == View.VISIBLE) {
-                                vox3 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.vox3);
-                                vox3.start();
-                                vox3.setLooping(true);
+                                sound_pool78.play(vox3, 100, 100, 0, -1, 1f);
                             }
                             break;
                         case R.id.eight4_off:
                             //beat4.startAnimation(startAnimation);
                             eight4_on.setVisibility(View.VISIBLE);
                             if (eight4_on.getVisibility() == View.VISIBLE) {
-                                vox4 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.vox4);
-                                vox4.start();
-                                vox4.setLooping(true);
+                                sound_pool78.play(vox4, 100, 100, 0, -1, 1f);
                             }
                             break;
                         case R.id.eight5_off:
                             eight5_on.setVisibility(View.VISIBLE);
                             if (eight5_on.getVisibility() == View.VISIBLE) {
-                                vox5 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.vox5);
-                                vox5.start();
-                                vox5.setLooping(true);
+                                sound_pool78.play(vox5, 100, 100, 0, -1, 1f);
                             }
                             break;
                         case R.id.eight6_off:
                             eight6_on.setVisibility(View.VISIBLE);
                             if (eight6_on.getVisibility() == View.VISIBLE) {
-                                vox6 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.vox6);
-                                vox6.start();
-                                vox6.setLooping(true);
+                                sound_pool78.play(vox6, 100, 100, 0, -1, 1f);
                             }
                             break;
                     }
@@ -492,60 +470,60 @@ public class BeatMakingOriginalActivity extends AppCompatActivity {
                         case R.id.seven1_off:
                             //beat1.startAnimation(startAnimation);
                             seven1_on.setVisibility(View.GONE);
-                            stopAudio(fx1);
+                            sound_pool78.stop(fx1);
                             break;
                         case R.id.seven2_off:
                             //beat2.startAnimation(startAnimation);
                             seven2_on.setVisibility(View.GONE);
-                            stopAudio(fx2);
+                            sound_pool78.stop(fx2);
                             break;
                         case R.id.seven3_off:
                             //beat3.startAnimation(startAnimation);
                             seven3_on.setVisibility(View.GONE);
-                            stopAudio(fx3);
+                            sound_pool78.stop(fx3);
                             break;
                         case R.id.seven4_off:
                             //beat4.startAnimation(startAnimation);
                             seven4_on.setVisibility(View.GONE);
-                            stopAudio(fx4);
+                            sound_pool78.stop(fx4);
                             break;
                         case R.id.seven5_off:
                             seven5_on.setVisibility(View.GONE);
-                            stopAudio(fx5);
+                            sound_pool78.stop(fx5);
                             break;
                         case R.id.seven6_off:
                             seven6_on.setVisibility(View.GONE);
-                            stopAudio(fx6);
+                            sound_pool78.stop(fx6);
                             break;
 
                         // 8트랙 vox1, vox2, vox3, vox4, vox5, vox6;
                         case R.id.eight1_off:
                             //beat1.startAnimation(startAnimation);
                             eight1_on.setVisibility(View.GONE);
-                            stopAudio(vox1);
+                            sound_pool78.stop(vox1);
                             break;
                         case R.id.eight2_off:
                             //beat2.startAnimation(startAnimation);
                             eight2_on.setVisibility(View.GONE);
-                            stopAudio(vox2);
+                            sound_pool78.stop(vox2);
                             break;
                         case R.id.eight3_off:
                             //beat3.startAnimation(startAnimation);
                             eight3_on.setVisibility(View.GONE);
-                            stopAudio(vox3);
+                            sound_pool78.stop(vox3);
                             break;
                         case R.id.eight4_off:
                             //beat4.startAnimation(startAnimation);
                             eight4_on.setVisibility(View.GONE);
-                            stopAudio(vox4);
+                            sound_pool78.stop(vox4);
                             break;
                         case R.id.eight5_off:
                             eight5_on.setVisibility(View.GONE);
-                            stopAudio(vox5);
+                            sound_pool78.stop(vox5);
                             break;
                         case R.id.eight6_off:
                             eight6_on.setVisibility(View.GONE);
-                            stopAudio(vox6);
+                            sound_pool78.stop(vox6);
                             break;
                         default:
                             break;
@@ -1102,6 +1080,22 @@ public class BeatMakingOriginalActivity extends AppCompatActivity {
         vox10 = sound_pool6.load(this, R.raw.vox10, 1);
         beat7 = sound_pool6.load(this, R.raw.beat7, 1);
         beat8 = sound_pool6.load(this, R.raw.beat8, 1);
+
+        //7번 트랙
+        fx1 = sound_pool6.load(this, R.raw.fx1, 1);
+        fx2 = sound_pool6.load(this, R.raw.fx2, 1);
+        fx3 = sound_pool6.load(this, R.raw.fx3, 1);
+        fx4 = sound_pool6.load(this, R.raw.fx4, 1);
+        fx5 = sound_pool6.load(this, R.raw.fx5, 1);
+        fx6 = sound_pool6.load(this, R.raw.fx6, 1);
+
+        //8번 트랙
+        vox1 = sound_pool6.load(this, R.raw.vox1, 1);
+        vox2 = sound_pool6.load(this, R.raw.vox2, 1);
+        vox3 = sound_pool6.load(this, R.raw.vox3, 1);
+        vox4 = sound_pool6.load(this, R.raw.vox4, 1);
+        vox5 = sound_pool6.load(this, R.raw.vox5, 1);
+        vox6 = sound_pool6.load(this, R.raw.vox6, 1);
     }
     //뷰 Gone
     public void visible_Gone() {
