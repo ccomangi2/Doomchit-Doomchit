@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_logo_round"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.NoTitleBar">
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
             android:value="true"/>
@@ -22,9 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BeatMakingActivity" android:theme="@style/Theme.AppCompat" android:screenOrientation="landscape" />
+        <activity android:name=".BeatMakingPopActivity" android:theme="@style/Theme.AppCompat" android:screenOrientation="landscape" />
+        <activity android:name=".BeatMakingClassicActivity" android:theme="@style/Theme.AppCompat" android:screenOrientation="landscape" />
+        <activity android:name=".BeatMakingOriginalActivity" android:theme="@style/Theme.AppCompat" android:screenOrientation="landscape" />
         <activity android:name=".RecordListActivity" android:theme="@style/Theme.AppCompat" android:screenOrientation="landscape"
             tools:ignore="MissingClass" />
+        <activity android:name=".BeatSelectActivity" android:theme="@style/Theme.AppCompat" />
     </application>
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />

@@ -1,30 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <ImageView
-        android:id="@+id/img_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        app:srcCompat="@drawable/lunchpad_background" />
+    android:background="@drawable/lunchpad_background">
 
     <ImageButton
         android:id="@+id/back"
-        android:layout_width="40dp"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="45dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="40dp"
         android:layout_weight="1"
         android:adjustViewBounds="true"
@@ -33,19 +23,20 @@
         app:srcCompat="@drawable/back_btn" />
 
     <LinearLayout
-        android:layout_width="90dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
         android:gravity="right"
         android:orientation="vertical">
 
         <ImageButton
             android:id="@+id/guide"
-            android:layout_width="60dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="0dp"
@@ -55,7 +46,7 @@
 
         <ImageButton
             android:id="@+id/record_btn"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
             android:layout_height="100dp"
             android:layout_below="@+id/guide"
             android:layout_alignParentEnd="true"
@@ -68,7 +59,7 @@
 
     <ImageButton
         android:id="@+id/record_btn_on"
-        android:layout_width="90dp"
+        android:layout_width="80dp"
         android:layout_height="100dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
@@ -80,10 +71,14 @@
         app:srcCompat="@drawable/record_btn_on" />
 
     <RelativeLayout
+        android:id="@+id/layout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="40dp">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="85dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="25dp">
 
         <com.sdsmdg.harjot.crollerTest.Croller
             android:id="@+id/beatvolum1"
@@ -104,6 +99,7 @@
             app:progress_primary_color="#58E6FC"
             app:progress_secondary_color="#EDEDED"
             app:start_offset="45" />
+
         <com.gigamole.library.ShadowLayout
             android:id="@+id/shadowLayout"
             android:layout_width="wrap_content"
@@ -120,75 +116,75 @@
 
             <ImageButton
                 android:id="@+id/beat1_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/not_beat" />
 
-        <ImageButton
-            android:id="@+id/beat2_off"
-            android:layout_width="110dp"
-            android:layout_height="85dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="210dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/button_off_click"
-            android:padding="8dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/not_beat"/>
+            <ImageButton
+                android:id="@+id/beat2_off"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/not_beat" />
 
-        <ImageButton
-            android:id="@+id/beat3_off"
-            android:layout_width="110dp"
-            android:layout_height="85dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="305dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/button_off_click"
-            android:padding="8dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/not_beat"/>
+            <ImageButton
+                android:id="@+id/beat3_off"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/not_beat" />
 
-        <ImageButton
-            android:id="@+id/beat4_off"
-            android:layout_width="110dp"
-            android:layout_height="85dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="400dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/button_off_click"
-            android:padding="8dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/not_beat"/>
+            <ImageButton
+                android:id="@+id/beat4_off"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="400dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/not_beat" />
 
-        <ImageButton
-            android:id="@+id/beat5_off"
-            android:layout_width="110dp"
-            android:layout_height="85dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="495dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/button_off_click"
-            android:padding="8dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/not_beat"/>
+            <ImageButton
+                android:id="@+id/beat5_off"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="500dp"
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/not_beat" />
 
-        <ImageButton
-            android:id="@+id/beat6_off"
-            android:layout_width="110dp"
-            android:layout_height="85dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="590dp"
-            android:background="@drawable/button_off_click"
-            android:padding="8dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/not_beat"/>
+            <ImageButton
+                android:id="@+id/beat6_off"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="600dp"
+                android:background="@drawable/button_off_click"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/not_beat" />
         </com.gigamole.library.ShadowLayout>
+
         <com.gigamole.library.ShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -201,80 +197,83 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
+
             <ImageButton
                 android:id="@+id/beat1_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_one_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/beat"/>
+                android:src="@drawable/beat" />
 
             <ImageButton
                 android:id="@+id/beat2_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="210dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_one_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/beat"/>
+                android:src="@drawable/beat" />
 
             <ImageButton
                 android:id="@+id/beat3_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="305dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_one_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/beat"/>
+                android:src="@drawable/beat" />
 
             <ImageButton
                 android:id="@+id/beat4_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_one_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/beat"/>
+                android:src="@drawable/beat" />
 
             <ImageButton
                 android:id="@+id/beat5_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="495dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="500dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_one_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/beat"/>
+                android:src="@drawable/beat" />
 
             <ImageButton
                 android:id="@+id/beat6_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="590dp"
+                android:layout_marginTop="600dp"
                 android:background="@drawable/button_one_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/beat"/>
+                android:src="@drawable/beat" />
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/layout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="230dp"
-        android:layout_marginTop="40dp">
+        android:layout_marginStart="-25dp"
+        android:layout_marginLeft="-25dp"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/layout1"
+        android:layout_toRightOf="@+id/layout1">
 
         <com.sdsmdg.harjot.crollerTest.Croller
             android:id="@+id/beatvolum2"
@@ -309,13 +308,14 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
+
             <ImageButton
                 android:id="@+id/two1_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
@@ -323,62 +323,61 @@
 
             <ImageButton
                 android:id="@+id/two2_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="210dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/two_not_choir"/>
+                android:src="@drawable/two_not_choir" />
 
             <ImageButton
                 android:id="@+id/two3_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="305dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/two_not_whistle"/>
+                android:src="@drawable/two_not_whistle" />
 
             <ImageButton
                 android:id="@+id/two4_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/two_not_synth"/>
+                android:src="@drawable/two_not_synth" />
 
             <ImageButton
                 android:id="@+id/two5_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="495dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="500dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/two_not_piano"/>
+                android:src="@drawable/two_not_piano" />
 
             <ImageButton
                 android:id="@+id/two6_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="590dp"
+                android:layout_marginTop="600dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/two_not_mbira"/>
+                android:src="@drawable/two_not_mbira" />
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -396,79 +395,81 @@
 
             <ImageButton
                 android:id="@+id/two1_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_two_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/synth"/>
+                android:src="@drawable/synth" />
 
             <ImageButton
                 android:id="@+id/two2_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="210dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_two_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/choir"/>
+                android:src="@drawable/choir" />
 
             <ImageButton
                 android:id="@+id/two3_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="305dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_two_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/whistle"/>
+                android:src="@drawable/whistle" />
 
             <ImageButton
                 android:id="@+id/two4_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_two_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/synth"/>
+                android:src="@drawable/synth" />
 
             <ImageButton
                 android:id="@+id/two5_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="495dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="500dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_two_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/piano"/>
+                android:src="@drawable/piano" />
 
             <ImageButton
                 android:id="@+id/two6_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="590dp"
+                android:layout_marginTop="600dp"
                 android:background="@drawable/button_two_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/mbira"/>
+                android:src="@drawable/mbira" />
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
 
 
     <RelativeLayout
+        android:id="@+id/layout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="350dp"
-        android:layout_marginTop="40dp">
+        android:layout_marginStart="-25dp"
+        android:layout_marginLeft="-25dp"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/layout2"
+        android:layout_toRightOf="@+id/layout2">
 
         <com.sdsmdg.harjot.crollerTest.Croller
             android:id="@+id/beatvolum3"
@@ -502,76 +503,76 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
+
             <ImageButton
                 android:id="@+id/three1_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/three_not_keys"/>
+                android:src="@drawable/three_not_keys" />
 
             <ImageButton
                 android:id="@+id/three2_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="210dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/three_not_strings"/>
+                android:src="@drawable/three_not_strings" />
 
             <ImageButton
                 android:id="@+id/three3_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="305dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/three_not_mallets"/>
+                android:src="@drawable/three_not_mallets" />
 
             <ImageButton
                 android:id="@+id/three4_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/three_not_pluck"/>
+                android:src="@drawable/three_not_pluck" />
 
             <ImageButton
                 android:id="@+id/three5_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="495dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="500dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/three_not_keys"/>
+                android:src="@drawable/three_not_keys" />
 
             <ImageButton
                 android:id="@+id/three6_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="590dp"
+                android:layout_marginTop="600dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/three_not_flute"/>
+                android:src="@drawable/three_not_flute" />
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -589,79 +590,81 @@
 
             <ImageButton
                 android:id="@+id/three1_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_three_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/keys"/>
+                android:src="@drawable/keys" />
 
             <ImageButton
                 android:id="@+id/three2_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="210dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_three_click"
                 android:scaleType="fitCenter"
                 android:src="@drawable/strings" />
 
             <ImageButton
                 android:id="@+id/three3_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="305dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_three_click"
                 android:scaleType="fitCenter"
                 android:src="@drawable/mallets" />
 
             <ImageButton
                 android:id="@+id/three4_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_three_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/pluck"/>
+                android:src="@drawable/pluck" />
 
             <ImageButton
                 android:id="@+id/three5_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="495dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="500dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_three_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/keys"/>
+                android:src="@drawable/keys" />
 
             <ImageButton
                 android:id="@+id/three6_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="590dp"
+                android:layout_marginTop="600dp"
                 android:background="@drawable/button_three_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/flute"/>
+                android:src="@drawable/flute" />
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
 
 
     <RelativeLayout
+        android:id="@+id/layout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="470dp"
-        android:layout_marginTop="40dp">
+        android:layout_marginStart="-25dp"
+        android:layout_marginLeft="-25dp"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/layout3"
+        android:layout_toRightOf="@+id/layout3">
 
         <com.sdsmdg.harjot.crollerTest.Croller
             android:id="@+id/beatvolum4"
@@ -695,76 +698,76 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
+
             <ImageButton
                 android:id="@+id/four1_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_bass"/>
+                android:src="@drawable/four_not_bass" />
 
             <ImageButton
                 android:id="@+id/four2_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="210dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_synth"/>
+                android:src="@drawable/four_not_synth" />
 
             <ImageButton
                 android:id="@+id/four3_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="305dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_nor_pad"/>
+                android:src="@drawable/four_nor_pad" />
 
             <ImageButton
                 android:id="@+id/four4_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_brass"/>
+                android:src="@drawable/four_not_brass" />
 
             <ImageButton
                 android:id="@+id/four5_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="495dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="500dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_nor_string"/>
+                android:src="@drawable/four_nor_string" />
 
             <ImageButton
                 android:id="@+id/four6_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="590dp"
+                android:layout_marginTop="600dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/four_not_bass"/>
+                android:src="@drawable/four_not_bass" />
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -782,78 +785,80 @@
 
             <ImageButton
                 android:id="@+id/four1_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_four_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/bass"/>
+                android:src="@drawable/bass" />
 
             <ImageButton
                 android:id="@+id/four2_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="210dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_four_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/synth"/>
+                android:src="@drawable/synth" />
 
             <ImageButton
                 android:id="@+id/four3_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="305dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_four_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/pad"/>
+                android:src="@drawable/pad" />
 
             <ImageButton
                 android:id="@+id/four4_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_four_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/brass"/>
+                android:src="@drawable/brass" />
 
             <ImageButton
                 android:id="@+id/four5_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="495dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="500dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_four_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/strings"/>
+                android:src="@drawable/strings" />
 
             <ImageButton
                 android:id="@+id/four6_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="590dp"
+                android:layout_marginTop="600dp"
                 android:background="@drawable/button_four_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/bass"/>
+                android:src="@drawable/bass" />
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/layout5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="590dp"
-        android:layout_marginTop="40dp">
+        android:layout_marginStart="-25dp"
+        android:layout_marginLeft="-25dp"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/layout4"
+        android:layout_toRightOf="@+id/layout4">
 
         <com.sdsmdg.harjot.crollerTest.Croller
             android:id="@+id/beatvolum5"
@@ -887,61 +892,61 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
+
             <ImageButton
                 android:id="@+id/five1_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/five_not_strings"/>
+                android:src="@drawable/five_not_strings" />
 
             <ImageButton
                 android:id="@+id/five2_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="210dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/five_not_pad"/>
+                android:src="@drawable/five_not_pad" />
 
             <ImageButton
                 android:id="@+id/five3_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="305dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/five_not_synth"/>
+                android:src="@drawable/five_not_synth" />
 
             <ImageButton
                 android:id="@+id/five4_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/five_not_synth"/>
+                android:src="@drawable/five_not_synth" />
 
             <ImageButton
                 android:id="@+id/five5_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="495dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="500dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
@@ -949,14 +954,14 @@
 
             <ImageButton
                 android:id="@+id/five6_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="590dp"
+                android:layout_marginTop="600dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/five_not_bass"/>
+                android:src="@drawable/five_not_bass" />
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -974,79 +979,81 @@
 
             <ImageButton
                 android:id="@+id/five1_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_five_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/strings"/>
+                android:src="@drawable/strings" />
 
             <ImageButton
                 android:id="@+id/five2_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="210dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_five_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/pad"/>
+                android:src="@drawable/pad" />
 
             <ImageButton
                 android:id="@+id/five3_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="305dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_five_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/synth"/>
+                android:src="@drawable/synth" />
 
             <ImageButton
                 android:id="@+id/five4_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_five_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/synth"/>
+                android:src="@drawable/synth" />
 
             <ImageButton
                 android:id="@+id/five5_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="495dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="500dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_five_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/brass"/>
+                android:src="@drawable/brass" />
 
             <ImageButton
                 android:id="@+id/five6_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="590dp"
+                android:layout_marginTop="600dp"
                 android:background="@drawable/button_five_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/bass"/>
+                android:src="@drawable/bass" />
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
 
 
     <RelativeLayout
+        android:id="@+id/layout6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="710dp"
-        android:layout_marginTop="40dp">
+        android:layout_marginStart="-25dp"
+        android:layout_marginLeft="-25dp"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/layout5"
+        android:layout_toRightOf="@+id/layout5">
 
         <com.sdsmdg.harjot.crollerTest.Croller
             android:id="@+id/beatvolum6"
@@ -1080,76 +1087,76 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
+
             <ImageButton
                 android:id="@+id/six1_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/six_not_vox"/>
+                android:src="@drawable/six_not_vox" />
 
             <ImageButton
                 android:id="@+id/six2_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="210dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/six_not_vox"/>
+                android:src="@drawable/six_not_vox" />
 
             <ImageButton
                 android:id="@+id/six3_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="305dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/six_not_vox"/>
+                android:src="@drawable/six_not_vox" />
 
             <ImageButton
                 android:id="@+id/six4_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/six_not_vox"/>
+                android:src="@drawable/six_not_vox" />
 
             <ImageButton
                 android:id="@+id/six5_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="495dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="500dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/six_not_vox"/>
+                android:src="@drawable/six_not_vox" />
 
             <ImageButton
                 android:id="@+id/six6_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="590dp"
+                android:layout_marginTop="600dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/six_not_vox"/>
+                android:src="@drawable/six_not_vox" />
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -1167,79 +1174,81 @@
 
             <ImageButton
                 android:id="@+id/six1_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_six_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/vox"/>
+                android:src="@drawable/vox" />
 
             <ImageButton
                 android:id="@+id/six2_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="210dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_six_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/vox"/>
+                android:src="@drawable/vox" />
 
             <ImageButton
                 android:id="@+id/six3_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="305dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_six_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/vox"/>
+                android:src="@drawable/vox" />
 
             <ImageButton
                 android:id="@+id/six4_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_six_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/vox"/>
+                android:src="@drawable/vox" />
 
             <ImageButton
                 android:id="@+id/six5_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="495dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="500dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_six_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/vox"/>
+                android:src="@drawable/vox" />
 
             <ImageButton
                 android:id="@+id/six6_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="590dp"
+                android:layout_marginTop="600dp"
                 android:background="@drawable/button_six_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/vox"/>
+                android:src="@drawable/vox" />
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
 
 
     <RelativeLayout
+        android:id="@+id/layout7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="850dp"
-        android:layout_marginTop="40dp">
+        android:layout_marginStart="-10dp"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/layout6"
+        android:layout_toRightOf="@+id/layout6">
 
         <com.gigamole.library.ShadowLayout
             android:layout_width="wrap_content"
@@ -1253,76 +1262,76 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
+
             <ImageButton
                 android:id="@+id/seven1_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/not_fix"/>
+                android:src="@drawable/not_fix" />
 
             <ImageButton
                 android:id="@+id/seven2_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="210dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/not_fix"/>
+                android:src="@drawable/not_fix" />
 
             <ImageButton
                 android:id="@+id/seven3_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="305dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/not_fix"/>
+                android:src="@drawable/not_fix" />
 
             <ImageButton
                 android:id="@+id/seven4_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/not_fix"/>
+                android:src="@drawable/not_fix" />
 
             <ImageButton
                 android:id="@+id/seven5_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="495dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="500dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/not_fix"/>
+                android:src="@drawable/not_fix" />
 
             <ImageButton
                 android:id="@+id/seven6_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="590dp"
+                android:layout_marginTop="600dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/not_fix"/>
+                android:src="@drawable/not_fix" />
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -1340,77 +1349,80 @@
 
             <ImageButton
                 android:id="@+id/seven1_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_se_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/fix"/>
+                android:src="@drawable/fix" />
 
             <ImageButton
                 android:id="@+id/seven2_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="210dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_se_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/fix"/>
+                android:src="@drawable/fix" />
 
             <ImageButton
                 android:id="@+id/seven3_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="305dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_se_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/fix"/>
+                android:src="@drawable/fix" />
 
             <ImageButton
                 android:id="@+id/seven4_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_se_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/fix"/>
+                android:src="@drawable/fix" />
 
             <ImageButton
                 android:id="@+id/seven5_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="495dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="500dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_se_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/fix"/>
+                android:src="@drawable/fix" />
 
             <ImageButton
                 android:id="@+id/seven6_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="590dp"
+                android:layout_marginTop="600dp"
                 android:background="@drawable/button_se_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/fix"/>
+                android:src="@drawable/fix" />
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
+
     <RelativeLayout
+        android:id="@+id/layout8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="970dp"
-        android:layout_marginTop="40dp">
+        android:layout_marginStart="-25dp"
+        android:layout_marginLeft="-25dp"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/layout7"
+        android:layout_toRightOf="@+id/layout7">
 
         <com.gigamole.library.ShadowLayout
             android:layout_width="wrap_content"
@@ -1424,76 +1436,76 @@
             app:sl_shadow_radius="20dp"
             app:sl_shadowed="true"
             tools:ignore="MissingClass">
+
             <ImageButton
                 android:id="@+id/eight1_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/eight_not_vox"/>
+                android:src="@drawable/eight_not_vox" />
 
             <ImageButton
                 android:id="@+id/eight2_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="210dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/eight_not_vox"/>
+                android:src="@drawable/eight_not_vox" />
 
             <ImageButton
                 android:id="@+id/eight3_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="305dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/eight_not_vox"/>
+                android:src="@drawable/eight_not_vox" />
 
             <ImageButton
                 android:id="@+id/eight4_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/eight_not_vox"/>
+                android:src="@drawable/eight_not_vox" />
 
             <ImageButton
                 android:id="@+id/eight5_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="495dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="500dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/eight_not_vox"/>
+                android:src="@drawable/eight_not_vox" />
 
             <ImageButton
                 android:id="@+id/eight6_off"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="590dp"
+                android:layout_marginTop="600dp"
                 android:background="@drawable/button_off_click"
                 android:padding="8dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/eight_not_vox"/>
+                android:src="@drawable/eight_not_vox" />
         </com.gigamole.library.ShadowLayout>
 
         <com.gigamole.library.ShadowLayout
@@ -1511,69 +1523,81 @@
 
             <ImageButton
                 android:id="@+id/eight1_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="115dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_se_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/eight_vox"/>
+                android:src="@drawable/eight_vox" />
 
             <ImageButton
                 android:id="@+id/eight2_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="210dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_se_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/eight_vox"/>
+                android:src="@drawable/eight_vox" />
 
             <ImageButton
                 android:id="@+id/eight3_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="305dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_se_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/eight_vox"/>
+                android:src="@drawable/eight_vox" />
 
             <ImageButton
                 android:id="@+id/eight4_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="400dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_se_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/eight_vox"/>
+                android:src="@drawable/eight_vox" />
 
             <ImageButton
                 android:id="@+id/eight5_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="495dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="500dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/button_se_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/eight_vox"/>
+                android:src="@drawable/eight_vox" />
 
             <ImageButton
                 android:id="@+id/eight6_on"
-                android:layout_width="110dp"
-                android:layout_height="85dp"
+                android:layout_width="115dp"
+                android:layout_height="92dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="590dp"
+                android:layout_marginTop="600dp"
                 android:background="@drawable/button_se_click"
                 android:scaleType="fitCenter"
-                android:src="@drawable/eight_vox"/>
+                android:src="@drawable/eight_vox" />
         </com.gigamole.library.ShadowLayout>
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="30dp"
+        app:srcCompat="@drawable/doomchit_logo" />
 
 </RelativeLayout>

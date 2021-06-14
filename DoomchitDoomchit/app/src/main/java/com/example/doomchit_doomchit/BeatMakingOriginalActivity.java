@@ -26,10 +26,8 @@ import androidx.core.content.ContextCompat;
 import com.sdsmdg.harjot.crollerTest.Croller;
 import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
 
-public class BeatMakingActivity extends AppCompatActivity {
+public class BeatMakingOriginalActivity extends AppCompatActivity {
     // 녹음을 위한
-
-
     private SoundPool sound_pool1;
     private SoundPool sound_pool2;
     private SoundPool sound_pool3;
@@ -87,7 +85,7 @@ public class BeatMakingActivity extends AppCompatActivity {
                              WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_beatmaking);
+        setContentView(R.layout.activity_original);
 
         //Animation startAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.glow_anim);
         sound_pool1 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
@@ -313,10 +311,10 @@ public class BeatMakingActivity extends AppCompatActivity {
                     //recordAudio();
                 } else {
                     Toast.makeText(getApplicationContext(), "녹음 권한 없음", Toast.LENGTH_SHORT).show();
-                    if(ActivityCompat.shouldShowRequestPermissionRationale(BeatMakingActivity.this, Manifest.permission.RECORD_AUDIO)){
+                    if(ActivityCompat.shouldShowRequestPermissionRationale(BeatMakingOriginalActivity.this, Manifest.permission.RECORD_AUDIO)){
                         Toast.makeText(getApplicationContext(), "녹음 설명 필요함", Toast.LENGTH_SHORT).show();
                     } else {
-                        ActivityCompat.requestPermissions(BeatMakingActivity.this, permissions, 1);
+                        ActivityCompat.requestPermissions(BeatMakingOriginalActivity.this, permissions, 1);
                     }
                 }
             }
@@ -337,7 +335,7 @@ public class BeatMakingActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MoveActivity(MainActivity.class);
+                MoveActivity(BeatSelectActivity.class);
                 track1_stop();
                 track2_stop();
                 track3_stop();
@@ -363,7 +361,7 @@ public class BeatMakingActivity extends AppCompatActivity {
                             //beat1.startAnimation(startAnimation);
                             seven1_on.setVisibility(View.VISIBLE);
                             if (seven1_on.getVisibility() == View.VISIBLE) {
-                                fx1 = MediaPlayer.create(BeatMakingActivity.this, R.raw.fx1);
+                                fx1 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.fx1);
                                 fx1.start();
                                 fx1.setLooping(true);
                             }
@@ -373,7 +371,7 @@ public class BeatMakingActivity extends AppCompatActivity {
                             //beat2.startAnimation(startAnimation);
                             seven2_on.setVisibility(View.VISIBLE);
                             if (seven2_on.getVisibility() == View.VISIBLE) {
-                                fx2 = MediaPlayer.create(BeatMakingActivity.this, R.raw.fx2);
+                                fx2 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.fx2);
                                 fx2.start();
                                 fx2.setLooping(true);
                             }
@@ -382,7 +380,7 @@ public class BeatMakingActivity extends AppCompatActivity {
                             //beat3.startAnimation(startAnimation);
                             seven3_on.setVisibility(View.VISIBLE);
                             if (seven3_on.getVisibility() == View.VISIBLE) {
-                                fx3 = MediaPlayer.create(BeatMakingActivity.this, R.raw.fx3);
+                                fx3 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.fx3);
                                 fx3.start();
                                 fx3.setLooping(true);
                             }
@@ -391,7 +389,7 @@ public class BeatMakingActivity extends AppCompatActivity {
                             //beat4.startAnimation(startAnimation);
                             seven4_on.setVisibility(View.VISIBLE);
                             if (seven4_on.getVisibility() == View.VISIBLE) {
-                                fx4 = MediaPlayer.create(BeatMakingActivity.this, R.raw.fx4);
+                                fx4 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.fx4);
                                 fx4.start();
                                 fx4.setLooping(true);
                             }
@@ -399,7 +397,7 @@ public class BeatMakingActivity extends AppCompatActivity {
                         case R.id.seven5_off:
                             seven5_on.setVisibility(View.VISIBLE);
                             if (seven5_on.getVisibility() == View.VISIBLE) {
-                                fx5 = MediaPlayer.create(BeatMakingActivity.this, R.raw.fx5);
+                                fx5 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.fx5);
                                 fx5.start();
                                 fx5.setLooping(true);
                             }
@@ -407,7 +405,7 @@ public class BeatMakingActivity extends AppCompatActivity {
                         case R.id.seven6_off:
                             seven6_on.setVisibility(View.VISIBLE);
                             if (seven6_on.getVisibility() == View.VISIBLE) {
-                                fx6 = MediaPlayer.create(BeatMakingActivity.this, R.raw.fx6);
+                                fx6 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.fx6);
                                 fx6.start();
                                 fx6.setLooping(true);
                             }
@@ -418,7 +416,7 @@ public class BeatMakingActivity extends AppCompatActivity {
                             //beat1.startAnimation(startAnimation);
                             eight1_on.setVisibility(View.VISIBLE);
                             if (eight1_on.getVisibility() == View.VISIBLE) {
-                                vox1 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox1);
+                                vox1 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.vox1);
                                 vox1.start();
                                 vox1.setLooping(true);
                             }
@@ -427,7 +425,7 @@ public class BeatMakingActivity extends AppCompatActivity {
                             //beat2.startAnimation(startAnimation);
                             eight2_on.setVisibility(View.VISIBLE);
                             if (eight2_on.getVisibility() == View.VISIBLE) {
-                                vox2 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox2);
+                                vox2 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.vox2);
                                 vox2.start();
                                 vox2.setLooping(true);
                             }
@@ -436,7 +434,7 @@ public class BeatMakingActivity extends AppCompatActivity {
                             //beat3.startAnimation(startAnimation);
                             eight3_on.setVisibility(View.VISIBLE);
                             if (eight3_on.getVisibility() == View.VISIBLE) {
-                                vox3 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox3);
+                                vox3 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.vox3);
                                 vox3.start();
                                 vox3.setLooping(true);
                             }
@@ -445,7 +443,7 @@ public class BeatMakingActivity extends AppCompatActivity {
                             //beat4.startAnimation(startAnimation);
                             eight4_on.setVisibility(View.VISIBLE);
                             if (eight4_on.getVisibility() == View.VISIBLE) {
-                                vox4 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox4);
+                                vox4 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.vox4);
                                 vox4.start();
                                 vox4.setLooping(true);
                             }
@@ -453,7 +451,7 @@ public class BeatMakingActivity extends AppCompatActivity {
                         case R.id.eight5_off:
                             eight5_on.setVisibility(View.VISIBLE);
                             if (eight5_on.getVisibility() == View.VISIBLE) {
-                                vox5 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox5);
+                                vox5 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.vox5);
                                 vox5.start();
                                 vox5.setLooping(true);
                             }
@@ -461,7 +459,7 @@ public class BeatMakingActivity extends AppCompatActivity {
                         case R.id.eight6_off:
                             eight6_on.setVisibility(View.VISIBLE);
                             if (eight6_on.getVisibility() == View.VISIBLE) {
-                                vox6 = MediaPlayer.create(BeatMakingActivity.this, R.raw.vox6);
+                                vox6 = MediaPlayer.create(BeatMakingOriginalActivity.this, R.raw.vox6);
                                 vox6.start();
                                 vox6.setLooping(true);
                             }
@@ -1180,5 +1178,19 @@ public class BeatMakingActivity extends AppCompatActivity {
         track4_stop();
         track5_stop();
         track6_stop();
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
     }
 }

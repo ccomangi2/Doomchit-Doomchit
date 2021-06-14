@@ -1,8 +1,5 @@
 package com.example.doomchit_doomchit;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -11,33 +8,50 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
-public class MainActivity extends AppCompatActivity {
-    ImageButton btn_play; // 비트 제작
-    ImageButton btn_list; // 녹음 리스트
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
+public class BeatSelectActivity extends AppCompatActivity {
+    ImageButton back, original_btn, pop_hiphop_btn, classic_btn;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                             WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_select);
 
-        btn_play = findViewById(R.id.btn_play);
-        btn_list = findViewById(R.id.btn_list);
-
-        btn_play.setOnClickListener(new View.OnClickListener() {
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MoveActivity(BeatSelectActivity.class);
+                MoveActivity(MainActivity.class);
             }
         });
 
-        btn_list.setOnClickListener(new View.OnClickListener() {
+        original_btn = findViewById(R.id.original_btn);
+        original_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MoveActivity(RecordListActivity.class);
+                MoveActivity(BeatMakingOriginalActivity.class);
+            }
+        });
+
+        pop_hiphop_btn = findViewById(R.id.pop_hiphop_btn);
+        pop_hiphop_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MoveActivity(BeatMakingPopActivity.class);
+            }
+        });
+
+        classic_btn = findViewById(R.id.classic_btn);
+        classic_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MoveActivity(BeatMakingClassicActivity.class);
             }
         });
 
