@@ -2,7 +2,10 @@ package com.example.doomchit_doomchit;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.media.AudioFormat;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,7 +21,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecordListActivity extends AppCompatActivity {
     private ArrayList<RecordList> mArrayList;
@@ -34,6 +39,8 @@ public class RecordListActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_recordlist);
+        File path = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+        File[] files = path.listFiles();
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
 
@@ -42,23 +49,22 @@ public class RecordListActivity extends AppCompatActivity {
 
         mArrayList = new ArrayList<RecordList>();
 
+        for (int i=0; i< files.length; i++) {
+            String[] info = files[i].getName().split("_");
+
+//
+//
+//            mArrayList.add(new RecordList());
+
+        }
+
+
         for(int i=0; i<100; i++) {
             mArrayList.add(new RecordList("00:00", "녹음 제목이오", "이수빈"));
         }
 
         mAdapter = new RecordListAdapter(getApplicationContext());
 
-
-        mAdapter.notifyDataSetChanged();
-
-        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
-        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
-        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
-        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
-        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
-        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
-        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
-        mAdapter.addItem(new RecordList("00:00", "녹음 제목이오", "이수빈"));
 
         mAdapter.notifyDataSetChanged();
 
@@ -89,6 +95,8 @@ public class RecordListActivity extends AppCompatActivity {
         Intent intent = new Intent(this, activity);
         startActivity(intent);
     }
+
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
@@ -102,4 +110,15 @@ public class RecordListActivity extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
     }
+
+//    private static float getDuration(File file) throws Exception {
+//        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
+//        AudioFormat format = audioInputStream.getFormat();
+//        long audioFileLength = file.length();
+//        int frameSize = format.getFrameSize();
+//        float frameRate = format.getFrameRate();
+//        float durationInSeconds = (audioFileLength / (frameSize * frameRate));
+//        return (durationInSeconds);
+//    }
+
 }

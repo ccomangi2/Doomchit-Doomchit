@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.doomchit_doomchit">
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -27,9 +31,36 @@
         <activity android:name=".BeatMakingOriginalActivity" android:theme="@style/Theme.AppCompat" android:screenOrientation="landscape" />
         <activity android:name=".RecordListActivity" android:theme="@style/Theme.AppCompat" android:screenOrientation="landscape"
             tools:ignore="MissingClass" />
-        <activity android:name=".BeatSelectActivity" android:theme="@style/Theme.AppCompat" />
+        <activity android:name=".BeatSelectActivity" android:theme="@style/Theme.AppCompat" android:screenOrientation="landscape"/>
+
+        <service
+            android:name=".RecordingServicePop"
+            android:enabled="true"
+            android:foregroundServiceType="mediaProjection"
+            android:exported="true"/>
+
+        <service
+            android:name=".RecordingServiceOrigin"
+            android:enabled="true"
+            android:foregroundServiceType="mediaProjection"
+            android:exported="true"/>
+
+        <service
+            android:name=".RecordingServiceClassic"
+            android:enabled="true"
+            android:foregroundServiceType="mediaProjection"
+            android:exported="true"/>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
     </application>
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 </manifest>

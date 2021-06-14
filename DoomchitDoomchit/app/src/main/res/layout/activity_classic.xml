@@ -56,20 +56,6 @@
             app:srcCompat="@drawable/record_btn" />
 
     </LinearLayout>
-
-    <ImageButton
-        android:id="@+id/record_btn_on"
-        android:layout_width="80dp"
-        android:layout_height="100dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="133dp"
-        android:layout_marginRight="50dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:visibility="gone"
-        app:srcCompat="@drawable/record_btn_on" />
-
     <RelativeLayout
         android:id="@+id/layout1"
         android:layout_width="wrap_content"

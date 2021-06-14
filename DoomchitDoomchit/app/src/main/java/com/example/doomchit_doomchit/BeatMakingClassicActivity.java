@@ -2,33 +2,62 @@ package com.example.doomchit_doomchit;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
+import android.media.projection.MediaProjectionManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.sdsmdg.harjot.crollerTest.Croller;
 import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import static com.example.doomchit_doomchit.RecordingServiceClassic.ACTION_STOP;
+
 public class BeatMakingClassicActivity extends AppCompatActivity {
     // 녹음을 위한
-
+    private final static boolean DEBUG = true;
+    public static String BROADCAST_WAVEFORM = "com.example.doomchit_doomchit.waveform";
+    public static String BROADCAST_EXTRA_DATA = "com.example.doomchit_doomchit.waveform_data";
+    private ImageButton record_btn;
+    private boolean isRecording = false;
 
     private SoundPool sound_pool1;
     private SoundPool sound_pool2;
@@ -297,41 +326,34 @@ public class BeatMakingClassicActivity extends AppCompatActivity {
         BeatBtn6(six6_off, six6_on, six2_on, six3_on, six4_on, six5_on, six1_on, sound_pool6, beat8);
 
         //녹음
-        final ImageButton record_btn = findViewById(R.id.record_btn);
-        final ImageButton record_btn_on = findViewById(R.id.record_btn_on);
+        record_btn = findViewById(R.id.record_btn);
+        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, makeIntentFilter());
 
-        final String[] permissions = {Manifest.permission.RECORD_AUDIO};
-
-        record_btn.setOnClickListener(new OnSingleClickListener() {
+        record_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSingleClick(View v) {
-                record_btn.setVisibility(View.GONE);
-                record_btn_on.setVisibility(View.VISIBLE);
-                int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
-                if(permissionCheck == PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(getApplicationContext(), "녹음 시작", Toast.LENGTH_LONG).show();
-                    //recordAudio();
-                } else {
-                    Toast.makeText(getApplicationContext(), "녹음 권한 없음", Toast.LENGTH_SHORT).show();
-                    if(ActivityCompat.shouldShowRequestPermissionRationale(BeatMakingClassicActivity.this, Manifest.permission.RECORD_AUDIO)){
-                        Toast.makeText(getApplicationContext(), "녹음 설명 필요함", Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                if (!isRecording) {
+                    if (ContextCompat.checkSelfPermission(BeatMakingClassicActivity.this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(BeatMakingClassicActivity.this, new String[]{Manifest.permission.RECORD_AUDIO},
+                                1000);
                     } else {
-                        ActivityCompat.requestPermissions(BeatMakingClassicActivity.this, permissions, 1);
+                        MediaProjectionManager mediaProjectionManager = (MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
+                        if (mediaProjectionManager != null) {
+                            startActivityForResult(mediaProjectionManager.createScreenCaptureIntent(), 2000);
+                        }
                     }
+                } else {
+                    final Intent broadcast = new Intent(ACTION_STOP);
+                    sendBroadcast(broadcast);
+                    record_btn.setImageResource(R.drawable.record_btn);
+                    isRecording = false;
                 }
             }
         });
 
-        record_btn_on.setOnClickListener(new OnSingleClickListener() {
-            @Override
-            public void onSingleClick(View v) {
-                record_btn.setVisibility(View.VISIBLE);
-                record_btn_on.setVisibility(View.GONE);
-                int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
-                Toast.makeText(getApplicationContext(), "녹음 저장 완료", Toast.LENGTH_LONG).show();
-                //stopRecording();
-            }
-        });
+
+
+
         //뒤로가기
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -1195,4 +1217,93 @@ public class BeatMakingClassicActivity extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
     }
+
+
+
+    //녹음
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK && requestCode == 2000) {
+            if (data != null) {
+                Intent intent = new Intent(this, RecordingServiceClassic.class);
+                intent.putExtra(RecordingServiceClassic.EXTRA_CODE, resultCode);
+                intent.putExtra(RecordingServiceClassic.EXTRA_DATA, data);
+
+                ContextCompat.startForegroundService(this, intent);
+                record_btn.setImageResource(R.drawable.record_btn_on);
+                isRecording = true;
+            }
+        }
+    }
+    private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(final Context context, final Intent intent) {
+            final String action = intent.getAction();
+            if (BROADCAST_WAVEFORM.equals(action) && intent.getExtras() != null) {
+                final File file = (File) intent.getExtras().getSerializable(BROADCAST_EXTRA_DATA);
+
+                if(file == null)
+                    return;
+
+                if (DEBUG){
+                    LinearLayout layout = new LinearLayout(BeatMakingClassicActivity.this);
+                    layout.setOrientation(LinearLayout.VERTICAL);
+                    layout.setPadding(30,10,30,5);
+                    final TextView tvt = new TextView(BeatMakingClassicActivity.this);
+                    final EditText title = new EditText(BeatMakingClassicActivity.this);
+                    final TextView tvn = new TextView(BeatMakingClassicActivity.this);
+                    final EditText name = new EditText(BeatMakingClassicActivity.this);
+                    tvt.setText("비트 제목");
+                    tvn.setText("작곡가");
+                    layout.addView(tvt);
+                    layout.addView(title);
+                    layout.addView(tvn);
+                    layout.addView(name);
+
+                    final AlertDialog.Builder alt_bld = new AlertDialog.Builder(BeatMakingClassicActivity.this,R.style.MyAlertDialogStyle);
+                    alt_bld.setTitle("녹음이 완료되었습니다🎶")
+                            .setMessage("정보를 입력해주세요")
+                            .setIcon(R.drawable.doomchit_logo)
+                            .setCancelable(false)
+                            .setView(layout)
+                            .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    file.renameTo(new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),System.currentTimeMillis() / 1000 +"_"+title.getText().toString()+"_"+name.getText().toString()+ ".wav"));
+                                }
+                            }).show();
+
+                }
+            }
+        }
+    };
+
+    private static IntentFilter makeIntentFilter() {
+        final IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(BROADCAST_WAVEFORM);
+        return intentFilter;
+    }
+
+    public static byte[] fileToBytes(File file) {
+        int size = (int) file.length();
+        byte[] bytes = new byte[size];
+        try {
+            BufferedInputStream buf = new BufferedInputStream(new FileInputStream(file));
+            buf.read(bytes, 0, bytes.length);
+            buf.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bytes;
+    }
+
 }
