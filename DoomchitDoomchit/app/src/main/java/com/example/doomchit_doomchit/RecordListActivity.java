@@ -35,6 +35,7 @@ public class RecordListActivity extends AppCompatActivity {
 
     private RecordListAdapter mAdapter;
     ImageButton back; // 뒤로가기
+    static File[] files;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class RecordListActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_recordlist);
         File path = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
-        File[] files = path.listFiles();
+        files = path.listFiles();
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
 
@@ -66,8 +67,11 @@ public class RecordListActivity extends AppCompatActivity {
         mAdapter.setOnItemClicklistener(new OnRecordListClickListener() {
             @Override
             public void onItemClick(RecordListAdapter.ViewHolder holder, View view, int position) {
+
                 RecordList item = mAdapter.getItem(position);
                 Toast.makeText(getApplicationContext(), position + "번 눌림", Toast.LENGTH_SHORT).show();
+
+
             }
         });
 
@@ -113,6 +117,7 @@ public class RecordListActivity extends AppCompatActivity {
         return min+":"+sec;
     }
 
-
-
+    public static File[] getFiles() {
+        return files;
+    }
 }

@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
+import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +22,14 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.ViewHolder> implements OnRecordListClickListener {
     Context context;
     private ArrayList<RecordList> mList = new ArrayList<RecordList>();
     OnRecordListClickListener listener;
+    MediaPlayer mMediaPlayer;
 
     public RecordListAdapter(Context context) {
         this.context = context;
@@ -90,7 +96,11 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.Vi
             play.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, "재생", Toast.LENGTH_SHORT).show();
+                    int position = getAbsoluteAdapterPosition();
+                    File[] files = RecordListActivity.getFiles();
+                    Toast.makeText(context, position+" : "+files[position].getName(), Toast.LENGTH_SHORT).show();
+                    audioPlayer(files, position);
+
                 }
             });
             share.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +117,14 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.Vi
             name_textview.setText(item.getName());
         }
     }
-
+    public void audioPlayer(File[] files, int position){
+        MediaPlayer mp = MediaPlayer.create(context, Uri.fromFile(files[position]));
+        try {
+            mp.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public void addItem(RecordList item){ mList.add(item); }
     public void setItems(ArrayList<RecordList> items){ this.mList = items; }
     public RecordList getItem(int position){ return mList.get(position); }

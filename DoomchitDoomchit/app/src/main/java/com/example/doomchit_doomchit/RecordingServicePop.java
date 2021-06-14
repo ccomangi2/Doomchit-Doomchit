@@ -126,7 +126,7 @@ public class RecordingServicePop extends Service {
         builder.setContentIntent(pendingIntent);
         builder.setPriority(NotificationCompat.PRIORITY_MAX);
         builder.setContentTitle("둠칫 둠칫🎵").setContentText("녹음이 시작되었습니다!");
-        builder.setSmallIcon(R.drawable.doomchit_logo);
+        builder.setSmallIcon(R.drawable.main_logo);
         builder.setColor(ContextCompat.getColor(this, R.color.off));
         builder.setOnlyAlertOnce(true).setShowWhen(true).setDefaults(0).setAutoCancel(true).setOngoing(true);
         return builder.build();

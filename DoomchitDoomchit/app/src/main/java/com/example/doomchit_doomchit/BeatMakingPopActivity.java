@@ -1266,7 +1266,10 @@ public class BeatMakingPopActivity extends AppCompatActivity {
                                     tstr.replace("_", "");
                                     String nstr = name.getText().toString();
                                     nstr.replace("_", "");
+//                                    if(tstr.trim().equals("")||nstr.trim().equals("")){}
+
                                     file.renameTo(new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),System.currentTimeMillis() / 1000 +"_"+time+"_"+tstr+"_"+nstr+ ".wav"));
+                                    Toast.makeText(getApplicationContext(), "저장되었습니다. 음원리스트에서 확인하세요~", Toast.LENGTH_SHORT).show();
                                 }
                             }).show();
 
