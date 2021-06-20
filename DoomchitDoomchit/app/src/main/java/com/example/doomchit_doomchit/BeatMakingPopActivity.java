@@ -68,6 +68,7 @@ public class BeatMakingPopActivity extends AppCompatActivity {
     private SoundPool sound_pool4;
     private SoundPool sound_pool5;
     private SoundPool sound_pool6;
+    private SoundPool sound_pool78;
     ImageButton back; // 뒤로가기
 
     // 1트랙
@@ -101,12 +102,12 @@ public class BeatMakingPopActivity extends AppCompatActivity {
     ImageButton six1_on, six2_on, six3_on, six4_on, six5_on, six6_on;
 
     // 7트랙
-    MediaPlayer fx1, fx2, fx3, fx4, fx5, fx6;
+    int fx1, fx2, fx3, fx4, fx5, fx6;
     ImageButton seven1_off, seven2_off, seven3_off, seven4_off, seven5_off, seven6_off;
     ImageButton seven1_on, seven2_on, seven3_on, seven4_on, seven5_on, seven6_on;
 
     // 8트랙
-    MediaPlayer vox1, vox2, vox3, vox4, vox5, vox6;
+    int vox1, vox2, vox3, vox4, vox5, vox6;
     ImageButton eight1_off, eight2_off, eight3_off, eight4_off, eight5_off, eight6_off;
     ImageButton eight1_on, eight2_on, eight3_on, eight4_on, eight5_on, eight6_on;
 
@@ -116,10 +117,10 @@ public class BeatMakingPopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                             WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_pop_hiphop);
+        setContentView(R.layout.activity_original);
 
         //Animation startAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.glow_anim);
         sound_pool1 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
@@ -128,6 +129,7 @@ public class BeatMakingPopActivity extends AppCompatActivity {
         sound_pool4 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
         sound_pool5 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
         sound_pool6 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        sound_pool78 = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
 
         FindViewByid();
         Raw_Loder();
@@ -386,9 +388,7 @@ public class BeatMakingPopActivity extends AppCompatActivity {
                             //beat1.startAnimation(startAnimation);
                             seven1_on.setVisibility(View.VISIBLE);
                             if (seven1_on.getVisibility() == View.VISIBLE) {
-                                fx1 = MediaPlayer.create(BeatMakingPopActivity.this, R.raw.fx1);
-                                fx1.start();
-                                fx1.setLooping(true);
+                                sound_pool78.play(fx1, 100, 100, 0, 0, 1f);
                             }
                             //Toast.makeText(BeatMakingActivity.this, "7-1", Toast.LENGTH_SHORT).show();
                             break;
@@ -396,43 +396,33 @@ public class BeatMakingPopActivity extends AppCompatActivity {
                             //beat2.startAnimation(startAnimation);
                             seven2_on.setVisibility(View.VISIBLE);
                             if (seven2_on.getVisibility() == View.VISIBLE) {
-                                fx2 = MediaPlayer.create(BeatMakingPopActivity.this, R.raw.fx2);
-                                fx2.start();
-                                fx2.setLooping(true);
+                                sound_pool78.play(fx2, 100, 100, 0, 0, 1f);
                             }
                             break;
                         case R.id.seven3_off:
                             //beat3.startAnimation(startAnimation);
                             seven3_on.setVisibility(View.VISIBLE);
                             if (seven3_on.getVisibility() == View.VISIBLE) {
-                                fx3 = MediaPlayer.create(BeatMakingPopActivity.this, R.raw.fx3);
-                                fx3.start();
-                                fx3.setLooping(true);
+                                sound_pool78.play(fx3, 100, 100, 0, 0, 1f);
                             }
                             break;
                         case R.id.seven4_off:
                             //beat4.startAnimation(startAnimation);
                             seven4_on.setVisibility(View.VISIBLE);
                             if (seven4_on.getVisibility() == View.VISIBLE) {
-                                fx4 = MediaPlayer.create(BeatMakingPopActivity.this, R.raw.fx4);
-                                fx4.start();
-                                fx4.setLooping(true);
+                                sound_pool78.play(fx4, 100, 100, 0, 0, 1f);
                             }
                             break;
                         case R.id.seven5_off:
                             seven5_on.setVisibility(View.VISIBLE);
                             if (seven5_on.getVisibility() == View.VISIBLE) {
-                                fx5 = MediaPlayer.create(BeatMakingPopActivity.this, R.raw.fx5);
-                                fx5.start();
-                                fx5.setLooping(true);
+                                sound_pool78.play(fx5, 100, 100, 0, 0, 1f);
                             }
                             break;
                         case R.id.seven6_off:
                             seven6_on.setVisibility(View.VISIBLE);
                             if (seven6_on.getVisibility() == View.VISIBLE) {
-                                fx6 = MediaPlayer.create(BeatMakingPopActivity.this, R.raw.fx6);
-                                fx6.start();
-                                fx6.setLooping(true);
+                                sound_pool78.play(fx6, 100, 100, 0, 0, 1f);
                             }
                             break;
 
@@ -441,52 +431,40 @@ public class BeatMakingPopActivity extends AppCompatActivity {
                             //beat1.startAnimation(startAnimation);
                             eight1_on.setVisibility(View.VISIBLE);
                             if (eight1_on.getVisibility() == View.VISIBLE) {
-                                vox1 = MediaPlayer.create(BeatMakingPopActivity.this, R.raw.vox1);
-                                vox1.start();
-                                vox1.setLooping(true);
+                                sound_pool78.play(vox1, 100, 100, 0, 0, 1f);
                             }
                             break;
                         case R.id.eight2_off:
                             //beat2.startAnimation(startAnimation);
                             eight2_on.setVisibility(View.VISIBLE);
                             if (eight2_on.getVisibility() == View.VISIBLE) {
-                                vox2 = MediaPlayer.create(BeatMakingPopActivity.this, R.raw.vox2);
-                                vox2.start();
-                                vox2.setLooping(true);
+                                sound_pool78.play(vox2, 100, 100, 0, 0, 1f);
                             }
                             break;
                         case R.id.eight3_off:
                             //beat3.startAnimation(startAnimation);
                             eight3_on.setVisibility(View.VISIBLE);
                             if (eight3_on.getVisibility() == View.VISIBLE) {
-                                vox3 = MediaPlayer.create(BeatMakingPopActivity.this, R.raw.vox3);
-                                vox3.start();
-                                vox3.setLooping(true);
+                                sound_pool78.play(vox3, 100, 100, 0, 0, 1f);
                             }
                             break;
                         case R.id.eight4_off:
                             //beat4.startAnimation(startAnimation);
                             eight4_on.setVisibility(View.VISIBLE);
                             if (eight4_on.getVisibility() == View.VISIBLE) {
-                                vox4 = MediaPlayer.create(BeatMakingPopActivity.this, R.raw.vox4);
-                                vox4.start();
-                                vox4.setLooping(true);
+                                sound_pool78.play(vox4, 100, 100, 0, 0, 1f);
                             }
                             break;
                         case R.id.eight5_off:
                             eight5_on.setVisibility(View.VISIBLE);
                             if (eight5_on.getVisibility() == View.VISIBLE) {
-                                vox5 = MediaPlayer.create(BeatMakingPopActivity.this, R.raw.vox5);
-                                vox5.start();
-                                vox5.setLooping(true);
+                                sound_pool78.play(vox5, 100, 100, 0, 0, 1f);
                             }
                             break;
                         case R.id.eight6_off:
                             eight6_on.setVisibility(View.VISIBLE);
                             if (eight6_on.getVisibility() == View.VISIBLE) {
-                                vox6 = MediaPlayer.create(BeatMakingPopActivity.this, R.raw.vox6);
-                                vox6.start();
-                                vox6.setLooping(true);
+                                sound_pool78.play(vox6, 100, 100, 0, 0, 1f);
                             }
                             break;
                     }
@@ -497,60 +475,60 @@ public class BeatMakingPopActivity extends AppCompatActivity {
                         case R.id.seven1_off:
                             //beat1.startAnimation(startAnimation);
                             seven1_on.setVisibility(View.GONE);
-                            stopAudio(fx1);
+                            sound_pool78.stop(fx1);
                             break;
                         case R.id.seven2_off:
                             //beat2.startAnimation(startAnimation);
                             seven2_on.setVisibility(View.GONE);
-                            stopAudio(fx2);
+                            sound_pool78.stop(fx2);
                             break;
                         case R.id.seven3_off:
                             //beat3.startAnimation(startAnimation);
                             seven3_on.setVisibility(View.GONE);
-                            stopAudio(fx3);
+                            sound_pool78.stop(fx3);
                             break;
                         case R.id.seven4_off:
                             //beat4.startAnimation(startAnimation);
                             seven4_on.setVisibility(View.GONE);
-                            stopAudio(fx4);
+                            sound_pool78.stop(fx4);
                             break;
                         case R.id.seven5_off:
                             seven5_on.setVisibility(View.GONE);
-                            stopAudio(fx5);
+                            sound_pool78.stop(fx5);
                             break;
                         case R.id.seven6_off:
                             seven6_on.setVisibility(View.GONE);
-                            stopAudio(fx6);
+                            sound_pool78.stop(fx6);
                             break;
 
                         // 8트랙 vox1, vox2, vox3, vox4, vox5, vox6;
                         case R.id.eight1_off:
                             //beat1.startAnimation(startAnimation);
                             eight1_on.setVisibility(View.GONE);
-                            stopAudio(vox1);
+                            sound_pool78.stop(vox1);
                             break;
                         case R.id.eight2_off:
                             //beat2.startAnimation(startAnimation);
                             eight2_on.setVisibility(View.GONE);
-                            stopAudio(vox2);
+                            sound_pool78.stop(vox2);
                             break;
                         case R.id.eight3_off:
                             //beat3.startAnimation(startAnimation);
                             eight3_on.setVisibility(View.GONE);
-                            stopAudio(vox3);
+                            sound_pool78.stop(vox3);
                             break;
                         case R.id.eight4_off:
                             //beat4.startAnimation(startAnimation);
                             eight4_on.setVisibility(View.GONE);
-                            stopAudio(vox4);
+                            sound_pool78.stop(vox4);
                             break;
                         case R.id.eight5_off:
                             eight5_on.setVisibility(View.GONE);
-                            stopAudio(vox5);
+                            sound_pool78.stop(vox5);
                             break;
                         case R.id.eight6_off:
                             eight6_on.setVisibility(View.GONE);
-                            stopAudio(vox6);
+                            sound_pool78.stop(vox6);
                             break;
                         default:
                             break;
@@ -1060,53 +1038,69 @@ public class BeatMakingPopActivity extends AppCompatActivity {
     }
     //음원 로더
     public void Raw_Loder() {
-        //1번째 트랙
-        beat1 = sound_pool1.load(this, R.raw.beat1, 1);
-        beat2 = sound_pool1.load(this, R.raw.beat2, 1);
-        beat3 = sound_pool1.load(this, R.raw.beat3, 1);
-        beat4 = sound_pool1.load(this, R.raw.beat4, 1);
-        beat5 = sound_pool1.load(this, R.raw.beat5, 1);
-        beat6 = sound_pool1.load(this, R.raw.beat6, 1);
+//1번째 트랙
+        beat1 = sound_pool1.load(this, R.raw.pop101, 1);
+        beat2 = sound_pool1.load(this, R.raw.pop102, 1);
+        beat3 = sound_pool1.load(this, R.raw.pop103, 1);
+        beat4 = sound_pool1.load(this, R.raw.pop104, 1);
+        beat5 = sound_pool1.load(this, R.raw.pop105, 1);
+        beat6 = sound_pool1.load(this, R.raw.pop106, 1);
 
         // 2번째 트랙
-        synth1 = sound_pool2.load(this, R.raw.synth1, 1);
-        choir = sound_pool2.load(this, R.raw.choir, 1);
-        whistle = sound_pool2.load(this, R.raw.whistle, 1);
-        synth2 = sound_pool2.load(this, R.raw.synth2, 1);
-        piano = sound_pool2.load(this, R.raw.piano, 1);
-        mbira = sound_pool2.load(this, R.raw.mbira, 1);
+        synth1 = sound_pool2.load(this, R.raw.pop201, 1);
+        choir = sound_pool2.load(this, R.raw.pop202, 1);
+        whistle = sound_pool2.load(this, R.raw.pop203, 1);
+        synth2 = sound_pool2.load(this, R.raw.pop204, 1);
+        piano = sound_pool2.load(this, R.raw.pop205, 1);
+        mbira = sound_pool2.load(this, R.raw.pop206, 1);
 
         // 3번째 트랙
-        keys1 = sound_pool3.load(this, R.raw.keys1, 1);
-        strings1 = sound_pool3.load(this, R.raw.strings1, 1);
-        mallets = sound_pool3.load(this, R.raw.mallets, 1);
-        pluck = sound_pool3.load(this, R.raw.pluck, 1);
-        keys2 = sound_pool3.load(this, R.raw.keys2, 1);
-        flute = sound_pool3.load(this, R.raw.flute, 1);
+        keys1 = sound_pool3.load(this, R.raw.pop301, 1);
+        strings1 = sound_pool3.load(this, R.raw.pop302, 1);
+        mallets = sound_pool3.load(this, R.raw.pop303, 1);
+        pluck = sound_pool3.load(this, R.raw.pop304, 1);
+        keys2 = sound_pool3.load(this, R.raw.pop305, 1);
+        flute = sound_pool3.load(this, R.raw.pop306, 1);
 
         // 4번째 트랙
-        bass1 = sound_pool4.load(this, R.raw.bass1, 1);
-        synth3 = sound_pool4.load(this, R.raw.synth3, 1);
-        pad1 = sound_pool4.load(this, R.raw.pad1, 1);
-        brass1 = sound_pool4.load(this, R.raw.brass1, 1);
-        strings2 = sound_pool4.load(this, R.raw.strings2, 1);
-        bass2 = sound_pool4.load(this, R.raw.bass2, 1);
+        bass1 = sound_pool4.load(this, R.raw.pop401, 1);
+        synth3 = sound_pool4.load(this, R.raw.pop402, 1);
+        pad1 = sound_pool4.load(this, R.raw.pop403, 1);
+        brass1 = sound_pool4.load(this, R.raw.pop404, 1);
+        strings2 = sound_pool4.load(this, R.raw.pop405, 1);
+        bass2 = sound_pool4.load(this, R.raw.pop406,1);
 
         // 5번째 트랙
-        strings3 = sound_pool5.load(this, R.raw.strings3, 1);
-        pad2 = sound_pool5.load(this, R.raw.pad2, 1);
-        synth4 = sound_pool5.load(this, R.raw.synth4, 1);
-        synth5 = sound_pool5.load(this, R.raw.synth5, 1);
-        brass2 = sound_pool5.load(this, R.raw.brass2, 1);
-        bass3 = sound_pool5.load(this, R.raw.bass3, 1);
+        strings3 = sound_pool5.load(this, R.raw.pop501, 1);
+        pad2 = sound_pool5.load(this, R.raw.pop502, 1);
+        synth4 = sound_pool5.load(this, R.raw.pop503, 1);
+        synth5 = sound_pool5.load(this, R.raw.pop504, 1);
+        brass2 = sound_pool5.load(this, R.raw.pop505, 1);
+        bass3 = sound_pool5.load(this, R.raw.pop506, 1);
 
         // 6번째 트랙
-        vox7 = sound_pool6.load(this, R.raw.vox7, 1);
-        vox8 = sound_pool6.load(this, R.raw.vox8, 1);
-        vox9 = sound_pool6.load(this, R.raw.vox9, 1);
-        vox10 = sound_pool6.load(this, R.raw.vox10, 1);
-        beat7 = sound_pool6.load(this, R.raw.beat7, 1);
-        beat8 = sound_pool6.load(this, R.raw.beat8, 1);
+        vox7 = sound_pool6.load(this, R.raw.pop601, 1);
+        vox8 = sound_pool6.load(this, R.raw.pop602, 1);
+        vox9 = sound_pool6.load(this, R.raw.pop603, 1);
+        vox10 = sound_pool6.load(this, R.raw.pop604, 1);
+        beat7 = sound_pool6.load(this, R.raw.pop605, 1);
+        beat8 = sound_pool6.load(this, R.raw.pop606, 1);
+
+        //7번 트랙
+        fx1 = sound_pool78.load(this, R.raw.pop701, 1);
+        fx2 = sound_pool78.load(this, R.raw.pop702, 1);
+        fx3 = sound_pool78.load(this, R.raw.pop703, 1);
+        fx4 = sound_pool78.load(this, R.raw.pop704, 1);
+        fx5 = sound_pool78.load(this, R.raw.pop705, 1);
+        fx6 = sound_pool78.load(this, R.raw.pop706, 1);
+
+        //8번 트랙
+        vox1 = sound_pool78.load(this, R.raw.pop801, 1);
+        vox2 = sound_pool78.load(this, R.raw.pop802, 1);
+        vox3 = sound_pool78.load(this, R.raw.pop803, 1);
+        vox4 = sound_pool78.load(this, R.raw.pop804, 1);
+        vox5 = sound_pool78.load(this, R.raw.pop805, 1);
+        vox6 = sound_pool78.load(this, R.raw.pop806, 1);
     }
     //뷰 Gone
     public void visible_Gone() {
@@ -1167,6 +1161,37 @@ public class BeatMakingPopActivity extends AppCompatActivity {
         eight6_on.setVisibility(View.GONE);
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch(requestCode){
+            case 1:
+                if(grantResults.length > 0){
+                    if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                        Toast.makeText(this, "녹음 권한 동의함", Toast.LENGTH_SHORT).show();
+                    } else if(grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                        Toast.makeText(this, "녹음 권한 거부함", Toast.LENGTH_SHORT).show();
+                    }
+                } else{
+                    Toast.makeText(this, "녹음 권한 획득 실패", Toast.LENGTH_SHORT).show();
+                }
+
+        }
+    }
+
+    public void track78_stop() {
+        sound_pool78.stop(fx1);
+        sound_pool78.stop(fx2);
+        sound_pool78.stop(fx3);
+        sound_pool78.stop(fx4);
+        sound_pool78.stop(fx5);
+        sound_pool78.stop(fx6);
+        sound_pool78.stop(vox1);
+        sound_pool78.stop(vox2);
+        sound_pool78.stop(vox3);
+        sound_pool78.stop(vox4);
+        sound_pool78.stop(vox5);
+        sound_pool78.stop(vox6);
+    }
 
     @Override
     public void onBackPressed() { //뒤로가기 버튼
@@ -1177,6 +1202,7 @@ public class BeatMakingPopActivity extends AppCompatActivity {
         track4_stop();
         track5_stop();
         track6_stop();
+        track78_stop();
     }
     @Override
     protected void onUserLeaveHint() {		// 홈 버튼 감지
@@ -1187,6 +1213,7 @@ public class BeatMakingPopActivity extends AppCompatActivity {
         track4_stop();
         track5_stop();
         track6_stop();
+        track78_stop();
     }
 
     @Override
@@ -1216,9 +1243,9 @@ public class BeatMakingPopActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK && requestCode == 2000) {
             if (data != null) {
-                Intent intent = new Intent(this, RecordingServicePop.class);
-                intent.putExtra(RecordingServicePop.EXTRA_CODE, resultCode);
-                intent.putExtra(RecordingServicePop.EXTRA_DATA, data);
+                Intent intent = new Intent(this, RecordingServiceClassic.class);
+                intent.putExtra(RecordingServiceClassic.EXTRA_CODE, resultCode);
+                intent.putExtra(RecordingServiceClassic.EXTRA_DATA, data);
 
                 ContextCompat.startForegroundService(this, intent);
                 record_btn.setImageResource(R.drawable.record_btn_on);
@@ -1266,10 +1293,8 @@ public class BeatMakingPopActivity extends AppCompatActivity {
                                     tstr.replace("_", "");
                                     String nstr = name.getText().toString();
                                     nstr.replace("_", "");
-//                                    if(tstr.trim().equals("")||nstr.trim().equals("")){}
-
-                                    file.renameTo(new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),System.currentTimeMillis() / 1000 +"_"+time+"_"+tstr+"_"+nstr+ ".wav"));
                                     Toast.makeText(getApplicationContext(), "저장되었습니다. 음원리스트에서 확인하세요~", Toast.LENGTH_SHORT).show();
+                                    file.renameTo(new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),System.currentTimeMillis() / 1000 +"_"+time+"_"+tstr+"_"+nstr+ ".wav"));
                                 }
                             }).show();
 
@@ -1298,4 +1323,5 @@ public class BeatMakingPopActivity extends AppCompatActivity {
         }
         return bytes;
     }
+
 }
