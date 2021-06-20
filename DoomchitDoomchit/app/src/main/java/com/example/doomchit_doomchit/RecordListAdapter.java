@@ -106,7 +106,20 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.Vi
             share.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, "공유", Toast.LENGTH_SHORT).show();
+                   int position = getAbsoluteAdapterPosition();
+                    File[] files = RecordListActivity.getFiles();
+                    String someFile = files[position].getName();
+
+                    File xlsFile = new File(String.valueOf(files), someFile);
+
+                    Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                    shareIntent.setType("audio/*");
+                    Uri contentUri = FileProvider.getUriForFile(context, "com.example.doomchit_doomchit.provider", xlsFile);
+                    shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+
+                    Intent intent = new Intent(Intent.createChooser(shareIntent,"음원 공유"));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
                 }
             });
         }
