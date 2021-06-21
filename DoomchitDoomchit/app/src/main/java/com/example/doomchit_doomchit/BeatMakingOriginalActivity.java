@@ -38,6 +38,11 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.sdsmdg.harjot.crollerTest.Croller;
 import com.sdsmdg.harjot.crollerTest.OnCrollerChangeListener;
 
@@ -1289,8 +1294,9 @@ public class BeatMakingOriginalActivity extends AppCompatActivity {
                                     tstr.replace("_", "");
                                     String nstr = name.getText().toString();
                                     nstr.replace("_", "");
-                                    Toast.makeText(getApplicationContext(), "저장되었습니다. 음원리스트에서 확인하세요~", Toast.LENGTH_SHORT).show();
-                                    file.renameTo(new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),System.currentTimeMillis() / 1000 +"_"+time+"_"+tstr+"_"+nstr+ ".wav"));
+                                    String filename = System.currentTimeMillis() / 1000 +"_"+time+"_"+tstr+"_"+nstr+ ".mp3";
+                                    file.renameTo(new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),filename));
+                                    uploadFirebase(filename);
                                 }
                             }).show();
 
@@ -1318,6 +1324,22 @@ public class BeatMakingOriginalActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return bytes;
+    }
+    private void uploadFirebase(String fileName){
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+        Uri file = Uri.fromFile(new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)+"/"+fileName));
+        StorageReference riversRef = storageRef.child("wavFiles/"+fileName);
+        riversRef.putFile(file).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(getApplicationContext(), "저장되었습니다. 음원리스트에서 확인하세요~", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "음원 업로드 실패", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }
