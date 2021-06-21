@@ -59,7 +59,7 @@ public class BeatMakingOriginalActivity extends AppCompatActivity {
     private final static boolean DEBUG = true;
     public static String BROADCAST_WAVEFORM = "com.example.doomchit_doomchit.waveform";
     public static String BROADCAST_EXTRA_DATA = "com.example.doomchit_doomchit.waveform_data";
-    private ImageButton record_btn;
+    private ImageButton record_btn, ;
     private boolean isRecording = false;
     private Long durationTime = Long.valueOf(0);
 
@@ -330,7 +330,18 @@ public class BeatMakingOriginalActivity extends AppCompatActivity {
         BeatBtn6(six4_off, six4_on, six2_on, six3_on, six1_on, six5_on, six6_on, sound_pool6, vox10);
         BeatBtn6(six5_off, six5_on, six2_on, six3_on, six4_on, six1_on, six6_on, sound_pool6, beat7);
         BeatBtn6(six6_off, six6_on, six2_on, six3_on, six4_on, six5_on, six1_on, sound_pool6, beat8);
-
+        
+        //가이드 영상
+        guide_btn = findViewById(R.id.guide);
+        guide_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://youtu.be/XAPHrxQOmzs"));
+                startActivity(intent);
+            }
+        });
+        
         //녹음
         record_btn = findViewById(R.id.record_btn);
         LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, makeIntentFilter());
