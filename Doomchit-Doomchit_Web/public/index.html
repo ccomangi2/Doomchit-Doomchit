@@ -10,6 +10,7 @@
 
   <meta name="viewport"
     content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Doomchit-Doomchit">
@@ -18,11 +19,57 @@
   <meta property="og:image" content="img/web_logo.png">  
   <!-- <meta property="og:image" content="../DoomchitDoomchit/app/src/main/ic_doomchit-playstore.png">   -->
 
+  
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="js/index.js"></script>
   <script src="js/play.js"></script>
   <script src="js/share.js"></script>
   <script src="js/list.js" type="text/javascript" charset="utf-8"></script>
+
+  <!-- list style -->
+  <style>
+    ul{
+      list-style: none outside none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .demo .item{
+        margin-bottom: 60px;
+    }
+    .demo{
+      width: 100%;
+      /* min-width: 300px; */
+    }
+  </style>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="js/lightslider.js"></script> 
+  <script>
+    $(document).ready(function() {
+    $("#content-slider").lightSlider({
+        loop:true,
+        keyPress:true,
+        thumbItem:3
+    });
+    $('#image-gallery').lightSlider({
+        gallery:true,
+        item:1,
+        thumbItem:5,
+        slideMargin: 0,
+        speed:500,
+        auto:false,
+        loop:false,
+        onSliderLoad: function() {
+            $('#image-gallery').removeClass('cS-hidden');
+        }  
+    });
+  });
+  </script>
 
 </head>
 
@@ -59,9 +106,45 @@
   </div>
     
 
-    <div id="list">
-      <div id="container" class='container'></div>
+  <!--  
+  <div class="demo container" style="margin: auto; padding-right: 0px !important">
+    <div class="item">            
+        <div class="clearfix" style=" max-width:1020px;min-width:300px; margin: auto">
+          <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+            
+              
+            <div id="list">
+              <div id="container" class='container'></div>
+            </div>
+
+            <li data-thumb id="list_li">
+            </li>
+          </ul>
+      </div>
+    </div>	
+  </div>-->
+
+  <center>
+  <div class="demo container" style="margin: auto; padding-right: 0px !important">
+    <div class="item">            
+        <div class="clearfix" style=" max-width:1020px;min-width:300px; margin: auto">
+            <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+
+              <!-- <li data-thumb> 
+                <div class="container"></div>
+                  
+              </li> -->
+              
+              <!-- <li data-thumb> 
+                <div class="container"></div>
+                  
+              </li> -->
+            </ul>
+        </div>
     </div>
+  </div>
+  </center>
+
 </center>
 </body>
 </html>
