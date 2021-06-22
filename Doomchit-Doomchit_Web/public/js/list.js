@@ -63,7 +63,12 @@ function getdata() {
             let htmlStr = "";
             // 곡 있는 개수의 /4 (반올림)  [ ex) 곡 5개면 2번 반복 ] 만큼 반복문
             // row = stroageRef에서 넘어온 i
-            for (let cnt = 0; cnt <= Math.ceil(row / 4); cnt++) {
+            const ceilrow = Math.ceil(row / 4);
+            console.log(`ceilrow : ${ceilrow}`);
+
+            for (let i = 1; i <= ceilrow; i++) {
+                console.log(`ceilrow : ${ceilrow}, i : ${i}`);
+
                 htmlStr += "<li data-thumb>";
                 htmlStr += "<div class='container'>";
                 // box 1개 추가 시 count += 1
