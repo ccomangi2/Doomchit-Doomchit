@@ -64,7 +64,15 @@ window.onload=function(){
     
            
             $(".share").click(function(){
-              window.open("http://www.facebook.com/share.php?u="+$(this).attr('id'), '둠칫둠칫','height=250,width=300,toolbar=no');
+              var url=$(this).attr('id')
+              var textarea = document.createElement("textarea");
+              document.body.appendChild(textarea);
+              textarea.value = url;
+              console.log(textarea.value)
+              textarea.select();
+              document.execCommand("copy");
+              document.body.removeChild(textarea);
+              window.open("http://www.facebook.com/share.php", '둠칫둠칫','height=250,width=300,toolbar=no');
             });
 
             });
