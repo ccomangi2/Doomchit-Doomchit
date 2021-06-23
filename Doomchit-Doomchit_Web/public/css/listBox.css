@@ -1,17 +1,19 @@
 .container {
-    width: 80%;
+    /* width: 100%; */
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
     align-content: center;
     align-self: center;
+
+    /* margin-bottom: 15vh; */
 }
 
 .box {
     flex: 1 1 40%;
     /* flex-grow: 1; flex-shrink: 1; flex-basis: auto; */
-    width: 30%;
+    width: 30vw;
     height: auto;
     margin: 0.5vw;
     padding-bottom: 2%;
