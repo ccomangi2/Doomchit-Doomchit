@@ -45,8 +45,8 @@ function getdata() {
                 displaylist(i, ref);
             });*/
         });
-    var j = 0;
-
+    
+        var j=-1
     function displaylist2(audios, cIdx) {
         let ulDiv = document.getElementById("image-gallery");
         window.asdf = ulDiv;
@@ -57,12 +57,12 @@ function getdata() {
         htmlStr += "</li>";
 
         ulDiv.insertAdjacentHTML("beforeend", htmlStr);
-
+        
         audios.forEach(function (audio) {
             console.log(audio.getDownloadURL);
             audio.getDownloadURL().then(function (url) {
                 arrNumber.push(url);
-
+                j++;
                 let container = document.getElementById(
                     `${cIdx}-audios-container`
                 );
@@ -94,25 +94,20 @@ function getdata() {
                     "' ><img src='img/web_playsound.png' alt='play sound button'/></div>";
                 boxHtml += "</div>";
 
-                // j++;
+                
 
-                $(".play").click(function () {
-                    window.open(
-                        $(this).attr("id"),
-                        "둠칫둠칫",
-                        "height=100,width=180,toolbar=no"
-                    );
-                });
-                $(".share").click(function () {
-                    window.open(
-                        "http://www.facebook.com/share.php?u=" +
-                            $(this).attr("id"),
-                        "둠칫둠칫",
-                        "height=250,width=300,toolbar=no"
-                    );
-                });
-
+                
                 container.insertAdjacentHTML("beforeend", boxHtml);
+                $('.play').click(function(){
+                    console.log("들감")
+                    window.open($(this).attr('id'), '둠칫둠칫','height=100,width=200,toolbar=no');
+                  })
+          
+                 
+                  $(".share").click(function(){
+                    window.open("http://www.facebook.com/share.php?u="+$(this).attr('id'), '둠칫둠칫','height=250,width=300,toolbar=no');
+                  });
+
                 // console.log(audio.name.split("_")[2]);
             });
         });
@@ -208,6 +203,7 @@ function getdata() {
                 
             }
             */
+           
             ulDiv.insertAdjacentHTML("beforeend", htmlStr);
 
             // if (k % 4 == 1) {
