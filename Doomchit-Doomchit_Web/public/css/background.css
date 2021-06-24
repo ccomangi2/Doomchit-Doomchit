@@ -1,11 +1,11 @@
 html {
     background: url(../img/테두리.png), url(../img/web_background.png);
-    -webkit-background-size: cover, cover;
+    -webkit-background-size: center cover, cover;
     -moz-background-size: cover, cover;
     -o-background-size: cover, cover;
     background-repeat: no-repeat, repeat;
-    background-size: cover, cover;
-    margin-bottom: 15%;
+    background-size: cover 90%, cover;
+    /* margin-bottom: 15%; */
 
     /* IE6~8 지원 */
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/테두리.png', sizingMethod='scale');
