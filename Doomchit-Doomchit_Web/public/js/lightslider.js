@@ -587,7 +587,7 @@
                     $slide.after(
                         '<div class="pager_new" style="width:' +
                             elSize +
-                            'px; overflow:hidden;margin-top:-50px;"><ul class="lSPager ' +
+                            'px; overflow:hidden;"><ul class="lSPager ' +
                             cl +
                             '" style="margin:auto"></ul></div>'
                     );
